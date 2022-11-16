@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type= "text/css" href="src/style.css"/>
   </head>
   <body>
     <div id = "title">
@@ -56,10 +57,24 @@
     </div>
     <!--Section for Who is affected-->
     <div id = "who">
-      <h2 id = "whoTitle"><span style = "color:#F7413E">Who</span> is Affected?</h2>
+      <div id= "whoText">
+        <h2 id = "whoTitle"><span style = "color:#F7413E">Who</span> is Affected?</h2>
+        <!--placeholder for visualization-->
+        <p>Food insecurity affects those all around the world</p><br>
+        <p>Within America, this is a prevalent issue among many communities and isn't going away anytime soon. Food insecurity is highest for <span style = "font-weight:bold">single-mother households</span> and <span style = "font-weight:bold">below-poverty-line</span> households. It also affects a wide range such as <span style = "font-weight:bold">urban cities</span>, <span style = "font-weight:bold">rural areas</span>, and <span style = "font-weight:bold">college students</span>.</p>
+      </div>
+    </div>
+    <!--Section for Long-lasting Effects-->
+    <h2 id = "whyTitle">What are the <span style = "color: #F7413E">long-lasting effects</span>?</h2>
+    <div id = "why">
+        <div id= "whyText">
+        <p>
+          <span style="font-weight:bold">Impact of food choices on life expectancy</span><br>
+        </p>
+        <p>Factors such as increased sugary drink consumption, increased saturated fat consumption, and increased trans fat consumption was correlated with increased risk for diabetes, obesity, and cardiovascular disease. With these substances being cheaper and more common, food deserts have a high concentration of sugary drinks and unhealthy fats so people in these areas are at a higher risk for these adverse health conditions. </p>
+      </div>
       <!--placeholder for visualization-->
-      <p>Food insecurity affects those all around the world</p><br>
-      <p>Within America, this is a prevalent issue among many communities and isn't going away anytime soon. Food insecurity is highest for <span style = "font-weight:bold">single-mother households</span> and <span style = "font-weight:bold">below-poverty-line</span> households. It also affects a wide range such as <span style = "font-weight:bold">urban cities</span>, <span style = "font-weight:bold">rural areas</span>, and <span style = "font-weight:bold">college students</span>.</p>
+      <div id="whyVis"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

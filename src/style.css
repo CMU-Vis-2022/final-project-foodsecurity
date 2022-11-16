@@ -53,7 +53,7 @@ html {
 
 #whatTitle{
   padding-top: 10em;
-  font-size: 1.5em;
+  font-size: 3em;
 }
 
 
@@ -70,4 +70,32 @@ html {
 width: 50em;
 line-height: 1.5em;
 margin-bottom: 20em;
+}
+
+#whoTitle{
+  padding-top: 5em;
+  font-size: 3em;
+}
+
+#why{
+display: flex;
+flex-direction: row;
+}
+
+#whyTitle{
+  padding-top: 5em;
+  font-size: 3em;
+  line-height: 50px;
+}
+
+#whyText{
+  width: 40%;
+  float: left;
+}
+
+#whyVis{
+  width: 60%;
+  height: 40px;
+  float: right;
+  color: black;
 }
