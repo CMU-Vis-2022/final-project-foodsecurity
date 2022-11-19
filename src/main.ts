@@ -2,12 +2,17 @@ import "./style.css";
 import * as d3 from "d3";
 
 import { barChart } from "./bar-chart";
+import { mapChart } from "./map";
 import { Int32, Table, Utf8 } from "apache-arrow";
 import { db } from "./duckdb";
 import parquet from "./weather.parquet?url";
 
-const app = document.querySelector("#app")!;
+const app = document.querySelector("#mapVis")!;
 
+const chart = mapChart();
+
+
+/*
 // Create the chart. The specific code here makes some assumptions that may not hold for you.
 const chart = barChart();
 
@@ -57,6 +62,7 @@ select.on("change", () => {
 
 // Update the chart with the first location.
 update("Seattle");
-
+*/
 // Add the chart to the DOM.
+
 app.appendChild(chart.element);
