@@ -99,3 +99,11 @@ flex-direction: row;
   float: right;
   color: black;
 }
+
+/* css for the map */
+#mapVis{
+  margin-left: -5em;
+}
+.counties{
+  stroke:#d3d3d3;
+}
