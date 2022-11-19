@@ -13,7 +13,15 @@ export function mapChart(){
                 .attr("viewBox", [0, 0, width, height])
 
 
-    var data = d3.json("./src/foodAccesData.json").then(d => {
+    function mouseOver(d){
+        d3.select(this)
+          .attr("fill","red")
+    }
+    function mouseOut(d){
+        d3.select(this)
+          .attr("fill","white")
+    }
+    d3.json("./src/foodAccessData.json").then(d => {
         var projection = d3.geoIdentity().reflectY(true).fitSize([width,height],d);
         var path = d3.geoPath().projection(projection)
         svg.selectAll("path")
@@ -22,7 +30,9 @@ export function mapChart(){
             .append("path")
             .attr('d',path)
             .attr('fill','#FFFFFF')
-            .attr("class", "counties");
+            .attr("class", "counties")
+            .on("mouseover",mouseOver)
+            .on("mouseout",mouseOut)
             }
         );
 
