@@ -6,6 +6,8 @@ export function mapChart(){
     const width = 1200;
     const height = 600;
 
+
+    const colorScale = d3.scaleSequential().interpolator(d3.interpolateReds).domain([0,60])
     const svg = d3
                 .create("svg")
                 .attr("width", width)
@@ -14,8 +16,10 @@ export function mapChart(){
 
 
     function mouseOver(d){
-        d3.select(this)
-          .attr("fill","red")
+        //let a = d.fromElement.__data__?.properties
+        if(d.target.__data__.properties.County == undefined){
+            console.log(d)
+        }
     }
     function mouseOut(d){
         d3.select(this)
@@ -29,7 +33,14 @@ export function mapChart(){
             .enter()
             .append("path")
             .attr('d',path)
-            .attr('fill','#FFFFFF')
+            .attr('fill',function (d){
+                if(d.properties.PovertyRate == undefined){
+                    return "#FFFFFF"
+                }
+                else{
+                    return colorScale(d.properties.PovertyRate)
+                }
+            })
             .attr("class", "counties")
             .on("mouseover",mouseOver)
             .on("mouseout",mouseOut)
