@@ -3,13 +3,19 @@ import * as d3 from "d3";
 
 import { barChart } from "./bar-chart";
 import { mapChart } from "./map";
+import { cholesterolChart } from "./cholesterol";
 import { Int32, Table, Utf8 } from "apache-arrow";
 import { db } from "./duckdb";
 import parquet from "./weather.parquet?url";
 
-const app = document.querySelector("#mapVis")!;
-
+const map = document.querySelector("#mapVis")!;
 const chart = mapChart();
+map.appendChild(chart.element);
+
+
+const cholesterol = document.querySelector("#whyVis")!;
+const cholChart = cholesterolChart();
+cholesterol.appendChild(cholChart.element); 
 
 
 /*
@@ -65,4 +71,3 @@ update("Seattle");
 */
 // Add the chart to the DOM.
 
-app.appendChild(chart.element);

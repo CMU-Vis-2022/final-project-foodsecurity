@@ -14,7 +14,7 @@ export function mapChart(){
                 .attr("height", height)
                 .attr("viewBox", [0, 0, width, height])
 
-
+    
     function mouseOver(d){
         let format = d3.format(".2f")
         d3.select(this).attr("fill-opacity",1)
@@ -86,7 +86,6 @@ export function mapChart(){
         d3.select(this).attr("fill-opacity",0.8)
     }
     d3.json("./src/foodData.geojson").then(d => {
-        console.log(d.features)
         var projection = d3.geoIdentity().reflectY(true).fitSize([(width-200),height],d);
         var path = d3.geoPath().projection(projection)
         svg.selectAll("path")

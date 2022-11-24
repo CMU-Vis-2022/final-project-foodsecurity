@@ -94,10 +94,8 @@ flex-direction: row;
 }
 
 #whyVis{
-  width: 60%;
-  height: 40px;
-  float: right;
-  color: black;
+  margin-top: 20px;
+  margin-left: 70px;
 }
 
 /* css for the map */
