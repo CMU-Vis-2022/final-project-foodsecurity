@@ -20,9 +20,26 @@ export function cholesterolChart(){
                 .attr("width", width)
                 .attr("height", height)
                 .attr("viewBox", [0, 0, width, height])
-                .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
 
     const bars = svg.append("g").attr("fill", "#EB736B");
+/*
+    svg.append("text")
+       .attr("font-size",12)
+       .attr("fill","white")
+       .attr("fill-opacity",1)
+       .attr("text-anchor", "front")
+       .attr("id","labelText")
+       .attr("x",width/8)
+       .attr("y",30)
+       .text("Count of Individuals in 2017-2020 NHANES Survey")
+       .append("tspan")
+       .attr("x",width/4)
+       .attr("y",50)
+       .text("With High Triglyceride Levels")
+       .append("tspan")
+       .attr("x",width/5)
+       .attr("y",70)
+       .text('By Income to Poverty Guideline Ratio');*/
 
     d3.csv("./src/cholestBinned.csv").then(d => {
         let bins = []
@@ -33,7 +50,6 @@ export function cholesterolChart(){
         })
         xScale.domain(bins);
         yScale.domain([0,d3.max(amts)]);
-        console.log(amts)
         let I = d3.range(bins.length);
 
         svg
@@ -41,7 +57,6 @@ export function cholesterolChart(){
         .attr("class", "xaxis")
         .attr("transform", `translate(0, ${height-margin.bottom})`);
 
-        // Add the y axis
         svg
         .append("g")
         .attr("class", "yaxis")
@@ -61,30 +76,12 @@ export function cholesterolChart(){
         .attr("height", (i) => {
                 return (height-margin.bottom) - yScale(parseInt(amts[i]));
         })
-        .on("mouseover",(d) => { console.log(d.target.__data__)});
+        //.on("mouseover",(d) => { console.log(d.target.__data__)});
 
         svg.select<SVGSVGElement>(".xaxis").call(xAxis)
         svg.select<SVGSVGElement>(".yaxis").call(yAxis);
         
     })
-    
-    svg.append("text")
-       .attr("font-size",14)
-       .attr("fill","white")
-       .attr("fill-opacity",1)
-       .attr("text-anchor", "front")
-       .attr("id","labelText")
-       .attr("x",width/8)
-       .attr("y",30)
-       .text("Count of Individuals in 2017-2020 NHANES Survey")
-       .append("tspan")
-       .attr("x",width/4)
-       .attr("y",50)
-       .text("With High Triglyceride Levels")
-       .append("tspan")
-       .attr("x",width/5)
-       .attr("y",70)
-       .text('By Income to Poverty Guideline Ratio');
 
     svg.append("text")
        .attr("font-size", 14)
@@ -95,7 +92,7 @@ export function cholesterolChart(){
        .attr("id","labelText")
        .attr("x",width/4)
        .attr("y",height - 20)
-       .text("Ratio of income to poverty guideline")
+       .text("Ratio of income to poverty guideline");
     
     svg.append("text")
        .attr("font-size", 14)
@@ -107,7 +104,7 @@ export function cholesterolChart(){
        .attr("x",0)
        .attr("y",height/2)
        .attr("transform",`translate(${-width/2 - margin.left - 35},${height/2}) rotate(-90)`)
-       .text("Count")
+       .text("Count");
 
     return{
         element: svg.node()!

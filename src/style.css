@@ -93,6 +93,13 @@ flex-direction: row;
   float: left;
 }
 
+.whyVisTitle{
+  margin-left: 40em;
+  margin-bottom:0;
+  margin-top: 0;
+  padding:0;
+}
+
 #whyVis{
   margin-top: 20px;
   margin-left: 70px;
@@ -112,4 +119,9 @@ flex-direction: row;
 }
 .counties{
   stroke:#707070;
+}
+
+
+#raceSelection{
+  margin-left: 10px;
 }

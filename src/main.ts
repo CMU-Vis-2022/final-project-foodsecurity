@@ -4,6 +4,8 @@ import * as d3 from "d3";
 import { barChart } from "./bar-chart";
 import { mapChart } from "./map";
 import { cholesterolChart } from "./cholesterol";
+import { distChart } from "./distribution";
+
 import { Int32, Table, Utf8 } from "apache-arrow";
 import { db } from "./duckdb";
 import parquet from "./weather.parquet?url";
@@ -18,6 +20,29 @@ const cholChart = cholesterolChart();
 cholesterol.appendChild(cholChart.element); 
 
 
+const distr = document.querySelector("#distVis");
+const edu = document.querySelector('#eduVis');
+const marital = document.querySelector('#maritalVis');
+const income = document.querySelector('#incomeVis')
+
+
+const distributionChart = distChart();
+distributionChart.update('./src/raceNumPropJoined.csv');
+distr?.appendChild(distributionChart.element); 
+
+
+const eduVis = distChart();
+eduVis.update('./src/educationAndInsecurity.csv');
+edu?.appendChild(eduVis.element);
+
+
+const maritalVis = distChart();
+maritalVis.update('./src/maritalAndSecurity.csv');
+marital?.appendChild(maritalVis.element);
+
+const incomeVis = distChart();
+incomeVis.update('./src/incomeAndFoodInsecurity.csv');
+income?.appendChild(incomeVis.element);
 /*
 // Create the chart. The specific code here makes some assumptions that may not hold for you.
 const chart = barChart();
