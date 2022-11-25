@@ -3,7 +3,7 @@ import * as d3 from "d3";
 
 export function distChart(){
     const width = 800;
-    const height = 600;
+    const height = 400;
     const margin = { top: 30, right: 50, bottom: 60, left: 200 };
 
     const xRange = [margin.left,width-margin.right];
@@ -26,10 +26,10 @@ export function distChart(){
         d3.csv(path).then((d) =>{
             var heightA = height;
             if(d.length == 2){
-                svg.attr("height",250);
-                yScale = d3.scaleBand().range([250-margin.bottom,margin.top]).padding(0.1);
+                svg.attr("height",200);
+                yScale = d3.scaleBand().range([200-margin.bottom,margin.top]).padding(0.1);
                 yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
-                heightA = 250;
+                heightA = 200;
             }
             
             let firstCol = []
@@ -63,20 +63,11 @@ export function distChart(){
             .attr('id',"prop")
             .attr('x',x => xScale(0))
             .attr('y',y => yScale(y.firstCol))
-            .attr('height',70)
+            .attr('height',40)
             .attr('width', (x) =>{ 
                 return(xScale(parseFloat(x.proportion)) - xScale(0))
             })
             .style('fill', (x) => colors[2])
-            /*
-            bars
-            .append('rect')
-            .attr('id','prop2')
-            .attr('x',x => xScale(parseFloat(x.proportion)))
-            .attr('y',y => yScale(y.firstCol))
-            .attr('height',70)
-            .attr('width',(x) => xScale(100) - xScale(parseFloat(x.proportion)))
-            .style('fill', colors[1])*/
     
             svg.select<SVGSVGElement>(".xaxis").call(xAxis)
             svg.select<SVGSVGElement>(".yaxis").call(yAxis);
