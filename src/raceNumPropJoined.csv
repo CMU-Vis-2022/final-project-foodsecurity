@@ -1,6 +1,16 @@
-firstCol,numInsecure,total,proportion
-Hawaiian/Pacific Islander,52.0,269.0,19.33
-American Indian,212.0,990.0,21.41
-Asian,262.0,4315.0,6.07
-Black,1880.0,8100.0,23.20
-White,6130.0,65869.0,9.30
+firstCol,numInsecure,total,proportion,year
+Hawaiian/Pacific Islander,52.0,269.0,19.33,2020
+American Indian,212.0,990.0,21.41,2020
+Asian,262.0,4315.0,6.07,2020
+Black,1880.0,8100.0,23.20,2020
+White,6130.0,65869.0,9.30,2020
+Hawaiian/Pacific Islander,67.0,313.0,21.40,2019
+American Indian,234.0,1075.0,21.76,2019
+Asian,210.0,4004.0,5.24,2019
+Black,1468.0,7814.0,18.78,2019
+White,6216.0,66545.0,9.34,2019
+Hawaiian/Pacific Islander,48.0,306.0,15.68,2021
+American Indian,194.0,952.0,20.37,2021
+Asian,291.0,3938.0,7.38,2021
+Black,1389.0,7168.0,19.37,2021
+White,4909.0,57239.0,8.57,2021

@@ -15,6 +15,7 @@ body{
   background: black;
   color: white;
   margin-left: 10em;
+  overflow-x:hidden;
 }
 
 html {
@@ -93,13 +94,6 @@ flex-direction: row;
   float: left;
 }
 
-.whyVisTitle{
-  margin-left: 40em;
-  margin-bottom:0;
-  margin-top: 0;
-  padding:0;
-}
-
 #whyVis{
   margin-top: 20px;
   margin-left: 70px;
@@ -124,4 +118,25 @@ flex-direction: row;
 
 #raceSelection{
   margin-left: 10px;
+}
+
+#factors1, #factors2, #factors3, #factors4{
+  background: black;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  outline: none;
+  font-size: 1em
+}
+
+#howItFeels{
+  width:50%;
+}
+
+#topStatement{
+  margin-top: 3em;
+}
+
+.affectedPerson{
+  filter: invert(12%) sepia(58%) saturate(6636%) hue-rotate(356deg) brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
 }
