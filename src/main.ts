@@ -38,8 +38,9 @@ const picto7 = document.querySelector("#pictoVis7");
 
 
 const input = document.querySelector("#prompt");
-const select = d3.select(input).append("button");
-select.text('hello')
+const select = d3.select(input).append("button").attr('id','submitButton');
+d3.select(input).append("br")
+select.text('Submit')
 
 select.on("click",async () => {
   select.attr('disabled','disabled')

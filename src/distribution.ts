@@ -3,8 +3,8 @@ import * as d3 from "d3";
 
 export function distChart(){
     const width = 800;
-    const height = 350;
-    const margin = { top: 30, right: 50, bottom: 60, left: 200 };
+    const height = 400;
+    const margin = { top: 80, right: 50, bottom: 60, left: 200 };
 
     const xRange = [margin.left,width-margin.right];
     const yRange = [height-margin.bottom,margin.top];
@@ -37,16 +37,16 @@ export function distChart(){
 
             var heightA = height;
             if(filteredData.length == 2){
-                svg.attr("height",200);
-                yScale = d3.scaleBand().range([200-margin.bottom,margin.top]).padding(0.1);
+                svg.attr("height",250);
+                yScale = d3.scaleBand().range([250-margin.bottom,margin.top]).padding(0.1);
                 yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
-                heightA = 200;
+                heightA = 250;
             }
             else if (filteredData.length == 12){
-                svg.attr("height",600);
-                yScale = d3.scaleBand().range([600-margin.bottom,margin.top]).padding(0.1);
+                svg.attr("height",650);
+                yScale = d3.scaleBand().range([650-margin.bottom,margin.top]).padding(0.1);
                 yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
-                heightA = 600;
+                heightA = 650;
 
             }
             yScale.domain(firstCol)
@@ -98,8 +98,63 @@ export function distChart(){
             .attr('x',(x) => xScale(parseFloat(x.proportion))-5)
             .attr('y',(y) => yScale(y.firstCol) +20)
             .text((x) => parseFloat(x.proportion).toFixed(2) + "%")
-
             
+            svg.append('text')
+            .attr("font-size", 14)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr("text-anchor", "front")
+            .attr('x',100)
+            .attr('y',60)
+            .text('Percentage of individuals in current population survey that are food insecure by their ' + ((chart == "marital")? (chart + " status") : ((chart == "sector")?"industry" : chart)));
+            
+            svg.append('text')
+            .attr("font-size", 14)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr("text-anchor", "front")
+            .attr('id',chart)
+            .attr('x',700)
+            .attr('y',85)
+            .text('Year: ' + year)
+
+            svg.append('text')
+            .attr("font-size", 14)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr("text-anchor", "front")
+            .attr('x',10)
+            .attr('y',10)
+            .text('2019')
+
+            svg.append('text')
+            .attr("font-size", 14)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr("text-anchor", "front")
+            .attr('x',180)
+            .attr('y',10)
+            .text('2021')
+
+
+            svg.append('text')
+            .attr("font-size", 12)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr("text-anchor", "front")
+            .attr('x',300)
+            .attr('y',()=>{
+                if(filteredData.length == 12){
+                    return 635;
+                }
+                else if(filteredData.length == 2){
+                    return 225;
+                }
+                else{
+                    return 375;
+                }
+            })
+            .text("Percentage of Individuals that experience food insecurity")
     
             svg.select<SVGSVGElement>(".xaxis").call(xAxis)
             svg.select<SVGSVGElement>(".yaxis").call(yAxis);

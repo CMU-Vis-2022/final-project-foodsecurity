@@ -115,11 +115,6 @@ flex-direction: row;
   stroke:#707070;
 }
 
-
-#raceSelection{
-  margin-left: 10px;
-}
-
 #factors1, #factors2, #factors3, #factors4{
   background: black;
   border: none;
@@ -129,7 +124,18 @@ flex-direction: row;
   font-size: 1em
 }
 
+#submitButton{
+  margin-top: 0.5em;
+  font-size: 1em;
+  width: 9em;
+  height: 2em;
+  border: none;
+  border-radius: 15px;
+  background-color: White;
+}
+
 #howItFeels{
+  margin-top: 10em;
   width:50%;
 }
 
