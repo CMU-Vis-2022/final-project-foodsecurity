@@ -3,7 +3,7 @@ import * as d3 from "d3";
 export function cholesterolChart(){
     const width = 400;
     const height = 600;
-    const margin = { top: 100, right: 0, bottom: 100, left: 50 };
+    const margin = { top: 100, right: 50, bottom: 100, left: 50 };
 
     const xRange = [margin.left, width];
     const yRange = [height-margin.bottom,margin.top];
@@ -26,9 +26,18 @@ export function cholesterolChart(){
     d3.csv("./src/cholestBinned.csv").then(d => {
         let bins = []
         let amts = []
+        let almost = []
+        let ldlamts = []
         d.forEach(x =>{
-            bins.push(x.bin)
+            if(x.bin == 1){
+                bins.push("≤ 1")
+            }
+            else{
+                bins.push(x.bin)
+            }
             amts.push(parseInt(x.numHighTrig));
+            almost.push(parseInt(x.numAlmostHighTrig));
+            ldlamts.push(parseInt(x.numHighLDL));
         })
         xScale.domain(bins);
         yScale.domain([0,d3.max(amts)]);
@@ -43,7 +52,6 @@ export function cholesterolChart(){
         .append("g")
         .attr("class", "yaxis")
         .attr("transform", `translate(${margin.left},0)`);
-
         bars
         .selectAll("rect")
         .data(I)
@@ -58,7 +66,68 @@ export function cholesterolChart(){
         .attr("height", (i) => {
                 return (height-margin.bottom) - yScale(parseInt(amts[i]));
         })
-        //.on("mouseover",(d) => { console.log(d.target.__data__)});
+        .on("mouseover",(d) => { 
+            d3.selectAll('#mouseOverText').remove()
+            console.log(d)
+            svg.append('text')
+            .attr("font-size", 12)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr('id','mouseOverText')
+            .attr("text-anchor", "front")
+            .attr('x',150)
+            .attr('y',100)
+            .text("Count of individuals with")
+            .append('tspan')
+            .attr("font-size", 12)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr('id','mouseOverText')
+            .attr("text-anchor", "front")
+            .attr('x',150)
+            .attr('y',115)
+            .text("almost high Triglyceride levels: " + almost[d.target.__data__])
+            .append('tspan')
+            .attr("font-size", 12)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr('id','mouseOverText')
+            .attr("text-anchor", "front")
+            .attr('x',150)
+            .attr('y',145)
+            .text("Count of individuals with")
+            .append('tspan')
+            .attr("font-size", 12)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr('id','mouseOverText')
+            .attr("text-anchor", "front")
+            .attr('x',150)
+            .attr('y',160)
+            .text("high low-density lipoprotein (\"bad\")")
+            .append('tspan')
+            .attr("font-size", 12)
+            .attr("fill","white")
+            .attr("font-weight",400)
+            .attr('id','mouseOverText')
+            .attr("text-anchor", "front")
+            .attr('x',150)
+            .attr('y',175)
+            .text("cholesterol: " + ldlamts[d.target.__data__])
+           
+
+        });
+
+        svg.selectAll('texts')
+        .data(I)
+        .join('text')
+        .attr("font-size", 16)
+        .attr("fill","white")
+        .attr("font-weight",400)
+        .attr("text-anchor", "front")
+        .attr('x',(i) => xScale(bins[i]) + 20)
+        .attr('y',(i) => yScale(parseInt(amts[i]))+15)
+        .text((i) => amts[i])
 
         svg.select<SVGSVGElement>(".xaxis").call(xAxis)
         svg.select<SVGSVGElement>(".yaxis").call(yAxis);

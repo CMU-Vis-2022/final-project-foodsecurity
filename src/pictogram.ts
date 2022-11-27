@@ -50,7 +50,6 @@ export function pictChart(col:string){
             return xScale((d%cols).toString())
         } )
         .attr('y',d =>{
-            console.log(yScale(Math.floor(d/cols)))
             return yScale(Math.floor(d/cols).toString())
         })
         .attr('class', d =>{
