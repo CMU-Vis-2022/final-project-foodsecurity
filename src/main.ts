@@ -11,9 +11,27 @@ import { Int32, Table, Utf8 } from "apache-arrow";
 import { db } from "./duckdb";
 import parquet from "./weather.parquet?url";
 
+
+
 const map = document.querySelector("#mapVis")!;
 const chart = mapChart();
+const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
+
+chart.update('./src/foodData.geojson','rate');
+
+selection.append('option').text("Insecurity Rate")
+selection.append('option').text('Percentage of individuals that reside ≥10 miles from a grocery store')
+selection.attr('id',"mapSelection")
+selection.on('change',(d) =>{
+  const choice = selection.property("value");
+  if(choice === "Insecurity Rate"){
+    chart.update('./src/foodData.geojson',"rate");
+  }
+  else{
+    chart.update('./src/foodAccessData.json',"lalowi10share");
+  }
+})
 
 
 const cholesterol = document.querySelector("#whyVis")!;
@@ -38,17 +56,17 @@ const picto7 = document.querySelector("#pictoVis7");
 
 
 const input = document.querySelector("#prompt");
-const select = d3.select(input).append("button").attr('id','submitButton');
+const button = d3.select(input).append("button").attr('id','submitButton');
 d3.select(input).append("br")
-select.text('Submit')
+button.text('Submit')
 
-select.on("click",async () => {
-  select.attr('disabled','disabled')
+button.on("click",async () => {
+  button.attr('disabled','disabled')
 
-  const entered1 = document.getElementById('factors1')?.value;
-  const entered2 = document.getElementById('factors2')?.value;
-  const entered3 = document.getElementById('factors3')?.value;
-  const entered4 = document.getElementById('factors4')?.value;
+  const entered1 = (<HTMLInputElement>document.getElementById('factors1'))?.value;
+  const entered2 = (<HTMLInputElement>document.getElementById('factors2'))?.value;
+  const entered3 = (<HTMLInputElement>document.getElementById('factors3'))?.value;
+  const entered4 = (<HTMLInputElement>document.getElementById('factors4'))?.value;
   const values = [entered1,entered2, entered3,entered4]
   var displayText = "You said: "
   for(let i =0; i<4; i++){
@@ -76,9 +94,9 @@ select.on("click",async () => {
                 .attr('value',0);
   d3.select(distr).append("br")
   slide1.on('change',(event)=>{
-    distributionChart.update('./src/raceNumPropJoined.csv',(years[event.target.value/50]),'race');
+    distributionChart.update('./src/raceNumPropJoined.csv',(years[event.target.value/50]).toString(),'race');
   })
-  distributionChart.update('./src/raceNumPropJoined.csv',2019,'race');
+  distributionChart.update('./src/raceNumPropJoined.csv',"2019",'race');
   distr?.appendChild(distributionChart.element); 
 
 
@@ -94,9 +112,9 @@ select.on("click",async () => {
   d3.select(edu).append("br")
   const eduVis = distChart();
   slide2.on('change',(event) => {
-    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]),'education');
+    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]).toString(),'education');
   })
-  eduVis.update('./src/educationAndInsecurity.csv',2019,'education');
+  eduVis.update('./src/educationAndInsecurity.csv',"2019",'education');
   edu?.appendChild(eduVis.element);
 
   const slide3 = d3.select(marital)
@@ -111,9 +129,9 @@ select.on("click",async () => {
   d3.select(marital).append("br")
   const maritalVis = distChart();
   slide3.on('change',(event)=>{
-    maritalVis.update('./src/maritalAndSecurity.csv',years[event.target.value/50],"marital");
+    maritalVis.update('./src/maritalAndSecurity.csv',years[event.target.value/50].toString(),"marital");
   })
-  maritalVis.update('./src/maritalAndSecurity.csv',2019,"marital");
+  maritalVis.update('./src/maritalAndSecurity.csv',"2019","marital");
   marital?.appendChild(maritalVis.element);
 
   const slide4 = d3.select(income)
@@ -128,9 +146,9 @@ select.on("click",async () => {
   d3.select(income).append("br")
   const incomeVis = distChart();
   slide4.on('change',(event)=>{
-    incomeVis.update('./src/incomeAndFoodInsecurity.csv',years[event.target.value/50],"income");
+    incomeVis.update('./src/incomeAndFoodInsecurity.csv',years[event.target.value/50].toString(),"income");
   })
-  incomeVis.update('./src/incomeAndFoodInsecurity.csv',2019,"income");
+  incomeVis.update('./src/incomeAndFoodInsecurity.csv',"2019","income");
   income?.appendChild(incomeVis.element);
 
   const slide5 = d3.select(sector)
@@ -145,9 +163,9 @@ select.on("click",async () => {
   d3.select(sector).append("br")
   const sectorVis = distChart();
   slide5.on('change',(event)=>{
-    sectorVis.update("./src/sectorAndInsecurity.csv",years[event.target.value/50],'sector');
+    sectorVis.update("./src/sectorAndInsecurity.csv",years[event.target.value/50].toString(),'sector');
   })
-  sectorVis.update("./src/sectorAndInsecurity.csv",2019,'sector');
+  sectorVis.update("./src/sectorAndInsecurity.csv","2019",'sector');
   sector?.appendChild(sectorVis.element);
 })
 

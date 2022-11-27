@@ -3,10 +3,12 @@ import * as d3 from "d3";
 export function pictChart(col:string){
     const width = 800;
     const height = col == 'HESSH3'?250: col == 'HESS5'?300 : 400;
+
     const svg = d3
         .create("svg")
         .attr("width", width)
         .attr("height", height);
+    
     d3.csv("./src/howItFeelsActual.csv").then(d => {
         var rows= 0;
         var cols = 10;
@@ -220,6 +222,6 @@ export function pictChart(col:string){
 
     })
     return {
-        element: svg.node!()
+        element: svg.node()!,
     };
 }
