@@ -6,6 +6,8 @@ import { mapChart } from "./map";
 import { cholesterolChart } from "./cholesterol";
 import { distChart } from "./distribution";
 import { pictChart } from "./pictogram";
+import { scatterChart } from "./deeperAnalysis";
+import { incomeScatterChart } from "./lowIncomeAnalysis";
 
 import { Int32, Table, Utf8 } from "apache-arrow";
 import { db } from "./duckdb";
@@ -51,9 +53,8 @@ const picto4 = document.querySelector("#pictoVis4");
 const picto5 = document.querySelector("#pictoVis5");
 const picto6 = document.querySelector("#pictoVis6");
 const picto7 = document.querySelector("#pictoVis7");
-
-
-
+const races = document.querySelector("#racialScatter");
+const incomeScatter = document.querySelector("#incomeScatter");
 
 const input = document.querySelector("#prompt");
 const button = d3.select(input).append("button").attr('id','submitButton');
@@ -99,6 +100,21 @@ button.on("click",async () => {
   distributionChart.update('./src/raceNumPropJoined.csv',"2019",'race');
   distr?.appendChild(distributionChart.element); 
 
+  const racialProportions = scatterChart();
+  const raceSelection = d3.select(races).append("select");
+  d3.select(races).append("br")
+
+  racialProportions.update("White")
+  raceSelection.append('option').text("White")
+  raceSelection.append('option').text("Black")
+  raceSelection.append('option').text("Asian")
+  raceSelection.append('option').text("Hispanic")
+  raceSelection.attr("id","raceSelection")
+  raceSelection.on('change',(d) =>{
+    const choice = raceSelection.property("value");
+    racialProportions.update(choice)
+  })
+  races?.append(racialProportions.element)
 
   const slide2 = d3.select(edu)
                 .append("input")
@@ -150,6 +166,9 @@ button.on("click",async () => {
   })
   incomeVis.update('./src/incomeAndFoodInsecurity.csv',"2019","income");
   income?.appendChild(incomeVis.element);
+
+  const incomeScatterVis = incomeScatterChart();
+  incomeScatter?.appendChild(incomeScatterVis.element);
 
   const slide5 = d3.select(sector)
                 .append("input")
