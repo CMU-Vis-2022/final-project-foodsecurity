@@ -186,6 +186,21 @@ button.on("click",async () => {
   income?.appendChild(incomeVis.element);
 
   const incomeScatterVis = incomeScatterChart();
+  incomeScatterVis.update("All Regions")
+  const incomeLocationSelection = d3.select(incomeScatter).append('select');
+  incomeLocationSelection.append('option').text("All Regions")
+  incomeLocationSelection.append('option').text("West")
+  incomeLocationSelection.append('option').text("Midwest")
+  incomeLocationSelection.append('option').text("South")
+  incomeLocationSelection.append('option').text("Northeast")
+  incomeLocationSelection.attr("id","locSelection")
+
+  incomeLocationSelection.on('change',(d) =>{
+    const region = incomeLocationSelection.property('value');
+    incomeScatterVis.update(region);
+  })
+
+  d3.select(incomeScatter).append('br');
   incomeScatter?.appendChild(incomeScatterVis.element);
 
   const slide5 = d3.select(sector)
