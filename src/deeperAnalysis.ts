@@ -1,7 +1,7 @@
 import * as d3 from "d3"
 
 export function scatterChart(){
-    const margin = { top: 0, right: 100, bottom: 80, left: 150 };
+    const margin = { top: 0, right: 100, bottom: 50, left: 150 };
 
     const width = 800;
     const height = 500;
@@ -45,7 +45,7 @@ export function scatterChart(){
         .attr("text-anchor", "front")
         .attr("id","displayXlabel")
         .attr('x',width/2-100)
-        .attr('y',height-margin.bottom/2)
+        .attr('y',height-margin.bottom/3)
         .text("Percentage of population that is " + race)
 
         svg.append("text")
@@ -134,7 +134,7 @@ export function scatterChart(){
                         }
                     }
                    })
-                   .attr("cy", x=> yScale(parseFloat(x.insecurityRate.slice(0,-1))))
+                   .attr("cy", x=> yScale(parseFloat(x.insecurityRate===undefined?"":x.insecurityRate.slice(0,-1))))
                    .attr("r", 1.5)
                    .style("fill", "#FF0000")
                    .on("mouseover", displayInfo)
@@ -192,7 +192,7 @@ export function scatterChart(){
                     return value
                 }
                 })
-            .attr('cy', y => {
+            .attr('cy', (y:any) => {
                 let value = yAxisScaled(parseFloat(y.insecurityRate.slice(0,-1)))
                 if(value > height - margin.bottom){
                     return 8000

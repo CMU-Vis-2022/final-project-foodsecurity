@@ -13,7 +13,7 @@ import { Int32, Table, Utf8 } from "apache-arrow";
 import { db } from "./duckdb";
 import parquet from "./weather.parquet?url";
 
-
+window.scrollTo(0,0);
 
 const map = document.querySelector("#mapVis")!;
 const chart = mapChart();
@@ -76,12 +76,13 @@ button.on("click",async () => {
     }
   }
 
-  const test = document.getElementById('chosen')
-  if(test !== null){
-    test.innerHTML = displayText.substring(0,displayText.length -2);
+  const guessed = document.getElementById('chosen')
+  if(guessed !== null){
+    guessed.innerHTML = displayText.substring(0,displayText.length -2);
   }
   const years = [2019,2020,2021];
   
+  /* race bar chart*/
 
   const distributionChart = distChart();
   const slide1 = d3.select(distr)
@@ -99,6 +100,16 @@ button.on("click",async () => {
   })
   distributionChart.update('./src/raceNumPropJoined.csv',"2019",'race');
   distr?.appendChild(distributionChart.element); 
+
+  const narrative = document.getElementById('narrative')
+  if( narrative !== null) narrative.innerHTML = 'There are many systematic factors that influence why some groups experience food insecurity while others do not. In an analysis of food insecurity factors, a study published in the NIH found that typically people of color tend to face higher levels of food insecurity than their white peers, with Hispanics and African Americans facing the greatest amount of food insecurity.'
+
+  const distExplain = document.getElementById('distExplain')
+  if(distExplain !== null){
+    distExplain.innerHTML = "Over the years this trend holds true. Higher proportions of African Americans along with American Indians and Hawaiian/Pacific Islanders face food insecurity than White and Asians over the years. We see however that over the years the proportion of Asian individuals that face food insecurity increases and interestingly, the proportion of Hawaiian/Pacific Islanders that face food insecurity decreases. In general however, there are large fluctuatinos in the proportion of individuals that face food security across all races except White individuals. <br><br> This result can be associated with reasons that another study published by the NIH found: food insecurity rates are associated with the proportion of African Americans in the population of that county, as well as poverty levels and population density. <br><br> Let's explore this more in depth"
+  }
+  
+  /* race scatter chart*/
 
   const racialProportions = scatterChart();
   const raceSelection = d3.select(races).append("select");
@@ -126,6 +137,31 @@ button.on("click",async () => {
     racialProportions.update(choice,region)
   })
 
+  const raceExplain = document.getElementById('raceExplain')
+  if(raceExplain !== null){
+    raceExplain.innerHTML = `We see that when considering all regions at once, as white individuals make up a larger proportion of a county's population, 
+    the food insecurity rate tends to decrease for the most part. However, when we consider other races, we see that as African Americans make up a larger
+    proportion of a county's population, food insecurity rates of that county tend to go up. The same trend applies for Hispanics. Interestingly, the same
+    trend does not seem to appear to hold when considering the proportion of Asians Individuals in a county. <br><br> 
+    
+    There are variations in this trend when considering each individual geographic region. <br><br> 
+    
+    In the West, as White, Asian and Black individuals make up a greater proportion of the county's population, generally food insecurity rates remain 
+    constant. However, as Hispanic individuals make up a greater proportion of a county's population, food insecurity rates tend to increase. <br><br> 
+    
+    When considering the Midwest, we see that as the proportion of White indivudals in a county increases, food insecurity rate tends to decrease. 
+    However, as Black, Asian and Hispanics make up a greater proporiton of a county's population, food insecurity rates tend to maintain about the same.<br><br> 
+    
+    In the South, as the proportion of White and Asian indivudals in a county increase, food insecurity rates remain stable. As the proportion of Black 
+    individuals increase we can see a clear upward increase in food insecurity rates. For the proportion of Hispanics, for the most part it remains 
+    constant however we see slightly higher insecurity rates for counties with a higher proportion of Hispanics. <br><br> 
+    
+    For the Northeast, food insecurity rates tend to remain constant for all races. <br><br><br> 
+    
+    Besides from race, another factor that influences food insecurity is an individual's income`
+  }
+
+
   locationSelection.on('change',(d) =>{
     const choice = raceSelection.property("value");
     const region = locationSelection.property('value');
@@ -134,40 +170,9 @@ button.on("click",async () => {
 
   races?.append(racialProportions.element)
 
-  const slide2 = d3.select(edu)
-                .append("input")
-                .attr("type","range")
-                .attr("id","eduVisSlide")
-                .attr("style","width:200px")
-                .attr("min",0)
-                .attr("max",100)
-                .attr("step",50)
-                .attr('value',0);
-  d3.select(edu).append("br")
-  const eduVis = distChart();
-  slide2.on('change',(event) => {
-    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]).toString(),'education');
-  })
-  eduVis.update('./src/educationAndInsecurity.csv',"2019",'education');
-  edu?.appendChild(eduVis.element);
 
-  const slide3 = d3.select(marital)
-                  .append("input")
-                  .attr("type","range")
-                  .attr("id","maritalVisSlide")
-                  .attr("style","width:200px")
-                  .attr("min",0)
-                  .attr("max",100)
-                  .attr("step",50)
-                  .attr('value',0);
-  d3.select(marital).append("br")
-  const maritalVis = distChart();
-  slide3.on('change',(event)=>{
-    maritalVis.update('./src/maritalAndSecurity.csv',years[event.target.value/50].toString(),"marital");
-  })
-  maritalVis.update('./src/maritalAndSecurity.csv',"2019","marital");
-  marital?.appendChild(maritalVis.element);
 
+  /* income bar chart*/
   const slide4 = d3.select(income)
                 .append("input")
                 .attr("type","range")
@@ -184,6 +189,13 @@ button.on("click",async () => {
   })
   incomeVis.update('./src/incomeAndFoodInsecurity.csv',"2019","income");
   income?.appendChild(incomeVis.element);
+
+  const incomeExplain = document.getElementById('incomeExplain')
+  if(incomeExplain!==null){
+    incomeExplain.innerHTML = `We see that over the years, a greater proportion of individuals that earn less than 185% of the poverty income guidelines 
+    for their family size experience food insecurity than individuals that ear more than 185% of the poverty income guideline for their family size`
+  }
+
 
   const incomeScatterVis = incomeScatterChart();
   incomeScatterVis.update("All Regions")
@@ -202,6 +214,46 @@ button.on("click",async () => {
 
   d3.select(incomeScatter).append('br');
   incomeScatter?.appendChild(incomeScatterVis.element);
+
+
+
+
+  const slide2 = d3.select(edu)
+                .append("input")
+                .attr("type","range")
+                .attr("id","eduVisSlide")
+                .attr("style","width:200px")
+                .attr("min",0)
+                .attr("max",100)
+                .attr("step",50)
+                .attr('value',0);
+  d3.select(edu).append("br")
+  const eduVis = distChart();
+  slide2.on('change',(event) => {
+    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]).toString(),'education');
+  })
+  eduVis.update('./src/educationAndInsecurity.csv',"2019",'education');
+  edu?.appendChild(eduVis.element);
+
+
+
+  const slide3 = d3.select(marital)
+                  .append("input")
+                  .attr("type","range")
+                  .attr("id","maritalVisSlide")
+                  .attr("style","width:200px")
+                  .attr("min",0)
+                  .attr("max",100)
+                  .attr("step",50)
+                  .attr('value',0);
+  d3.select(marital).append("br")
+  const maritalVis = distChart();
+  slide3.on('change',(event)=>{
+    maritalVis.update('./src/maritalAndSecurity.csv',years[event.target.value/50].toString(),"marital");
+  })
+  maritalVis.update('./src/maritalAndSecurity.csv',"2019","marital");
+  marital?.appendChild(maritalVis.element);
+
 
   const slide5 = d3.select(sector)
                 .append("input")
