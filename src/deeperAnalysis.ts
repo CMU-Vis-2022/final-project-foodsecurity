@@ -34,7 +34,7 @@ export function scatterChart(){
     const dots = svg.append("g");
 
     
-    function update(race:string){
+    function update(race:string,region:string){
         d3.selectAll('#displayInfoText').remove()
 
         svg.append("text")
@@ -96,6 +96,11 @@ export function scatterChart(){
                 .attr("y",d.offsetY - 30)
                 .text(d.target.__data__.county.includes("Oglala")?"No Data":d.target.__data__.county.includes("Kusilvak")?"No Data":"Number of individuals who race is " + race + ": " + displayNum)
         }
+        var regionCode = 0
+        if(region == "West") regionCode = 1
+        else if(region == "Midwest") regionCode = 2
+        else if(region == "Northeast") regionCode = 3
+        else if(region == "South") regionCode = 4
 
         d3.selectAll('#raceCircles').remove();
         d3.csv('./src/insecurityAndProportions.csv').then((d) =>{
@@ -104,11 +109,30 @@ export function scatterChart(){
                    .enter()
                    .append("circle")
                    .attr("id","raceCircles")
-                   .attr("cx", x=>{
-                    if(race == "White") return xScale(x.pWhite)
-                    else if(race == "Black") return xScale(x.pBlack)
-                    else if(race == "Hispanic") return xScale(x.pHispanic)
-                    else return xScale(x.pAsian)
+                   .attr("cx", (x) =>{
+                    if(regionCode == 0){
+                        if(race == "White") return xScale(x.pWhite === undefined?0:parseFloat(x.pWhite))
+                        else if(race == "Black") return xScale(x.pBlack===undefined?0:parseFloat(x.pBlack))
+                        else if(race == "Hispanic") return xScale(x.pHispanic===undefined?0:parseFloat(x.pHispanic))
+                        else return xScale(x.pAsian===undefined?0:parseFloat(x.pAsian))
+                    }
+                    else{
+                        if(race == "White" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                            return xScale(x.pWhite === undefined?0:parseFloat(x.pWhite))
+                        }
+                        else if(race == "Black" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                            return xScale(x.pBlack === undefined?0:parseFloat(x.pBlack))
+                        }
+                        else if(race == "Hispanic" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                            return xScale(x.pHispanic === undefined?0:parseFloat(x.pHispanic))
+                        }
+                        else if(race == "Asian" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                            return xScale(x.pAsian === undefined?0:parseFloat(x.pAsian))
+                        }
+                        else{
+                            return -500;
+                        }
+                    }
                    })
                    .attr("cy", x=> yScale(parseFloat(x.insecurityRate.slice(0,-1))))
                    .attr("r", 1.5)
@@ -135,13 +159,32 @@ export function scatterChart(){
             svg.select<SVGSVGElement>(".yaxis").call(yAxis);
     
             dots.selectAll("circle")
-            .attr('cx', (x) => {
+            .attr('cx', (x:any) => {
                 var value;
-                if(race == "White") value = xAxisScaled(x.pWhite);
-                else if(race == "Black") value = xAxisScaled(x.pBlack)
-                else if(race == "Asian") value = xAxisScaled(x.pAsian)
-                else value = xAxisScaled(x.pHispanic)
-
+                if(regionCode == 0){
+                    if(race == "White") value = xAxisScaled(x.pWhite);
+                    else if(race == "Black") value = xAxisScaled(x.pBlack)
+                    else if(race == "Asian") value = xAxisScaled(x.pAsian)
+                    else value = xAxisScaled(x.pHispanic)
+                }
+                else{
+                    if(race == "White" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                        value = xAxisScaled(x.pWhite === undefined?0:parseFloat(x.pWhite))
+                    }
+                    else if(race == "Black" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                        value = xAxisScaled(x.pBlack === undefined?0:parseFloat(x.pBlack))
+                    }
+                    else if(race == "Hispanic" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                        value = xAxisScaled(x.pHispanic === undefined?0:parseFloat(x.pHispanic))
+                    }
+                    else if(race == "Asian" && parseInt(x.region===undefined?"":x.region) == regionCode){
+                        value =  xAxisScaled(x.pAsian === undefined?0:parseFloat(x.pAsian))
+                    }
+                    else{
+                        value =  -500;
+                    }
+                }
+                
                 if(value < margin.left){
                     return -500
                 }

@@ -102,18 +102,36 @@ button.on("click",async () => {
 
   const racialProportions = scatterChart();
   const raceSelection = d3.select(races).append("select");
+  const locationSelection = d3.select(races).append('select');
   d3.select(races).append("br")
 
-  racialProportions.update("White")
+  racialProportions.update("White","All Regions")
   raceSelection.append('option').text("White")
   raceSelection.append('option').text("Black")
   raceSelection.append('option').text("Asian")
   raceSelection.append('option').text("Hispanic")
+
+
+  locationSelection.append('option').text("All Regions")
+  locationSelection.append('option').text("West")
+  locationSelection.append('option').text("Midwest")
+  locationSelection.append('option').text("South")
+  locationSelection.append('option').text("Northeast")
+  locationSelection.attr("id","locSelection")
+
   raceSelection.attr("id","raceSelection")
   raceSelection.on('change',(d) =>{
     const choice = raceSelection.property("value");
-    racialProportions.update(choice)
+    const region = locationSelection.property('value');
+    racialProportions.update(choice,region)
   })
+
+  locationSelection.on('change',(d) =>{
+    const choice = raceSelection.property("value");
+    const region = locationSelection.property('value');
+    racialProportions.update(choice,region)
+  })
+
   races?.append(racialProportions.element)
 
   const slide2 = d3.select(edu)
