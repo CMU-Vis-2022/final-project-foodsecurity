@@ -20,18 +20,21 @@ const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update('./src/foodData.geojson','rate');
-
+chart.update('./src/mapFoodData.geojson','density');
+selection.append('option').text("Population Density")
 selection.append('option').text("Insecurity Rate")
 selection.append('option').text('Percentage of individuals that reside ≥10 miles from a grocery store')
 selection.attr('id',"mapSelection")
 selection.on('change',(d) =>{
   const choice = selection.property("value");
   if(choice === "Insecurity Rate"){
-    chart.update('./src/foodData.geojson',"rate");
+    chart.update('./src/mapFoodData.geojson',"rate");
+  }
+  else if(choice === "Population Density"){
+    chart.update('./src/mapFoodData.geojson','density');
   }
   else{
-    chart.update('./src/foodAccessData.json',"lalowi10share");
+    chart.update('./src/mapFoodData.geojson',"lalowi10share");
   }
 })
 
