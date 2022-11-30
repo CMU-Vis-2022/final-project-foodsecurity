@@ -48,10 +48,10 @@ export function pictChart(col:string){
         .append('svg:image')
         .attr('xlink:href',"./src/person.png") /* image source = https://www.freeiconspng.com/img/1676 */
         .attr('transform', 'scale(0.5)')
-        .attr('x',d =>{
+        .attr('x',(d):any =>{
             return xScale((d%cols).toString())
         } )
-        .attr('y',d =>{
+        .attr('y',(d):any =>{
             return yScale(Math.floor(d/cols).toString())
         })
         .attr('class', d =>{

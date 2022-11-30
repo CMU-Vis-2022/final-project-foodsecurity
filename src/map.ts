@@ -26,7 +26,7 @@ export function mapChart(){
         .attr('y',30)
         .text((name === 'rate')?"Food Insecurity Rate by County, 2019": (name === 'density')?"Population density by County":"Proportion of population that lives farther than 10 miles from a grocery store by County, 2019")
 
-        function mouseOver(d:any){
+        function mouseOver(this:any, d:any){
             let format = d3.format(".2f")
             d3.select(this).attr("fill-opacity",1)
 
@@ -142,12 +142,12 @@ export function mapChart(){
                         .text("percentage "+ format(d.target.__data__.properties.lalowi10share))
             }
         }
-        function mouseOut(d){
+        function mouseOut(this:any){
             d3.select(this).attr("fill-opacity",0.8)
         }
 
 
-        d3.json(filePath).then(d => {
+        d3.json(filePath).then((d:any) => {
             var projection = d3.geoIdentity().reflectY(true).fitSize([(width-250),height],d);
             var path = d3.geoPath().projection(projection)
             if(name == 'rate'){
@@ -170,13 +170,14 @@ export function mapChart(){
                 d3.select("#textBG").remove();
             }
             if(name == "rate"){
+                console.log(path)
                 svg.selectAll("path")
                 .data(d.features)
                 .enter()
                 .append("path")
                 .attr('d',path)
                 .attr('id',name)
-                .attr('fill',function (d){
+                .attr('fill',function (d:any){
                     if(d.properties.rate == undefined){
                         return "#00FF00"/* for seeing undefined data purposes */
                     }
@@ -198,7 +199,7 @@ export function mapChart(){
                 .append("path")
                 .attr('d',path)
                 .attr('id',name)
-                .attr('fill',function (d){
+                .attr('fill',function (d:any){
                     if(d.properties.rate == undefined){
                         return "#00FF00"/* for seeing undefined data purposes */
                     }
@@ -218,7 +219,7 @@ export function mapChart(){
                 .append("path")
                 .attr('d',path)
                 .attr('id',name)
-                .attr('fill',function (d){
+                .attr('fill',function (d:any){
                     if(d.properties.lalowi10share == undefined){
                         return "#00FF00" /* for seeing undefined data purposes */
                     }

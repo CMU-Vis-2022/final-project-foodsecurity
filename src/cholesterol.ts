@@ -24,23 +24,23 @@ export function cholesterolChart(){
     const bars = svg.append("g").attr("fill", "#EB736B");
 
     d3.csv("./src/cholestBinned.csv").then(d => {
-        let bins = []
-        let amts = []
-        let almost = []
-        let ldlamts = []
+        let bins:string[] = []
+        let amts:number[] = []
+        let almost:number[] = []
+        let ldlamts:number[] = []
         d.forEach(x =>{
-            if(x.bin == 1){
+            if(parseInt(x.bin!) == 1){
                 bins.push("≤ 1")
             }
             else{
-                bins.push(x.bin)
+                bins.push(x.bin!)
             }
-            amts.push(parseInt(x.numHighTrig));
-            almost.push(parseInt(x.numAlmostHighTrig));
-            ldlamts.push(parseInt(x.numHighLDL));
+            amts.push(parseInt(x.numHighTrig === undefined?"":x.numHighTrig));
+            almost.push(parseInt(x.numAlmostHighTrig === undefined?"":x.numAlmostHighTrig));
+            ldlamts.push(parseInt(x.numHighLDL === undefined?"":x.numHighLDL));
         })
         xScale.domain(bins);
-        yScale.domain([0,d3.max(amts)]);
+        yScale.domain([0,d3.max(amts)!]);
         let I = d3.range(bins.length);
 
         svg
@@ -60,11 +60,11 @@ export function cholesterolChart(){
             return xScale(bins[i])!
         })
         .attr("y", (i) => {
-            return yScale(parseInt(amts[i]))
+            return yScale(amts[i])
         })
         .attr("width",xScale.bandwidth())
         .attr("height", (i) => {
-                return (height-margin.bottom) - yScale(parseInt(amts[i]));
+                return (height-margin.bottom) - yScale(amts[i]);
         })
         .on("mouseover",(d) => { 
             d3.selectAll('#mouseOverText').remove()
@@ -125,8 +125,8 @@ export function cholesterolChart(){
         .attr("fill","white")
         .attr("font-weight",400)
         .attr("text-anchor", "front")
-        .attr('x',(i) => xScale(bins[i]) + 20)
-        .attr('y',(i) => yScale(parseInt(amts[i]))+15)
+        .attr('x',(i) => xScale(bins[i])! + 20)
+        .attr('y',(i) => yScale(amts[i])+15)
         .text((i) => amts[i])
 
         svg.select<SVGSVGElement>(".xaxis").call(xAxis)

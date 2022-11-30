@@ -26,8 +26,8 @@ export function distChart(){
         d3.csv(path).then((d) =>{
             let firstCol:string[] = []
             let amts = []
-            let filteredData :{firstCol:string, numInsecure:number, total:number, proportion: string, year:number}[] = []
-            d.forEach(d => {
+            let filteredData:any = []
+            d.forEach((d):any => {
                 if(d.year == year){
                     firstCol.push(d.firstCol?d.firstCol:"") 
                     amts.push(parseFloat(d.proportion?d.proportion:""))
@@ -79,25 +79,25 @@ export function distChart(){
             bars
             .append('rect')
             .attr('id',chart)
-            .attr('x',x => xScale(0))
-            .attr('y', (y) => {
+            .attr('x',xScale(0))
+            .attr('y', (y:any):any => {
                 if(y.firstCol !== undefined){
                     return yScale(y.firstCol)
                 }
             })
             .attr('height',40)
-            .attr('width', (x) =>{ 
+            .attr('width', (x:any) =>{ 
                 return(xScale(parseFloat(x.proportion)) - xScale(0))
             })
-            .style('fill', (x) => colors[2])
+            .style('fill', colors[2])
 
             texts.selectAll('texts')
             .data(filteredData)
             .join('text')
             .attr('id', chart)
-            .attr('x',(x) => xScale(parseFloat(x.proportion))-5)
-            .attr('y',(y) => yScale(y.firstCol) +20)
-            .text((x) => parseFloat(x.proportion).toFixed(2) + "%")
+            .attr('x',(x:any) => xScale(parseFloat(x.proportion))-5)
+            .attr('y',(y:any) => yScale(y.firstCol)! +20)
+            .text((x:any) => parseFloat(x.proportion).toFixed(2) + "%")
             
             svg.append('text')
             .attr("font-size", 14)
