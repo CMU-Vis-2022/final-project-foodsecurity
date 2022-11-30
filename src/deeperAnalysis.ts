@@ -36,6 +36,7 @@ export function scatterChart(){
     
     function update(race:string,region:string){
         d3.selectAll('#displayInfoText').remove()
+        d3.selectAll('#displayXlabel').remove()
 
         svg.append("text")
         .attr("font-size", 12)

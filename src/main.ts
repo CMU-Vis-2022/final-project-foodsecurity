@@ -196,7 +196,8 @@ button.on("click",async () => {
   const incomeExplain = document.getElementById('incomeExplain')
   if(incomeExplain!==null){
     incomeExplain.innerHTML = `We see that over the years, a greater proportion of individuals that earn less than 185% of the poverty income guidelines 
-    for their family size experience food insecurity than individuals that ear more than 185% of the poverty income guideline for their family size`
+    for their family size experience food insecurity than individuals that earn more than 185% of the poverty income guideline for their family size and 
+    that this trend remains constant throughout the years.`
   }
 
 
@@ -215,29 +216,23 @@ button.on("click",async () => {
     incomeScatterVis.update(region);
   })
 
+  const incomeScatterExplain = document.getElementById('incomeScatterExplain')
+  if(incomeScatterExplain !== null){
+    incomeScatterExplain.innerHTML = `We see that many of the counties that face high food insecurity rates also have higher proportions
+    of low income individuals. This pattern is replicated across all the regions in the United States. However, interestingly, the Northeast
+    tends to have lower proportion of low income individuals than the other regions and thus have counties with a lower food insecurity rate. 
+    This could be due to the Northeast be composed of less counties than the other regions. <br><br>
+
+    Aside from race and income there's other factors that are less commonly thought of as factors that could influence food insecurity. 
+    We'll explore some of these now. <br><br>
+
+    Interestingly, an individual's marital status also affects their food security status.
+    `
+  }
+
+
   d3.select(incomeScatter).append('br');
   incomeScatter?.appendChild(incomeScatterVis.element);
-
-
-
-
-  const slide2 = d3.select(edu)
-                .append("input")
-                .attr("type","range")
-                .attr("id","eduVisSlide")
-                .attr("style","width:200px")
-                .attr("min",0)
-                .attr("max",100)
-                .attr("step",50)
-                .attr('value',0);
-  d3.select(edu).append("br")
-  const eduVis = distChart();
-  slide2.on('change',(event) => {
-    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]).toString(),'education');
-  })
-  eduVis.update('./src/educationAndInsecurity.csv',"2019",'education');
-  edu?.appendChild(eduVis.element);
-
 
 
   const slide3 = d3.select(marital)
@@ -257,6 +252,53 @@ button.on("click",async () => {
   maritalVis.update('./src/maritalAndSecurity.csv',"2019","marital");
   marital?.appendChild(maritalVis.element);
 
+  const maritalExplain = document.getElementById('maritalExplain')
+  if(maritalExplain !== null){
+    maritalExplain.innerHTML = `
+    We see that individuals that are married with their spouses present are the most food secure, and individuals that do not have a partner
+    present currently are more food insecure. Interestingly, individuals that are widowed, are less food insecure than other individuals
+    that do not currently have a partner present. Also, individuals that are separated face the highest level of food insecurity. 
+    <br><br>
+    (Idk if we should include this line or if we should rephrase it:)
+    These proportions
+    could possibly be attributed to aspects of the relationships that they're in. (It just seems like an interesting pattern that we might want to 
+    elaborate on?)
+    <br><br>
+    Another factor that influences food security rates is an individual's education. 
+    `
+  }
+
+
+  const slide2 = d3.select(edu)
+                .append("input")
+                .attr("type","range")
+                .attr("id","eduVisSlide")
+                .attr("style","width:200px")
+                .attr("min",0)
+                .attr("max",100)
+                .attr("step",50)
+                .attr('value',0);
+  d3.select(edu).append("br")
+  const eduVis = distChart();
+  slide2.on('change',(event) => {
+    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]).toString(),'education');
+  })
+  eduVis.update('./src/educationAndInsecurity.csv',"2019",'education');
+  edu?.appendChild(eduVis.element);
+
+  const eduExplain = document.getElementById('eduExplain')
+  if(eduExplain !== null){
+    eduExplain.innerHTML = `
+      We see that there's differences in the percentage of people that are food insecure by their education level. Interestingly, significant drops 
+      in percentages occur only at the next degree earned for each education level (this probably could be better phrased idk),
+      for example the difference in the proportion of food insecure individuals that earned a highschool degree and individuals that have some college
+      but no degree is not that great. However, earning a bachelor's degree, the next level of schooling higher than high school, sees a significant
+      drop in food insecurity rate. Going higher than bachelor's does not lead to a significant drop. 
+
+      <br><br>
+      There's also discrepencies between sectors in the proportion of individuals that are food insecure. 
+    `
+  }
 
   const slide5 = d3.select(sector)
                 .append("input")
@@ -274,6 +316,16 @@ button.on("click",async () => {
   })
   sectorVis.update("./src/sectorAndInsecurity.csv","2019",'sector');
   sector?.appendChild(sectorVis.element);
+
+  const sectorExp = document.getElementById('sectorExplain')
+  if(sectorExp !== null){
+    sectorExp.innerHTML = `
+      We see that between 2019 and 2020, all sectors aside from healthcare in hospital setting see an increase in the proportion of individuals 
+      that are food insecure. This can probably be attributed to the effects of Covid 19. Interestingly, we see that in the healthcare sector, there's 
+      a discrepency in the proportion of individuals that are food insecure with regards to if they work in a hospital setting or non hospital setting.
+      <br><br> Also, we also see that across the years, sectors remain relatively stable: no sector went from a low proportion of its individuals
+      being food insecure to a high proportion and vice versa.     `
+  }
 })
 
 const pictoChart = pictChart("Hess1");

@@ -1,7 +1,7 @@
 import * as d3 from "d3"
 
 export function incomeScatterChart(){
-    const margin = { top: 0, right: 100, bottom: 80, left: 150 };
+    const margin = { top: 0, right: 100, bottom: 50, left: 150 };
 
     const width = 800;
     const height = 500;
@@ -40,9 +40,9 @@ export function incomeScatterChart(){
     .attr("font-weight",500)
     .attr("fill-opacity",1)
     .attr("text-anchor", "front")
-    .attr("id","displayXlabel")
+    .attr("id","lowIncomedisplayXlabel")
     .attr('x',width/2-100)
-    .attr('y',height-margin.bottom/2)
+    .attr('y',height-margin.bottom/3)
     .text("Percentage of population that is low income")
 
     svg.append("text")
