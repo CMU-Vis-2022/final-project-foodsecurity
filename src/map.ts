@@ -170,12 +170,12 @@ export function mapChart(){
                 d3.select("#textBG").remove();
             }
             if(name == "rate"){
-                console.log(path)
+                console.log()
                 svg.selectAll("path")
                 .data(d.features)
                 .enter()
                 .append("path")
-                .attr('d',path)
+                .attr('d',(d:any) => path(d))
                 .attr('id',name)
                 .attr('fill',function (d:any){
                     if(d.properties.rate == undefined){
@@ -197,7 +197,7 @@ export function mapChart(){
                 .data(d.features)
                 .enter()
                 .append("path")
-                .attr('d',path)
+                .attr('d',(d:any) => path(d))
                 .attr('id',name)
                 .attr('fill',function (d:any){
                     if(d.properties.rate == undefined){
@@ -217,7 +217,7 @@ export function mapChart(){
                 .data(d.features)
                 .enter()
                 .append("path")
-                .attr('d',path)
+                .attr('d',(d:any) => path(d))
                 .attr('id',name)
                 .attr('fill',function (d:any){
                     if(d.properties.lalowi10share == undefined){
