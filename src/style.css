@@ -10,28 +10,28 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body{
-  font-family: 'Inter', sans-serif;
+body {
+  font-family: "Inter", sans-serif;
   background: black;
   color: white;
   margin-left: 10em;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 html {
   margin-left: 8em;
 }
 
-#title{
+#title {
   width: 20em;
   font-size: 3em;
   line-height: 2em;
   margin-top: 2em;
   margin-bottom: 0;
-  padding-bottom:0;
+  padding-bottom: 0;
 }
 
-#motive{
+#motive {
   margin-top: 3em;
   font-size: 2.5em;
   width: 15em;
@@ -39,90 +39,92 @@ html {
   margin-bottom: 3em;
 }
 
-#jump{
-  color:white;
+#jump {
+  color: white;
   text-decoration: none;
   font-size: 1.5em;
   margin-left: 8em;
 }
 
-#what{
+#what {
   width: 50em;
   line-height: 1.5em;
   margin-bottom: 20em;
 }
 
-#whatTitle{
+#whatTitle {
   padding-top: 10em;
   font-size: 3em;
 }
 
-
-#what > p{
+#what > p {
   font-size: 1.1em;
 }
 
-#superscript >p{
+#superscript > p {
   font-size: 0.6em;
-  line-height: 1em
+  line-height: 1em;
 }
 
-#who{
-width: 50em;
-line-height: 1.5em;
-margin-bottom: 20em;
+#who {
+  width: 50em;
+  line-height: 1.5em;
+  margin-bottom: 20em;
 }
 
-#whoTitle{
+#whoTitle {
   padding-top: 5em;
   font-size: 3em;
 }
 
-#why{
-display: flex;
-flex-direction: row;
+#why {
+  display: flex;
+  flex-direction: row;
 }
 
-#whyTitle{
+#whyTitle {
   padding-top: 5em;
   font-size: 3em;
   line-height: 50px;
 }
 
-#whyText{
+#whyText {
   width: 40%;
   float: left;
 }
 
-#whyVis{
+#whyVis {
   margin-top: 20px;
   margin-left: 70px;
 }
 
-#mapSelection{
-  margin:0;
-  padding:0;
+#mapSelection {
+  margin: 0;
+  padding: 0;
 }
 /* css for the map */
-#mapVis{
+#mapVis {
   margin-left: -5em;
   margin-top: 0px;
   padding-top: 0px;
 }
-.counties{
-  stroke:#707070;
+.counties {
+  stroke: #707070;
 }
 
-#factors1, #factors2, #factors3, #factors4{
+#factors1,
+#factors2,
+#factors3,
+#factors4 {
   background: black;
   border: none;
   border-bottom: 1px solid white;
   color: white;
   outline: none;
-  font-size: 1em
+  font-size: 1em;
 }
 
-#submitButton{
+#submitButton {
   margin-top: 0.5em;
   font-size: 1em;
   width: 9em;
@@ -132,15 +134,16 @@ flex-direction: row;
   background-color: White;
 }
 
-#howItFeels{
+#howItFeels {
   margin-top: 10em;
-  width:50%;
+  width: 50%;
 }
 
-#topStatement{
+#topStatement {
   margin-top: 3em;
 }
 
-.affectedPerson{
-  filter: invert(12%) sepia(58%) saturate(6636%) hue-rotate(356deg) brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
+.affectedPerson {
+  filter: invert(12%) sepia(58%) saturate(6636%) hue-rotate(356deg)
+    brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
 }

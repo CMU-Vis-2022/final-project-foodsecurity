@@ -6,123 +6,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>D3 Visualization Application</title>
     <!--Imports Inter font family-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type= "text/css" href="src/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="src/style.css" />
   </head>
   <body>
-    <div id = "title">
-      <h1><span style = "color:#F7413E">Food Insecurity </span>In The US</h1>
+    <div id="title">
+      <h1><span style="color: #f7413e">Food Insecurity </span>In The US</h1>
     </div>
     <!--subTitle text-->
-    <p>Analyzing the current food access issue in America, its impacts, and what we can do.</p>
+    <p>
+      Analyzing the current food access issue in America, its impacts, and what
+      we can do.
+    </p>
     <!--Motive text + animation-->
-    <h4 id = "motive"></h4>
+    <h4 id="motive"></h4>
     <script>
       var i = 0;
-      var txt = 'The universal and basic need for food is not always a reality for some individuals, households, and communities.';
+      var txt =
+        "The universal and basic need for food is not always a reality for some individuals, households, and communities.";
       function typeWriter() {
         if (i < txt.length) {
-          if( (i >= 18 && i<=28) || (i >= 38 && i<=43) || (i >= 51 && i<=65) || (i >= 70 && i<=81)
-          || (i >= 83 && i<=93)|| (i >= 100 && i<=110)){
-            document.getElementById("motive").innerHTML += "<span style = 'color: #F7413E'>" + txt.charAt(i) + "</span>";
-          }
-          else{
+          if (
+            (i >= 18 && i <= 28) ||
+            (i >= 38 && i <= 43) ||
+            (i >= 51 && i <= 65) ||
+            (i >= 70 && i <= 81) ||
+            (i >= 83 && i <= 93) ||
+            (i >= 100 && i <= 110)
+          ) {
+            document.getElementById("motive").innerHTML +=
+              "<span style = 'color: #F7413E'>" + txt.charAt(i) + "</span>";
+          } else {
             document.getElementById("motive").innerHTML += txt.charAt(i);
           }
           i++;
           setTimeout(typeWriter, 60);
         }
       }
-      window.onload = function() {
+      window.onload = function () {
         typeWriter();
-      }
+      };
     </script>
     <!--Section for What is food insecurity-->
-    <div id = "what">
-      <h2 id="whatTitle">What is <span style = "color:#F7413E">Food Insecurity</span>?</h2>
+    <div id="what">
+      <h2 id="whatTitle">
+        What is <span style="color: #f7413e">Food Insecurity</span>?
+      </h2>
       <p>
-        Lacking food availability, limited food access, and irresponsible food utilization is a scary situation.  
+        Lacking food availability, limited food access, and irresponsible food
+        utilization is a scary situation.
       </p>
-      <p>  
-        <span style="font-weight:bold">Food access</span> refers to having <span style="font-weight:bold">available, nutritious</span>, and <span style="font-weight:bold">affordable</span> food. When there is a lack of food access, the state of <span style="font-weight:bold">food insecurity</span> and <span style="font-weight:bold">food desert rises</span>. 
+      <p>
+        <span style="font-weight: bold">Food access</span> refers to having
+        <span style="font-weight: bold">available, nutritious</span>, and
+        <span style="font-weight: bold">affordable</span> food. When there is a
+        lack of food access, the state of
+        <span style="font-weight: bold">food insecurity</span> and
+        <span style="font-weight: bold">food desert rises</span>.
       </p>
-      <p>Nutrition and affordability are the two components of food accessibility.</p>
-      <p>If food is affordable, it may not be nutritious enough to ensure a balanced diet.<sup>*</sup></p>
-      <p>However, if available food is nutrient dense, the prices could be too high to purchase enough food.</p>
-      <div id = "superscript">
-       <p><span style = "font-size:2em">*</span>For example, fast-food and convenience stores may be available and affordable, but, they lack fresh produce, are highly processed, and often contain too much sodium or sugar.</p>
+      <p>
+        Nutrition and affordability are the two components of food
+        accessibility.
+      </p>
+      <p>
+        If food is affordable, it may not be nutritious enough to ensure a
+        balanced diet.<sup>*</sup>
+      </p>
+      <p>
+        However, if available food is nutrient dense, the prices could be too
+        high to purchase enough food.
+      </p>
+      <div id="superscript">
+        <p>
+          <span style="font-size: 2em">*</span>For example, fast-food and
+          convenience stores may be available and affordable, but, they lack
+          fresh produce, are highly processed, and often contain too much sodium
+          or sugar.
+        </p>
       </div>
     </div>
     <!--Section for Who is affected-->
-    <div id = "who">
-      <div id= "whoText">
-        <h2 id = "whoTitle"><span style = "color:#F7413E">Who</span> is Affected?</h2>
-        <div id = "mapVis"></div>
-        <p>Food insecurity affects those all around the world</p><br>
-        <p>Within America, this is a prevalent issue among many communities and isn't going away anytime soon. Food insecurity is highest for <span style = "font-weight:bold">single-mother households</span> and <span style = "font-weight:bold">below-poverty-line</span> households. It also affects a wide range such as <span style = "font-weight:bold">urban cities</span>, <span style = "font-weight:bold">rural areas</span>, and <span style = "font-weight:bold">college students</span>.</p>
+    <div id="who">
+      <div id="whoText">
+        <h2 id="whoTitle">
+          <span style="color: #f7413e">Who</span> is Affected?
+        </h2>
+        <div id="mapVis"></div>
+        <p>Food insecurity affects those all around the world</p>
+        <br />
+        <p>
+          Within America, this is a prevalent issue among many communities and
+          isn't going away anytime soon. Food insecurity is highest for
+          <span style="font-weight: bold">single-mother households</span> and
+          <span style="font-weight: bold">below-poverty-line</span> households.
+          It also affects a wide range such as
+          <span style="font-weight: bold">urban cities</span>,
+          <span style="font-weight: bold">rural areas</span>, and
+          <span style="font-weight: bold">college students</span>.
+        </p>
       </div>
     </div>
     <!--Section for Long-lasting Effects-->
-    <h2 id = "whyTitle">What are the <span style = "color: #F7413E">long-lasting effects</span>?</h2>
-    <div id = "why">
-        <div id= "whyText">
+    <h2 id="whyTitle">
+      What are the <span style="color: #f7413e">long-lasting effects</span>?
+    </h2>
+    <div id="why">
+      <div id="whyText">
         <p>
-          <span style="font-weight:bold">Impact of food choices on life expectancy</span><br>
+          <span style="font-weight: bold"
+            >Impact of food choices on life expectancy</span
+          ><br />
         </p>
-        <p>Factors such as increased sugary drink consumption, increased saturated fat consumption, and increased trans fat consumption was correlated with increased risk for diabetes, obesity, and cardiovascular disease. With these substances being cheaper and more common, food deserts have a high concentration of sugary drinks and unhealthy fats so people in these areas are at a higher risk for these adverse health conditions. </p>
+        <p>
+          Factors such as increased sugary drink consumption, increased
+          saturated fat consumption, and increased trans fat consumption was
+          correlated with increased risk for diabetes, obesity, and
+          cardiovascular disease. With these substances being cheaper and more
+          common, food deserts have a high concentration of sugary drinks and
+          unhealthy fats so people in these areas are at a higher risk for these
+          adverse health conditions.
+        </p>
       </div>
       <div id="whyVis"></div>
     </div>
-    <h2>What are factors that influence if an individual might be food insecure?</h2>
+    <h2>
+      What are factors that influence if an individual might be food insecure?
+    </h2>
     <h3>Guess 4 factors</h3>
     <ul>
-      <li><input type = "text" autofocus="autofocus" id = "factors1"></li>
-      <li><input type = "text" autofocus="autofocus" id = "factors2"></li>
-      <li><input type = "text" autofocus="autofocus" id = "factors3"></li>
-      <li><input type = "text" autofocus="autofocus" id = "factors4"></li>
+      <li><input type="text" autofocus="autofocus" id="factors1" /></li>
+      <li><input type="text" autofocus="autofocus" id="factors2" /></li>
+      <li><input type="text" autofocus="autofocus" id="factors3" /></li>
+      <li><input type="text" autofocus="autofocus" id="factors4" /></li>
     </ul>
-    <div id = "prompt"></div>
-    <h2 id = "chosen"></h2><!--Is empty now but value gets changed upon buttonclick-->
-    <p id = "narrative"></p>
-    <div id = "distVis"></div>
-    <p id = "distExplain"></p>
-    <div id = "racialScatter"></div>
-    <p id = "raceExplain"></p>
-    <div id = "incomeVis"></div>
-    <p id = "incomeExplain"></p><br>
-    <div id = "incomeScatter"></div>
-    <p id = "incomeScatterExplain"></p><br>
-    <div id = "maritalVis"></div>
-    <p id = "maritalExplain"></p><br>
-    <div id = "eduVis"></div>
-    <p id = "eduExplain"></p><br>
-    <div id = "sectorVis"></div>
-    <p id = "sectorExplain"></p><br>
-    <div id = "howItFeels">
+    <div id="prompt"></div>
+    <h2 id="chosen"></h2>
+    <!--Is empty now but value gets changed upon buttonclick-->
+    <p id="narrative"></p>
+    <div id="distVis"></div>
+    <p id="distExplain"></p>
+    <div id="racialScatter"></div>
+    <p id="raceExplain"></p>
+    <div id="incomeVis"></div>
+    <p id="incomeExplain"></p>
+    <br />
+    <div id="incomeScatter"></div>
+    <p id="incomeScatterExplain"></p>
+    <br />
+    <div id="maritalVis"></div>
+    <p id="maritalExplain"></p>
+    <br />
+    <div id="eduVis"></div>
+    <p id="eduExplain"></p>
+    <br />
+    <div id="sectorVis"></div>
+    <p id="sectorExplain"></p>
+    <br />
+    <div id="howItFeels">
       <h2>But what exactly does it mean to be food insecure?</h2>
       <h4>Being food insecure means...</h4>
-      <h2 id = "topStatement">Your children go hungry or skip eating because you simply cannot afford enough food</h2> 
-      <div id = "pictoVis7"></div>
+      <h2 id="topStatement">
+        Your children go hungry or skip eating because you simply cannot afford
+        enough food
+      </h2>
+      <div id="pictoVis7"></div>
       <h2>You do not always have enough food to eat</h2>
-      <div id = "pictoVis"></div>
-      <h2>You stay hungry because you don't have the luxury to get more food</h2> 
-      <div id = "pictoVis4"></div>
+      <div id="pictoVis"></div>
+      <h2>
+        You stay hungry because you don't have the luxury to get more food
+      </h2>
+      <div id="pictoVis4"></div>
       <h2>You rely on community programs or food pantries to get food</h2>
-      <div id = "pictoVis2"></div>
-      <h2>You rely on low cost food because you don't have money to buy nutritious food that's more expensive</h2> 
-      <div id = "pictoVis6"></div>
-      <h2>You cut the size of meals or skip eating entirely because there wasn't enough money</h2> 
-      <div id = "pictoVis5"></div>
-      <h2>You constantly worry about if food will run out before you're able to get enough money to buy more</h2>
-      <div id = "pictoVis3"></div>
+      <div id="pictoVis2"></div>
+      <h2>
+        You rely on low cost food because you don't have money to buy nutritious
+        food that's more expensive
+      </h2>
+      <div id="pictoVis6"></div>
+      <h2>
+        You cut the size of meals or skip eating entirely because there wasn't
+        enough money
+      </h2>
+      <div id="pictoVis5"></div>
+      <h2>
+        You constantly worry about if food will run out before you're able to
+        get enough money to buy more
+      </h2>
+      <div id="pictoVis3"></div>
     </div>
-    <br><br>
-    <div id = "solutions">
-      <h1><span style = "color: #FF0000">You can help.</span></h1>
+    <br /><br />
+    <div id="solutions">
+      <h1><span style="color: #ff0000">You can help.</span></h1>
     </div>
-    <br><br><br><br><br><br><br><br>
+    <br /><br /><br /><br /><br /><br /><br /><br />
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
