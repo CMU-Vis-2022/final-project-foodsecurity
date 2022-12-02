@@ -113,6 +113,10 @@ flex-direction: row;
   stroke:#707070;
 }
 
+#textBG{
+  border-radius: 25px;
+}
+
 #factors1, #factors2, #factors3, #factors4{
   background: black;
   border: none;
