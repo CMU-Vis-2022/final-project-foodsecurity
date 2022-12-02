@@ -13,41 +13,39 @@ import { incomeScatterChart } from "./lowIncomeAnalysis";
 //import { db } from "./duckdb";
 //import parquet from "./weather.parquet?url";
 
-window.scrollTo(0,0);
+window.scrollTo(0, 0);
 
 const map = document.querySelector("#mapVis")!;
 const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update('./src/mapFoodData.geojson','density');
-selection.append('option').text("Population Density")
-selection.append('option').text("Insecurity Rate")
-selection.append('option').text('Percentage of individuals that reside ≥10 miles from a grocery store')
-selection.attr('id',"mapSelection")
-selection.on('change',() =>{
+chart.update("./src/mapFoodData.geojson", "density");
+selection.append("option").text("Population Density");
+selection.append("option").text("Insecurity Rate");
+selection
+  .append("option")
+  .text("Percentage of individuals that reside ≥10 miles from a grocery store");
+selection.attr("id", "mapSelection");
+selection.on("change", () => {
   const choice = selection.property("value");
-  if(choice === "Insecurity Rate"){
-    chart.update('./src/mapFoodData.geojson',"rate");
+  if (choice === "Insecurity Rate") {
+    chart.update("./src/mapFoodData.geojson", "rate");
+  } else if (choice === "Population Density") {
+    chart.update("./src/mapFoodData.geojson", "density");
+  } else {
+    chart.update("./src/mapFoodData.geojson", "lalowi10share");
   }
-  else if(choice === "Population Density"){
-    chart.update('./src/mapFoodData.geojson','density');
-  }
-  else{
-    chart.update('./src/mapFoodData.geojson',"lalowi10share");
-  }
-})
-
+});
 
 const cholesterol = document.querySelector("#whyVis")!;
 const cholChart = cholesterolChart();
-cholesterol.appendChild(cholChart.element); 
-
+cholesterol.appendChild(cholChart.element);
 
 const distr = document.querySelector("#distVis");
-const edu = document.querySelector('#eduVis');
-const marital = document.querySelector('#maritalVis');
-const income = document.querySelector('#incomeVis');
+const edu = document.querySelector("#eduVis");
+const marital = document.querySelector("#maritalVis");
+const income = document.querySelector("#incomeVis");
 const sector = document.querySelector("#sectorVis");
 const picto = document.querySelector("#pictoVis");
 const picto2 = document.querySelector("#pictoVis2");
@@ -60,88 +58,99 @@ const races = document.querySelector("#racialScatter");
 const incomeScatter = document.querySelector("#incomeScatter");
 
 const input = document.querySelector("#prompt");
-const button = d3.select(input).append("button").attr('id','submitButton');
-d3.select(input).append("br")
-button.text('Submit')
+const button = d3.select(input).append("button").attr("id", "submitButton");
+d3.select(input).append("br");
+button.text("Submit");
 
-button.on("click",async () => {
-  button.attr('disabled','disabled')
+button.on("click", async () => {
+  button.attr("disabled", "disabled");
 
-  const entered1 = (<HTMLInputElement>document.getElementById('factors1'))?.value;
-  const entered2 = (<HTMLInputElement>document.getElementById('factors2'))?.value;
-  const entered3 = (<HTMLInputElement>document.getElementById('factors3'))?.value;
-  const entered4 = (<HTMLInputElement>document.getElementById('factors4'))?.value;
-  const values = [entered1,entered2, entered3,entered4]
-  var displayText = "You said: "
-  for(let i =0; i<4; i++){
-    if(values[i] !== ""){
-      displayText += values[i] + ", "
+  const entered1 = (<HTMLInputElement>document.getElementById("factors1"))
+    ?.value;
+  const entered2 = (<HTMLInputElement>document.getElementById("factors2"))
+    ?.value;
+  const entered3 = (<HTMLInputElement>document.getElementById("factors3"))
+    ?.value;
+  const entered4 = (<HTMLInputElement>document.getElementById("factors4"))
+    ?.value;
+  const values = [entered1, entered2, entered3, entered4];
+  let displayText = "You said: ";
+  for (let i = 0; i < 4; i++) {
+    if (values[i] !== "") {
+      displayText += values[i] + ", ";
     }
   }
 
-  const guessed = document.getElementById('chosen')
-  if(guessed !== null){
-    guessed.innerHTML = displayText.substring(0,displayText.length -2);
+  const guessed = document.getElementById("chosen");
+  if (guessed !== null) {
+    guessed.innerHTML = displayText.substring(0, displayText.length - 2);
   }
-  const years = [2019,2020,2021];
-  
+  const years = [2019, 2020, 2021];
+
   /* race bar chart*/
 
   const distributionChart = distChart();
-  const slide1 = d3.select(distr)
-                .append("input")
-                .attr("type","range")
-                .attr("id","raceVisSlide")
-                .attr("style","width:200px")
-                .attr("min",0)
-                .attr("max",100)
-                .attr("step",50)
-                .attr('value',0);
-  d3.select(distr).append("br")
-  slide1.on('change',(event)=>{
-    distributionChart.update('./src/raceNumPropJoined.csv',(years[event.target.value/50]).toString(),'race');
-  })
-  distributionChart.update('./src/raceNumPropJoined.csv',"2019",'race');
-  distr?.appendChild(distributionChart.element); 
+  const slide1 = d3
+    .select(distr)
+    .append("input")
+    .attr("type", "range")
+    .attr("id", "raceVisSlide")
+    .attr("style", "width:200px")
+    .attr("min", 0)
+    .attr("max", 100)
+    .attr("step", 50)
+    .attr("value", 0);
+  d3.select(distr).append("br");
+  slide1.on("change", (event) => {
+    distributionChart.update(
+      "./src/raceNumPropJoined.csv",
+      years[event.target.value / 50].toString(),
+      "race"
+    );
+  });
+  distributionChart.update("./src/raceNumPropJoined.csv", "2019", "race");
+  distr?.appendChild(distributionChart.element);
 
-  const narrative = document.getElementById('narrative')
-  if( narrative !== null) narrative.innerHTML = 'There are many systematic factors that influence why some groups experience food insecurity while others do not. In an analysis of food insecurity factors, a study published in the NIH found that typically people of color tend to face higher levels of food insecurity than their white peers, with Hispanics and African Americans facing the greatest amount of food insecurity.'
+  const narrative = document.getElementById("narrative");
+  if (narrative !== null)
+    narrative.innerHTML =
+      "There are many systematic factors that influence why some groups experience food insecurity while others do not. In an analysis of food insecurity factors, a study published in the NIH found that typically people of color tend to face higher levels of food insecurity than their white peers, with Hispanics and African Americans facing the greatest amount of food insecurity.";
 
-  const distExplain = document.getElementById('distExplain')
-  if(distExplain !== null){
-    distExplain.innerHTML = "Over the years this trend holds true. Higher proportions of African Americans along with American Indians and Hawaiian/Pacific Islanders face food insecurity than White and Asians over the years. We see however that over the years the proportion of Asian individuals that face food insecurity increases and interestingly, the proportion of Hawaiian/Pacific Islanders that face food insecurity decreases. In general however, there are large fluctuatinos in the proportion of individuals that face food security across all races except White individuals. <br><br> This result can be associated with reasons that another study published by the NIH found: food insecurity rates are associated with the proportion of African Americans in the population of that county, as well as poverty levels and population density. <br><br> Let's explore this more in depth"
+  const distExplain = document.getElementById("distExplain");
+  if (distExplain !== null) {
+    distExplain.innerHTML =
+      "Over the years this trend holds true. Higher proportions of African Americans along with American Indians and Hawaiian/Pacific Islanders face food insecurity than White and Asians over the years. We see however that over the years the proportion of Asian individuals that face food insecurity increases and interestingly, the proportion of Hawaiian/Pacific Islanders that face food insecurity decreases. In general however, there are large fluctuatinos in the proportion of individuals that face food security across all races except White individuals. <br><br> This result can be associated with reasons that another study published by the NIH found: food insecurity rates are associated with the proportion of African Americans in the population of that county, as well as poverty levels and population density. <br><br> Let's explore this more in depth";
   }
-  
+
   /* race scatter chart*/
 
   const racialProportions = scatterChart();
   const raceSelection = d3.select(races).append("select");
-  const locationSelection = d3.select(races).append('select');
-  d3.select(races).append("br")
+  const locationSelection = d3.select(races).append("select");
+  d3.select(races).append("br");
 
-  racialProportions.update("White","All Regions")
-  raceSelection.append('option').text("White")
-  raceSelection.append('option').text("Black")
-  raceSelection.append('option').text("Asian")
-  raceSelection.append('option').text("Hispanic")
+  racialProportions.update("White", "All Regions");
+  raceSelection.append("option").text("White");
+  raceSelection.append("option").text("Black");
+  raceSelection.append("option").text("Asian");
+  raceSelection.append("option").text("Hispanic");
 
+  locationSelection.append("option").text("All Regions");
+  locationSelection.append("option").text("West");
+  locationSelection.append("option").text("Midwest");
+  locationSelection.append("option").text("South");
+  locationSelection.append("option").text("Northeast");
+  locationSelection.attr("id", "locSelection");
 
-  locationSelection.append('option').text("All Regions")
-  locationSelection.append('option').text("West")
-  locationSelection.append('option').text("Midwest")
-  locationSelection.append('option').text("South")
-  locationSelection.append('option').text("Northeast")
-  locationSelection.attr("id","locSelection")
-
-  raceSelection.attr("id","raceSelection")
-  raceSelection.on('change',() =>{
+  raceSelection.attr("id", "raceSelection");
+  raceSelection.on("change", () => {
     const choice = raceSelection.property("value");
-    const region = locationSelection.property('value');
-    racialProportions.update(choice,region)
-  })
+    const region = locationSelection.property("value");
+    racialProportions.update(choice, region);
+  });
 
-  const raceExplain = document.getElementById('raceExplain')
-  if(raceExplain !== null){
+  const raceExplain = document.getElementById("raceExplain");
+  if (raceExplain !== null) {
     raceExplain.innerHTML = `We see that when considering all regions at once, as white individuals make up a larger proportion of a county's population, 
     the food insecurity rate tends to decrease for the most part. However, when we consider other races, we see that as African Americans make up a larger
     proportion of a county's population, food insecurity rates of that county tend to go up. The same trend applies for Hispanics. Interestingly, the same
@@ -161,63 +170,64 @@ button.on("click",async () => {
     
     For the Northeast, food insecurity rates tend to remain constant for all races. <br><br><br> 
     
-    Besides from race, another factor that influences food insecurity is an individual's income`
+    Besides from race, another factor that influences food insecurity is an individual's income`;
   }
 
-
-  locationSelection.on('change',() =>{
+  locationSelection.on("change", () => {
     const choice = raceSelection.property("value");
-    const region = locationSelection.property('value');
-    racialProportions.update(choice,region)
-  })
+    const region = locationSelection.property("value");
+    racialProportions.update(choice, region);
+  });
 
-  races?.append(racialProportions.element)
-
-
+  races?.append(racialProportions.element);
 
   /* income bar chart*/
-  const slide4 = d3.select(income)
-                .append("input")
-                .attr("type","range")
-                .attr("id","incomeVisSlide")
-                .attr("style","width:200px")
-                .attr("min",0)
-                .attr("max",100)
-                .attr("step",50)
-                .attr('value',0);
-  d3.select(income).append("br")
+  const slide4 = d3
+    .select(income)
+    .append("input")
+    .attr("type", "range")
+    .attr("id", "incomeVisSlide")
+    .attr("style", "width:200px")
+    .attr("min", 0)
+    .attr("max", 100)
+    .attr("step", 50)
+    .attr("value", 0);
+  d3.select(income).append("br");
   const incomeVis = distChart();
-  slide4.on('change',(event)=>{
-    incomeVis.update('./src/incomeAndFoodInsecurity.csv',years[event.target.value/50].toString(),"income");
-  })
-  incomeVis.update('./src/incomeAndFoodInsecurity.csv',"2019","income");
+  slide4.on("change", (event) => {
+    incomeVis.update(
+      "./src/incomeAndFoodInsecurity.csv",
+      years[event.target.value / 50].toString(),
+      "income"
+    );
+  });
+  incomeVis.update("./src/incomeAndFoodInsecurity.csv", "2019", "income");
   income?.appendChild(incomeVis.element);
 
-  const incomeExplain = document.getElementById('incomeExplain')
-  if(incomeExplain!==null){
+  const incomeExplain = document.getElementById("incomeExplain");
+  if (incomeExplain !== null) {
     incomeExplain.innerHTML = `We see that over the years, a greater proportion of individuals that earn less than 185% of the poverty income guidelines 
     for their family size experience food insecurity than individuals that earn more than 185% of the poverty income guideline for their family size and 
-    that this trend remains constant throughout the years.`
+    that this trend remains constant throughout the years.`;
   }
 
-
   const incomeScatterVis = incomeScatterChart();
-  incomeScatterVis.update("All Regions")
-  const incomeLocationSelection = d3.select(incomeScatter).append('select');
-  incomeLocationSelection.append('option').text("All Regions")
-  incomeLocationSelection.append('option').text("West")
-  incomeLocationSelection.append('option').text("Midwest")
-  incomeLocationSelection.append('option').text("South")
-  incomeLocationSelection.append('option').text("Northeast")
-  incomeLocationSelection.attr("id","locSelection")
+  incomeScatterVis.update("All Regions");
+  const incomeLocationSelection = d3.select(incomeScatter).append("select");
+  incomeLocationSelection.append("option").text("All Regions");
+  incomeLocationSelection.append("option").text("West");
+  incomeLocationSelection.append("option").text("Midwest");
+  incomeLocationSelection.append("option").text("South");
+  incomeLocationSelection.append("option").text("Northeast");
+  incomeLocationSelection.attr("id", "locSelection");
 
-  incomeLocationSelection.on('change',() =>{
-    const region = incomeLocationSelection.property('value');
+  incomeLocationSelection.on("change", () => {
+    const region = incomeLocationSelection.property("value");
     incomeScatterVis.update(region);
-  })
+  });
 
-  const incomeScatterExplain = document.getElementById('incomeScatterExplain')
-  if(incomeScatterExplain !== null){
+  const incomeScatterExplain = document.getElementById("incomeScatterExplain");
+  if (incomeScatterExplain !== null) {
     incomeScatterExplain.innerHTML = `We see that many of the counties that face high food insecurity rates also have higher proportions
     of low income individuals. This pattern is replicated across all the regions in the United States. However, interestingly, the Northeast
     tends to have lower proportion of low income individuals than the other regions and thus have counties with a lower food insecurity rate. 
@@ -227,33 +237,36 @@ button.on("click",async () => {
     We'll explore some of these now. <br><br>
 
     Interestingly, an individual's marital status also affects their food security status.
-    `
+    `;
   }
 
-
-  d3.select(incomeScatter).append('br');
+  d3.select(incomeScatter).append("br");
   incomeScatter?.appendChild(incomeScatterVis.element);
 
-
-  const slide3 = d3.select(marital)
-                  .append("input")
-                  .attr("type","range")
-                  .attr("id","maritalVisSlide")
-                  .attr("style","width:200px")
-                  .attr("min",0)
-                  .attr("max",100)
-                  .attr("step",50)
-                  .attr('value',0);
-  d3.select(marital).append("br")
+  const slide3 = d3
+    .select(marital)
+    .append("input")
+    .attr("type", "range")
+    .attr("id", "maritalVisSlide")
+    .attr("style", "width:200px")
+    .attr("min", 0)
+    .attr("max", 100)
+    .attr("step", 50)
+    .attr("value", 0);
+  d3.select(marital).append("br");
   const maritalVis = distChart();
-  slide3.on('change',(event)=>{
-    maritalVis.update('./src/maritalAndSecurity.csv',years[event.target.value/50].toString(),"marital");
-  })
-  maritalVis.update('./src/maritalAndSecurity.csv',"2019","marital");
+  slide3.on("change", (event) => {
+    maritalVis.update(
+      "./src/maritalAndSecurity.csv",
+      years[event.target.value / 50].toString(),
+      "marital"
+    );
+  });
+  maritalVis.update("./src/maritalAndSecurity.csv", "2019", "marital");
   marital?.appendChild(maritalVis.element);
 
-  const maritalExplain = document.getElementById('maritalExplain')
-  if(maritalExplain !== null){
+  const maritalExplain = document.getElementById("maritalExplain");
+  if (maritalExplain !== null) {
     maritalExplain.innerHTML = `
     We see that individuals that are married with their spouses present are the most food secure, and individuals that do not have a partner
     present currently are more food insecure. Interestingly, individuals that are widowed, are less food insecure than other individuals
@@ -265,29 +278,33 @@ button.on("click",async () => {
     elaborate on?)
     <br><br>
     Another factor that influences food security rates is an individual's education. 
-    `
+    `;
   }
 
-
-  const slide2 = d3.select(edu)
-                .append("input")
-                .attr("type","range")
-                .attr("id","eduVisSlide")
-                .attr("style","width:200px")
-                .attr("min",0)
-                .attr("max",100)
-                .attr("step",50)
-                .attr('value',0);
-  d3.select(edu).append("br")
+  const slide2 = d3
+    .select(edu)
+    .append("input")
+    .attr("type", "range")
+    .attr("id", "eduVisSlide")
+    .attr("style", "width:200px")
+    .attr("min", 0)
+    .attr("max", 100)
+    .attr("step", 50)
+    .attr("value", 0);
+  d3.select(edu).append("br");
   const eduVis = distChart();
-  slide2.on('change',(event) => {
-    eduVis.update('./src/educationAndInsecurity.csv',(years[event.target.value/50]).toString(),'education');
-  })
-  eduVis.update('./src/educationAndInsecurity.csv',"2019",'education');
+  slide2.on("change", (event) => {
+    eduVis.update(
+      "./src/educationAndInsecurity.csv",
+      years[event.target.value / 50].toString(),
+      "education"
+    );
+  });
+  eduVis.update("./src/educationAndInsecurity.csv", "2019", "education");
   edu?.appendChild(eduVis.element);
 
-  const eduExplain = document.getElementById('eduExplain')
-  if(eduExplain !== null){
+  const eduExplain = document.getElementById("eduExplain");
+  if (eduExplain !== null) {
     eduExplain.innerHTML = `
       We see that there's differences in the percentage of people that are food insecure by their education level. Interestingly, significant drops 
       in percentages occur only at the next degree earned for each education level (this probably could be better phrased idk),
@@ -297,36 +314,41 @@ button.on("click",async () => {
 
       <br><br>
       There's also discrepencies between sectors in the proportion of individuals that are food insecure. 
-    `
+    `;
   }
 
-  const slide5 = d3.select(sector)
-                .append("input")
-                .attr("type","range")
-                .attr("id","sectorVisSlide")
-                .attr("style","width:200px")
-                .attr("min",0)
-                .attr("max",100)
-                .attr("step",50)
-                .attr('value',0);
-  d3.select(sector).append("br")
+  const slide5 = d3
+    .select(sector)
+    .append("input")
+    .attr("type", "range")
+    .attr("id", "sectorVisSlide")
+    .attr("style", "width:200px")
+    .attr("min", 0)
+    .attr("max", 100)
+    .attr("step", 50)
+    .attr("value", 0);
+  d3.select(sector).append("br");
   const sectorVis = distChart();
-  slide5.on('change',(event)=>{
-    sectorVis.update("./src/sectorAndInsecurity.csv",years[event.target.value/50].toString(),'sector');
-  })
-  sectorVis.update("./src/sectorAndInsecurity.csv","2019",'sector');
+  slide5.on("change", (event) => {
+    sectorVis.update(
+      "./src/sectorAndInsecurity.csv",
+      years[event.target.value / 50].toString(),
+      "sector"
+    );
+  });
+  sectorVis.update("./src/sectorAndInsecurity.csv", "2019", "sector");
   sector?.appendChild(sectorVis.element);
 
-  const sectorExp = document.getElementById('sectorExplain')
-  if(sectorExp !== null){
+  const sectorExp = document.getElementById("sectorExplain");
+  if (sectorExp !== null) {
     sectorExp.innerHTML = `
       We see that between 2019 and 2020, all sectors aside from healthcare in hospital setting see an increase in the proportion of individuals 
       that are food insecure. This can probably be attributed to the effects of Covid 19. Interestingly, we see that in the healthcare sector, there's 
       a discrepency in the proportion of individuals that are food insecure with regards to if they work in a hospital setting or non hospital setting.
       <br><br> Also, we also see that across the years, sectors remain relatively stable: no sector went from a low proportion of its individuals
-      being food insecure to a high proportion and vice versa.     `
+      being food insecure to a high proportion and vice versa.     `;
   }
-})
+});
 
 const pictoChart = pictChart("Hess1");
 picto?.appendChild(pictoChart.element);
@@ -345,7 +367,6 @@ picto5?.appendChild(picto5Chart.element);
 
 const picto6Chart = pictChart("HESS5");
 picto6?.appendChild(picto6Chart.element);
-
 
 const picto7Chart = pictChart("HESSH3");
 picto7?.appendChild(picto7Chart.element);
@@ -402,4 +423,3 @@ select.on("change", () => {
 update("Seattle");
 */
 // Add the chart to the DOM.
-
