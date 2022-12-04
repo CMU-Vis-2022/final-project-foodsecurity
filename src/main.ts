@@ -1,13 +1,13 @@
 import "./style.css";
 import * as d3 from "d3";
 
-//import { barChart } from "./bar-chart";
 import { mapChart } from "./map";
 import { cholesterolChart } from "./cholesterol";
 import { distChart } from "./distribution";
 import { pictChart } from "./pictogram";
 import { scatterChart } from "./deeperAnalysis";
 import { incomeScatterChart } from "./lowIncomeAnalysis";
+import { miniMapChart } from "./miniMap";
 
 //import { Int32, Table, Utf8 } from "apache-arrow";
 //import { db } from "./duckdb";
@@ -39,12 +39,12 @@ selection.on("change", () => {
 });
 
 const miniMap1 = document.querySelector("#miniMap1");
-const mini1 = mapChart();
+const mini1 = miniMapChart();
 miniMap1?.appendChild(mini1.element);
 mini1.update("./src/mapFoodData.geojson", "rate");
 
 const miniMap2 = document.querySelector("#miniMap2");
-const mini2 = mapChart();
+const mini2 = miniMapChart();
 miniMap2?.appendChild(mini2.element);
 mini2.update("./src/mapFoodData.geojson","lalowi10share")
 

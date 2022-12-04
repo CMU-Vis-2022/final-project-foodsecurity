@@ -14,7 +14,7 @@ export function mapChart() {
     .attr("height", height)
     .attr("viewBox", [0, 0, width, height]);
 
-  function update(filePath: string, name: string) {
+  function update(filePath: string, name: string, smaller?:boolean) {
     d3.select("#mapTitle").remove();
     svg
       .append("text")
@@ -37,149 +37,163 @@ export function mapChart() {
       const format = d3.format(".2f");
       d3.select(this).attr("fill-opacity", 1);
 
-            d3.select("#labelText").remove();
-            d3.select("#textBG").remove();
-            if(name == 'rate'){
-                let length = Math.max((d.target.__data__.properties.name + " County").length,("percentage" + d.target.__data__.properties.rate).length)
-                svg.append("rect")
-                   .attr("id","textBG")
-                   .attr("fill","#b89a98")
-                   .attr("stroke","#565656")
-                   .attr("stroke-width","1")
-                   .attr("x",d.layerX-55)
-                   .attr("y",d.offsetY-20)
-                   .attr("width",length * 10)
-                   .attr("height",50)
-    
-                svg.append("text")
-                        .attr("font-size", 14)
-                        .attr("fill","white")
-                        .attr("font-weight",550)
-                        .attr("fill-opacity",1)
-                        .attr("text-anchor", "front")
-                        .attr("id","labelText")
-                        .attr("x",d.layerX-45)
-                        .attr("y",d.offsetY)
-                        .text(d.target.__data__.properties.name + " County")
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("x",d.layerX-45)
-                        .attr("y",d.offsetY + 20)
-                        .text("Insecurity Rate: ")
-                        .append("tspan")
-                        .attr("fill", "#7d312c")
-                        .text(d.target.__data__.properties.rate)
-            }
-            else if(name == 'density'){
-                let length = "Percentage of low income individuals without vehicles".length
-                svg.append("rect")
-                   .attr("id","textBG")
-                   .attr("fill", "#b89a98")
-                   .attr("stroke","#7d312c")
-                   .attr("stroke-width","1")
-                   .attr("x",d.offsetX > 800?d.offsetX - 7.25*length:d.offsetX+25)
-                   .attr("y",d.offsetY-20)
-                   .attr("width",length * 6)
-                   .attr("height",135)
-                console.log(d)
-                svg.append("text")
-                        .attr("font-size", 14)
-                        .attr("fill","white")
-                        .attr("font-weight",550)
-                        .attr("fill-opacity",1)
-                        .attr("text-anchor", "front")
-                        .attr("id","labelText")
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY)
-                        .text(d.target.__data__.properties.County)
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 20)
-                        .attr("fill", "white")
-                        .text("Population Density: ")
-                        .append("tspan")
-                        .attr("fill", "#7d312c")
-                        .text(format((parseInt(d.target.__data__.properties.Pop2010)/d.target.__data__.properties.census_area)) + " people per sq miles")
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("fill", "white")
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 40)
-                        .text("Insecurity Rate: ")
-                        .append("tspan")
-                        .attr("fill", "#7d312c")
-                        .text(d.target.__data__.properties.rate)
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("fill", "white")
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 60)
-                        .text("Low income individuals that live ≥ 10 miles")
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 72)
-                        .attr("fill", "white")
-                        .text("from a grocery store: ")
-                        .append("tspan")
-                        .attr("fill", "#7d312c")
-                        .text(format(d.target.__data__.properties.lalowi10share) +"%")
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 90)
-                        .attr("fill", "white")
-                        .text("Low income individuals without vehicles and")
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("fill", "white")
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 102)
-                        .text("live ≥ 10 miles from a grocery store: ")
-                        .append("tspan")
-                        .attr("fill", "#7d312c")
-                        .text(format(d.target.__data__.properties.lahunv10share) + "%")
-            }
-            else{
-                let length = Math.max((d.target.__data__.properties.County).length,("percentage" + d.target.__data__.properties.lalowi10share).length)
-                svg.append("rect")
-                   .attr("id","textBG")
-                   .attr("fill","#b89a98")
-                   .attr("stroke","#7d312c")
-                   .attr("stroke-width","1")
-                   .attr("x",d.layerX-55)
-                   .attr("y",d.offsetY-20)
-                   .attr("width",length * 10.5)
-                   .attr("height",65)
-    
-                svg.append("text")
-                        .attr("font-size", 14)
-                        .attr("fill","white")
-                        .attr("font-weight",550)
-                        .attr("fill-opacity",1)
-                        .attr("text-anchor", "front")
-                        .attr("id","labelText")
-                        .attr("x",d.layerX-45)
-                        .attr("y",d.offsetY)
-                        .text(d.target.__data__.properties.County)
-                        .append("tspan")
-                        .attr("font-size",11)
-                        .attr("x",d.layerX-45)
-                        .attr("y",d.offsetY + 20)
-                        .text("Low income individuals that live")
-                        .append("tspan")
-                        .attr("x",d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
-                        .attr("y",d.offsetY + 32)
-                        .text("≥ 10 miles from a grocery store: ")
-                        .append("tspan")
-                        .attr("fill", "#7d312c")
-                        .text(format(d.target.__data__.properties.lalowi10share))
-            }
-        }
-        function mouseOut(this:any){
-            d3.select(this).attr("fill-opacity",0.8)
-        }
+      d3.select("#labelText").remove();
+      d3.select("#textBG").remove();
+
+      if (name == "rate") {
+        const length = Math.max(
+          (d.target.__data__.properties.name + " County").length,
+          ("percentage" + d.target.__data__.properties.rate).length
+        );
+        svg
+          .append("rect")
+          .attr("id", "textBG")
+          .attr("fill", "#b89a98")
+          .attr("stroke", "#565656")
+          .attr("stroke-width", "1")
+          .attr("x", d.layerX - 55)
+          .attr("y", d.offsetY - 20)
+          .attr("width", length * 10)
+          .attr("height", 50);
+
+        svg
+          .append("text")
+          .attr("font-size", 14)
+          .attr("fill", "white")
+          .attr("font-weight", 550)
+          .attr("fill-opacity", 1)
+          .attr("text-anchor", "front")
+          .attr("id", "labelText")
+          .attr("x", d.layerX - 45)
+          .attr("y", d.offsetY)
+          .text(d.target.__data__.properties.name + " County")
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("x", d.layerX - 45)
+          .attr("y", d.offsetY + 20)
+          .text("Insecurity Rate: ")
+          .append("tspan")
+          .attr("fill", "#7d312c")
+          .text(d.target.__data__.properties.rate)
+      } else if (name == "density") {
+        const length = "Percentage of low income individuals without vehicles"
+          .length;
+        svg
+          .append("rect")
+          .attr("id", "textBG")
+          .attr("fill", "#b89a98")
+          .attr("stroke","#7d312c")
+          .attr("stroke-width", "1")
+          .attr(
+            "x",
+            d.offsetX > 800 ? d.offsetX - 7.25 * length : d.offsetX + 25
+          )
+          .attr("y", d.offsetY - 20)
+          .attr("width", length * 6)
+          .attr("height", 135);
+        console.log(d);
+        svg
+          .append("text")
+          .attr("font-size", 14)
+          .attr("fill", "white")
+          .attr("font-weight", 550)
+          .attr("fill-opacity", 1)
+          .attr("text-anchor", "front")
+          .attr("id", "labelText")
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY)
+          .text(d.target.__data__.properties.County)
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY + 20)
+          .attr("fill", "white")
+          .text("Population Density: ")
+          .append("tspan")
+          .attr("fill", "#7d312c")
+          .text(format((parseInt(d.target.__data__.properties.Pop2010)/d.target.__data__.properties.census_area)) + " people per sq miles")
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("fill", "white")
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY + 40)
+          .text("Insecurity Rate: ")
+          .append("tspan")
+          .attr("fill", "#7d312c")
+          .text(d.target.__data__.properties.rate)
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("fill", "white")
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY + 60)
+          .text("Low income individuals that live ≥ 10 miles")
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY + 72)
+          .attr("fill", "white")
+          .text("from a grocery store: ")
+          .append("tspan")
+          .attr("fill", "#7d312c")
+          .text(format(d.target.__data__.properties.lalowi10share) +"%")
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY + 90)
+          .attr("fill", "white")
+          .text("Low income individuals without vehicles and")
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
+          .attr("y", d.offsetY + 102)
+          .text("live ≥ 10 miles from a grocery store: ")
+          .append("tspan")
+          .attr("fill", "#7d312c")
+          .text(format(d.target.__data__.properties.lahunv10share) + "%")
+      } else {
+        const length = Math.max(
+          d.target.__data__.properties.County.length,
+          ("≥ 10 miles from a grocery store: " + d.target.__data__.properties.lalowi10share).length
+        );
+        svg
+          .append("rect")
+          .attr("id", "textBG")
+          .attr("fill","#b89a98")
+          .attr("stroke","#7d312c")
+          .attr("stroke-width", "1")
+          .attr("x", d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
+          .attr("y", d.offsetY - 20)
+          .attr("width",length * 6)
+          .attr("height",65)
+
+        svg
+          .append("text")
+          .attr("font-size", 14)
+          .attr("fill", "white")
+          .attr("font-weight", 550)
+          .attr("fill-opacity", 1)
+          .attr("text-anchor", "front")
+          .attr("id", "labelText")
+          .attr("x", d.offsetX > 800?d.offsetX - 7*length + 10:d.offsetX+45)
+          .attr("y", d.offsetY)
+          .text(d.target.__data__.properties.County)
+          .append("tspan")
+          .attr("font-size", 11)
+          .attr("x", d.offsetX > 800?d.offsetX - 7*length + 10:d.offsetX+45)
+          .attr("y", d.offsetY + 20)
+          .text("Low income individuals that live")
+          .append("tspan")
+          .attr("x",d.offsetX > 800?d.offsetX - 7*length + 10:d.offsetX+45)
+          .attr("y",d.offsetY + 32)
+          .text("≥ 10 miles from a grocery store: ")
+          .append("tspan")
+          .attr("fill", "#7d312c")
+          .text(format(d.target.__data__.properties.lalowi10share))
+      }
+    }
+    function mouseOut(this: any) {
+      d3.select(this).attr("fill-opacity", 0.8);
+    }
 
     d3.json(filePath).then((d: any) => {
       const projection = d3
@@ -210,7 +224,7 @@ export function mapChart() {
           .data(d.features)
           .enter()
           .append("path")
-          .attr("d", (d: any) => path(d))
+          .attr("d", (d:any) => path(d)!)
           .attr("id", name)
           .attr("fill", function (d: any) {
             if (d.properties.rate == undefined) {

@@ -112,6 +112,15 @@ html {
   stroke: #707070;
 }
 
+#miniMaps{
+  margin-left: -10.5em;
+  display: flex;
+}
+#miniMap2{
+  margin-left: 2em;
+}
+
+
 #factors1,
 #factors2,
 #factors3,
@@ -147,3 +156,4 @@ html {
   filter: invert(12%) sepia(58%) saturate(6636%) hue-rotate(356deg)
     brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
 }
+
