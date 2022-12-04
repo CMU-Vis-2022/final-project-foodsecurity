@@ -38,6 +38,16 @@ selection.on("change", () => {
   }
 });
 
+const miniMap1 = document.querySelector("#miniMap1");
+const mini1 = mapChart();
+miniMap1?.appendChild(mini1.element);
+mini1.update("./src/mapFoodData.geojson", "rate");
+
+const miniMap2 = document.querySelector("#miniMap2");
+const mini2 = mapChart();
+miniMap2?.appendChild(mini2.element);
+mini2.update("./src/mapFoodData.geojson","lalowi10share")
+
 const cholesterol = document.querySelector("#whyVis")!;
 const cholChart = cholesterolChart();
 cholesterol.appendChild(cholChart.element);
