@@ -15,25 +15,16 @@
     <link rel="stylesheet" type="text/css" href="src/style.css" />
   </head>
   <body>
-    <div id="title">
-      <h1><span style="color: #f7413e">Food Insecurity </span>In The US</h1>
-    </div>
-    <!--subTitle text-->
-    <p>
-      Analyzing the current food access issue in America, its impacts, and what
-      we can do.
-    </p>
-    <!--Motive text + animation-->
-    <h4 id="motive"></h4>
+    <h1 id="motive"></h1>
     <script>
       var i = 0;
       var txt =
-        "The universal and basic need for food is not always a reality for some individuals, households, and communities.";
+        "The universal and basic need for food is not always a reality for some individuals, households, and communities. Why?";
       function typeWriter() {
         if (i < txt.length) {
           if (
-            (i >= 18 && i <= 28) ||
-            (i >= 38 && i <= 43) ||
+            (i >= 18 && i <= 37) ||
+            (i >= 40 && i <= 43) ||
             (i >= 51 && i <= 65) ||
             (i >= 70 && i <= 81) ||
             (i >= 83 && i <= 93) ||
@@ -42,44 +33,54 @@
             document.getElementById("motive").innerHTML +=
               "<span style = 'color: #F7413E'>" + txt.charAt(i) + "</span>";
           } else {
-            document.getElementById("motive").innerHTML += txt.charAt(i);
+            if( i == 112){
+              document.getElementById("motive").innerHTML += "<br><br><br>";
+            }
+            else if(i >= 113){
+              document.getElementById("motive").innerHTML +=
+              "<span style = 'color: #FF0000; font-size: 1.5em;'>" + txt.charAt(i) + "</span>";
+            }
+            else{
+              document.getElementById("motive").innerHTML += txt.charAt(i);
+            }
           }
           i++;
-          setTimeout(typeWriter, 60);
+          setTimeout(typeWriter, 55);
         }
       }
       window.onload = function () {
         typeWriter();
       };
     </script>
+    <div id="title">
+      <h1><span style="color: #f7413e">Food Insecurity </span>In The US</h1>
+    </div>
+    <!--subTitle text-->
+    <h2 id = "subTitle">
+      Analyzing the current food access issue in America, its impacts, and what
+      we can do.
+    </h2>
+    <!--Motive text + animation-->
     <!--Section for What is food insecurity-->
-    <div id="what">
+    <div id="what" class = "whatDiv">
       <h2 id="whatTitle">
         What is <span style="color: #f7413e">Food Insecurity</span>?
       </h2>
-      <p>
-        Lacking food availability, limited food access, and irresponsible food
-        utilization is a scary situation.
+      <p id = "whatText">
+        Food insecurity is a state of limited 
+        <span style="font-weight: bold">food access</span>. Food insecurity is having 
+        <span style="font-weight: bold">no available, nutritious,</span> or 
+        <span style="font-weight: bold">affordable food.</span>
       </p>
-      <p>
-        <span style="font-weight: bold">Food access</span> refers to having
-        <span style="font-weight: bold">available, nutritious</span>, and
-        <span style="font-weight: bold">affordable</span> food. When there is a
-        lack of food access, the state of
-        <span style="font-weight: bold">food insecurity</span> and
-        <span style="font-weight: bold">food desert rises</span>.
-      </p>
-      <p>
-        Nutrition and affordability are the two components of food
-        accessibility.
-      </p>
-      <p>
+      <br>
+      <p>Food accessibility at its core is 
+        <span style="font-weight: bold">nutrition</span> and 
+        <span style="font-weight: bold">affordability</span> but it is also a 
+        <span style="font-weight: bold">paradox:</span><br>
         If food is affordable, it may not be nutritious enough to ensure a
-        balanced diet.<sup>*</sup>
-      </p>
-      <p>
-        However, if available food is nutrient dense, the prices could be too
-        high to purchase enough food.
+        balanced diet.  <br>
+        If food is nutrient-dense, high prices lead to insufficient quantities of food.
+        <sup>*</sup>
       </p>
       <div id="superscript">
         <p>
@@ -88,7 +89,13 @@
           fresh produce, are highly processed, and often contain too much sodium
           or sugar.
         </p>
-      </div>
+      </div><br>
+      <h4>So, what is food insecurity? <span style="color: #f7413e">Food insecurity is scary.</span></h4>
+      <p>Furthermore, food insecurity is not a one-dimensional issue. 
+         It is not simply an issue of food access. 
+         In telling the convoluted narrative of food insecurity we must examine race, health, poverty, education, 
+         and more, <span style="font-weight: bold">Let's delve deeper</span>
+      </p><br>
     </div>
     <!--Section for Who is affected-->
     <div id="who">
@@ -101,8 +108,22 @@
           <div id = "miniMap1"></div>
           <div id = "miniMap2"></div>
         </div>
-        <p>Food insecurity affects those all around the world</p>
-        <br />
+        <p>In the United States alone, there are 
+          <span style="font-weight: bold">34 million individuals</span>, including 
+          <span style="font-weight: bold">9 million children,</span> who are food insecure. 
+        </p><br>
+        <p>From 
+          <span style="font-weight: bold">urban cities</span>to 
+          <span style="font-weight: bold">rural countryside</span>,
+           counties all over America experience food insecurity.</p>
+        <p>
+          On the map, we can see that there is a level of insecurity in 
+          <span style="font-weight: bold">every</span> county. 
+          Also, many counties have individuals living 
+          <span style="font-weight: bold">more than 10 miles</span>from a grocery store. 
+          For perspective, 
+          <span style="font-weight: bold">if a grocery store were 10 miles away, this would require walking for 3 hours continuously.</span>
+        </p>
         <p>
           Within America, this is a prevalent issue among many communities and
           isn't going away anytime soon. Food insecurity is highest for
@@ -165,42 +186,45 @@
       </div>
       <div id="whyVis"></div>
     </div>
-    <h2>
-      What are factors that influence if an individual might be food insecure?
-    </h2>
-    <h3>Guess 4 factors</h3>
-    <ul>
-      <li><input type="text" autofocus="autofocus" id="factors1" /></li>
-      <li><input type="text" autofocus="autofocus" id="factors2" /></li>
-      <li><input type="text" autofocus="autofocus" id="factors3" /></li>
-      <li><input type="text" autofocus="autofocus" id="factors4" /></li>
-    </ul>
-    <div id="prompt"></div>
-    <h2 id="chosen"></h2>
-    <!--Is empty now but value gets changed upon buttonclick-->
-    <p id="narrative"></p>
-    <div id="distVis"></div>
-    <p id="distExplain"></p>
-    <div id="racialScatter"></div>
-    <p id="raceExplain"></p>
-    <div id="incomeVis"></div>
-    <p id="incomeExplain"></p>
-    <br />
-    <div id="incomeScatter"></div>
-    <p id="incomeScatterExplain"></p>
-    <br />
-    <div id="maritalVis"></div>
-    <p id="maritalExplain"></p>
-    <br />
-    <div id="eduVis"></div>
-    <p id="eduExplain"></p>
-    <br />
-    <div id="sectorVis"></div>
-    <p id="sectorExplain"></p>
+    <div id = "factors">
+      <h2>
+        How likely is someone to be food insecure?
+      </h2>
+      <h3>Guess the top factors that contribute to a state of food insecurity for an individual.</h3>
+      <ul>
+        <li><input type="text" autofocus="autofocus" id="factors1" /></li>
+        <li><input type="text" autofocus="autofocus" id="factors2" /></li>
+        <li><input type="text" autofocus="autofocus" id="factors3" /></li>
+        <li><input type="text" autofocus="autofocus" id="factors4" /></li>
+      </ul>
+      <div id="prompt"></div>
+      <h2 id="chosen"></h2>
+      <!--Is empty now but value gets changed upon buttonclick-->
+      <p id="narrative"></p>
+      <div id="distVis"></div>
+      <p id="distExplain"></p>
+      <div id="racialScatter"></div>
+      <p id="raceExplain"></p>
+      <div id="incomeVis"></div>
+      <p id="incomeExplain"></p>
+      <br />
+      <div id="incomeScatter"></div>
+      <p id="incomeScatterExplain"></p>
+      <br />
+      <div id="maritalVis"></div>
+      <p id="maritalExplain"></p>
+      <br />
+      <div id="eduVis"></div>
+      <p id="eduExplain"></p>
+      <br />
+      <div id="sectorVis"></div>
+      <p id="sectorExplain"></p>
+    </div>
     <br />
     <div id="howItFeels">
       <h2>But what exactly does it mean to be food insecure?</h2>
       <h4>Being food insecure means...</h4>
+
       <h2 id="topStatement">
         Your children go hungry or skip eating because you simply cannot afford
         enough food
@@ -231,6 +255,7 @@
       <div id="pictoVis3"></div>
     </div>
     <br /><br />
+    <p>No one should have to worry about food.</p>
     <div id="solutions">
       <h1><span style="color: #ff0000">You can help.</span></h1>
     </div>

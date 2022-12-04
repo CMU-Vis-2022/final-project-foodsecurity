@@ -1,8 +1,4 @@
 :root {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,28 +18,31 @@ html {
   margin-left: 8em;
 }
 
+div{
+  /*border:1px solid red;*/
+}
+
 #title {
   width: 20em;
-  font-size: 3em;
+  font-size: 2.5em;
   line-height: 2em;
-  margin-top: 2em;
+  margin-top: 11em;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
+#subTitle{
+  font-size:2em;
+  width:25em;
+  line-height: 1.1em;
+}
+
 #motive {
-  margin-top: 3em;
-  font-size: 2.5em;
+  margin-top: 7em;
+  font-size: 3em;
   width: 15em;
   line-height: 1em;
   margin-bottom: 3em;
-}
-
-#jump {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5em;
-  margin-left: 8em;
 }
 
 #what {
@@ -59,6 +58,10 @@ html {
 
 #what > p {
   font-size: 1.1em;
+}
+
+#what >h4{
+  font-size: 1.8em;
 }
 
 #superscript > p {
@@ -80,6 +83,7 @@ html {
 #why {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20em;
 }
 
 #whyTitle {
@@ -120,6 +124,9 @@ html {
   margin-left: 2em;
 }
 
+#factors{
+  margin-bottom:20em;
+}
 
 #factors1,
 #factors2,

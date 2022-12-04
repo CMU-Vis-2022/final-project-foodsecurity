@@ -124,12 +124,28 @@ button.on("click", async () => {
   const narrative = document.getElementById("narrative");
   if (narrative !== null)
     narrative.innerHTML =
-      "There are many systematic factors that influence why some groups experience food insecurity while others do not. In an analysis of food insecurity factors, a study published in the NIH found that typically people of color tend to face higher levels of food insecurity than their white peers, with Hispanics and African Americans facing the greatest amount of food insecurity.";
-
+      `There are many systematic factors that influence why some groups experience food insecurity while others do not.<br><br>
+       <span style = 'font-size: 1.5em; font-weight: 500;'> Let's explore these systematic factors.</span><br><br><br>
+       <span style = 'font-size: 1.5em; font-weight: 500;'> Race</span><br>
+       In a study published by the NIH, 
+       <span style="font-weight: bold"> people of color </span> tend to face higher levels of food insecurity than white peers, 
+       with <span style="font-weight: bold"> Hispanics </span>and 
+       <span style="font-weight: bold">African Americans </span>
+      facing the greatest amount of food insecurity. 
+    
+      `
   const distExplain = document.getElementById("distExplain");
   if (distExplain !== null) {
     distExplain.innerHTML =
-      "Over the years this trend holds true. Higher proportions of African Americans along with American Indians and Hawaiian/Pacific Islanders face food insecurity than White and Asians over the years. We see however that over the years the proportion of Asian individuals that face food insecurity increases and interestingly, the proportion of Hawaiian/Pacific Islanders that face food insecurity decreases. In general however, there are large fluctuatinos in the proportion of individuals that face food security across all races except White individuals. <br><br> This result can be associated with reasons that another study published by the NIH found: food insecurity rates are associated with the proportion of African Americans in the population of that county, as well as poverty levels and population density. <br><br> Let's explore this more in depth";
+    `
+    From 2019 to 2021, we can see higher proportions of African Americans along with Native Americans, 
+    and Hawaiian/Pacific Islander Americans facing food insecurity than Whites and Asian Americans. 
+    There are large fluctuations to the food insecurity rates over time across all races except White Americans. <br><br>
+
+    Additionally, food insecurity rates are seen as positively correlated to the proportion of African Americans in a county's population. <br><br>
+
+    Let’s further analyze this. 
+    `
   }
 
   /* race scatter chart*/
