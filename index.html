@@ -23,6 +23,7 @@
       function typeWriter() {
         if (i < txt.length) {
           if (
+            (i >= 3 && i <= 12) ||
             (i >= 18 && i <= 37) ||
             (i >= 40 && i <= 43) ||
             (i >= 51 && i <= 65) ||
@@ -38,14 +39,14 @@
             }
             else if(i >= 113){
               document.getElementById("motive").innerHTML +=
-              "<span style = 'color: #FF0000; font-size: 1.5em;'>" + txt.charAt(i) + "</span>";
+              "<span style = 'color: #FFFFFF; font-size: 1.5em;'>" + txt.charAt(i) + "</span>";
             }
             else{
               document.getElementById("motive").innerHTML += txt.charAt(i);
             }
           }
           i++;
-          setTimeout(typeWriter, 55);
+          setTimeout(typeWriter, 50);
         }
       }
       window.onload = function () {
@@ -53,7 +54,7 @@
       };
     </script>
     <div id="title">
-      <h1><span style="color: #f7413e">Food Insecurity </span>In The US</h1>
+      <h1><span style="color: #f7413e">Food Insecurity In The US</span></h1>
     </div>
     <!--subTitle text-->
     <h2 id = "subTitle">
@@ -64,7 +65,7 @@
     <!--Section for What is food insecurity-->
     <div id="what" class = "whatDiv">
       <h2 id="whatTitle">
-        What is <span style="color: #f7413e">Food Insecurity</span>?
+        <span style="color: #f7413e">What is Food Insecurity?</span>
       </h2>
       <p id = "whatText">
         Food insecurity is a state of limited 
@@ -101,7 +102,7 @@
     <div id="who">
       <div id="whoText">
         <h2 id="whoTitle">
-          <span style="color: #f7413e">Who</span> is Affected?
+          <span style="color: #f7413e">Who is Affected?</span>
         </h2>
         <div id="mapVis"></div>
         <div id = "miniMaps">
@@ -147,7 +148,7 @@
     </div>
     <!--Section for Long-lasting Effects-->
     <h2 id="whyTitle">
-      What are the <span style="color: #f7413e">long-lasting effects</span>?
+      <span style="color: #f7413e">What are the long-lasting effects ?</span>
     </h2>
     <div id="why">
       <div id="whyText">
@@ -255,7 +256,7 @@
       <div id="pictoVis3"></div>
     </div>
     <br /><br />
-    <p>No one should have to worry about food.</p>
+    <h2 id = "noOneText">No one should have to worry about access to sufficient nutritious food.</h2>
     <div id="solutions">
       <h1><span style="color: #ff0000">You can help.</span></h1>
     </div>

@@ -14,7 +14,7 @@ export function mapChart() {
     .attr("height", height)
     .attr("viewBox", [0, 0, width, height]);
 
-  function update(filePath: string, name: string, smaller?:boolean) {
+  function update(filePath: string, name: string) {
     d3.select("#mapTitle").remove();
     svg
       .append("text")
