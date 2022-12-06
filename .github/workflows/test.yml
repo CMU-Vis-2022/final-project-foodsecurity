@@ -25,5 +25,6 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - run: npm run lint
       - run: npx tsc
       - run: npm run build
