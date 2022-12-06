@@ -74,7 +74,7 @@ export function mapChart() {
           .text("Insecurity Rate: ")
           .append("tspan")
           .attr("fill", "#7d312c")
-          .text(d.target.__data__.properties.rate)
+          .text(d.target.__data__.properties.rate);
       } else if (name == "density") {
         const length = "Percentage of low income individuals without vehicles"
           .length;
@@ -82,7 +82,7 @@ export function mapChart() {
           .append("rect")
           .attr("id", "textBG")
           .attr("fill", "#b89a98")
-          .attr("stroke","#7d312c")
+          .attr("stroke", "#7d312c")
           .attr("stroke-width", "1")
           .attr(
             "x",
@@ -111,7 +111,12 @@ export function mapChart() {
           .text("Population Density: ")
           .append("tspan")
           .attr("fill", "#7d312c")
-          .text(format((parseInt(d.target.__data__.properties.Pop2010)/d.target.__data__.properties.census_area)) + " people per sq miles")
+          .text(
+            format(
+              parseInt(d.target.__data__.properties.Pop2010) /
+                d.target.__data__.properties.census_area
+            ) + " people per sq miles"
+          )
           .append("tspan")
           .attr("font-size", 11)
           .attr("fill", "white")
@@ -135,7 +140,7 @@ export function mapChart() {
           .text("from a grocery store: ")
           .append("tspan")
           .attr("fill", "#7d312c")
-          .text(format(d.target.__data__.properties.lalowi10share) +"%")
+          .text(format(d.target.__data__.properties.lalowi10share) + "%")
           .append("tspan")
           .attr("font-size", 11)
           .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
@@ -149,22 +154,25 @@ export function mapChart() {
           .text("live ≥ 10 miles from a grocery store: ")
           .append("tspan")
           .attr("fill", "#7d312c")
-          .text(format(d.target.__data__.properties.lahunv10share) + "%")
+          .text(format(d.target.__data__.properties.lahunv10share) + "%");
       } else {
         const length = Math.max(
           d.target.__data__.properties.County.length,
-          ("≥ 10 miles from a grocery store: " + d.target.__data__.properties.lalowi10share).length
+          (
+            "≥ 10 miles from a grocery store: " +
+            d.target.__data__.properties.lalowi10share
+          ).length
         );
         svg
           .append("rect")
           .attr("id", "textBG")
-          .attr("fill","#b89a98")
-          .attr("stroke","#7d312c")
+          .attr("fill", "#b89a98")
+          .attr("stroke", "#7d312c")
           .attr("stroke-width", "1")
-          .attr("x", d.offsetX > 800?d.offsetX - 7*length:d.offsetX+35)
+          .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
           .attr("y", d.offsetY - 20)
-          .attr("width",length * 6)
-          .attr("height",65)
+          .attr("width", length * 6)
+          .attr("height", 65);
 
         svg
           .append("text")
@@ -174,21 +182,30 @@ export function mapChart() {
           .attr("fill-opacity", 1)
           .attr("text-anchor", "front")
           .attr("id", "labelText")
-          .attr("x", d.offsetX > 800?d.offsetX - 7*length + 10:d.offsetX+45)
+          .attr(
+            "x",
+            d.offsetX > 800 ? d.offsetX - 7 * length + 10 : d.offsetX + 45
+          )
           .attr("y", d.offsetY)
           .text(d.target.__data__.properties.County)
           .append("tspan")
           .attr("font-size", 11)
-          .attr("x", d.offsetX > 800?d.offsetX - 7*length + 10:d.offsetX+45)
+          .attr(
+            "x",
+            d.offsetX > 800 ? d.offsetX - 7 * length + 10 : d.offsetX + 45
+          )
           .attr("y", d.offsetY + 20)
           .text("Low income individuals that live")
           .append("tspan")
-          .attr("x",d.offsetX > 800?d.offsetX - 7*length + 10:d.offsetX+45)
-          .attr("y",d.offsetY + 32)
+          .attr(
+            "x",
+            d.offsetX > 800 ? d.offsetX - 7 * length + 10 : d.offsetX + 45
+          )
+          .attr("y", d.offsetY + 32)
           .text("≥ 10 miles from a grocery store: ")
           .append("tspan")
           .attr("fill", "#7d312c")
-          .text(format(d.target.__data__.properties.lalowi10share))
+          .text(format(d.target.__data__.properties.lalowi10share));
       }
     }
     function mouseOut(this: any) {
@@ -224,14 +241,16 @@ export function mapChart() {
           .data(d.features)
           .enter()
           .append("path")
-          .attr("d", (d:any) => path(d)!)
+          .attr("d", (d: any) => path(d)!)
           .attr("id", name)
           .attr("fill", function (d: any) {
             if (d.properties.rate == undefined) {
               return "#00FF00"; /* for seeing undefined data purposes */
             } else {
               const length = d.properties.rate.length;
-              const value = d.properties.rate.substring(0, length - 1).toString();
+              const value = d.properties.rate
+                .substring(0, length - 1)
+                .toString();
               return colorScale(value);
             }
           })

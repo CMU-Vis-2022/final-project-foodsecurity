@@ -18,7 +18,7 @@ html {
   margin-left: 8em;
 }
 
-div{
+div {
   /*border:1px solid red;*/
 }
 
@@ -31,9 +31,9 @@ div{
   padding-bottom: 0;
 }
 
-#subTitle{
-  font-size:2em;
-  width:25em;
+#subTitle {
+  font-size: 2em;
+  width: 25em;
   line-height: 1.1em;
 }
 
@@ -60,7 +60,7 @@ div{
   font-size: 1.1em;
 }
 
-#what >h4{
+#what > h4 {
   font-size: 1.8em;
 }
 
@@ -116,16 +116,16 @@ div{
   stroke: #707070;
 }
 
-#miniMaps{
+#miniMaps {
   margin-left: -10.5em;
   display: flex;
 }
-#miniMap2{
+#miniMap2 {
   margin-left: 2em;
 }
 
-#factors{
-  margin-bottom:20em;
+#factors {
+  margin-bottom: 20em;
 }
 
 #factors1,
@@ -164,12 +164,11 @@ div{
     brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
 }
 
-
-#pictoVis3{
+#pictoVis3 {
   margin-bottom: 5em;
 }
 
-#noOneText{
+#noOneText {
   font-size: 2.5em;
   width: 70%;
 }

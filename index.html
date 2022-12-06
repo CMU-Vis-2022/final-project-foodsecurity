@@ -34,14 +34,14 @@
             document.getElementById("motive").innerHTML +=
               "<span style = 'color: #F7413E'>" + txt.charAt(i) + "</span>";
           } else {
-            if( i == 112){
+            if (i == 112) {
               document.getElementById("motive").innerHTML += "<br><br><br>";
-            }
-            else if(i >= 113){
+            } else if (i >= 113) {
               document.getElementById("motive").innerHTML +=
-              "<span style = 'color: #FFFFFF; font-size: 1.5em;'>" + txt.charAt(i) + "</span>";
-            }
-            else{
+                "<span style = 'color: #FFFFFF; font-size: 1.5em;'>" +
+                txt.charAt(i) +
+                "</span>";
+            } else {
               document.getElementById("motive").innerHTML += txt.charAt(i);
             }
           }
@@ -57,30 +57,33 @@
       <h1><span style="color: #f7413e">Food Insecurity In The US</span></h1>
     </div>
     <!--subTitle text-->
-    <h2 id = "subTitle">
+    <h2 id="subTitle">
       Analyzing the current food access issue in America, its impacts, and what
       we can do.
     </h2>
     <!--Motive text + animation-->
     <!--Section for What is food insecurity-->
-    <div id="what" class = "whatDiv">
+    <div id="what" class="whatDiv">
       <h2 id="whatTitle">
         <span style="color: #f7413e">What is Food Insecurity?</span>
       </h2>
-      <p id = "whatText">
-        Food insecurity is a state of limited 
-        <span style="font-weight: bold">food access</span>. Food insecurity is having 
-        <span style="font-weight: bold">no available, nutritious,</span> or 
+      <p id="whatText">
+        Food insecurity is a state of limited
+        <span style="font-weight: bold">food access</span>. Food insecurity is
+        having
+        <span style="font-weight: bold">no available, nutritious,</span> or
         <span style="font-weight: bold">affordable food.</span>
       </p>
-      <br>
-      <p>Food accessibility at its core is 
-        <span style="font-weight: bold">nutrition</span> and 
-        <span style="font-weight: bold">affordability</span> but it is also a 
-        <span style="font-weight: bold">paradox:</span><br>
+      <br />
+      <p>
+        Food accessibility at its core is
+        <span style="font-weight: bold">nutrition</span> and
+        <span style="font-weight: bold">affordability</span> but it is also a
+        <span style="font-weight: bold">paradox:</span><br />
         If food is affordable, it may not be nutritious enough to ensure a
-        balanced diet.  <br>
-        If food is nutrient-dense, high prices lead to insufficient quantities of food.
+        balanced diet. <br />
+        If food is nutrient-dense, high prices lead to insufficient quantities
+        of food.
         <sup>*</sup>
       </p>
       <div id="superscript">
@@ -90,13 +93,19 @@
           fresh produce, are highly processed, and often contain too much sodium
           or sugar.
         </p>
-      </div><br>
-      <h4>So, what is food insecurity? <span style="color: #f7413e">Food insecurity is scary.</span></h4>
-      <p>Furthermore, food insecurity is not a one-dimensional issue. 
-         It is not simply an issue of food access. 
-         In telling the convoluted narrative of food insecurity we must examine race, health, poverty, education, 
-         and more, <span style="font-weight: bold">Let's delve deeper</span>
-      </p><br>
+      </div>
+      <br />
+      <h4>
+        So, what is food insecurity?
+        <span style="color: #f7413e">Food insecurity is scary.</span>
+      </h4>
+      <p>
+        Furthermore, food insecurity is not a one-dimensional issue. It is not
+        simply an issue of food access. In telling the convoluted narrative of
+        food insecurity we must examine race, health, poverty, education, and
+        more, <span style="font-weight: bold">Let's delve deeper</span>
+      </p>
+      <br />
     </div>
     <!--Section for Who is affected-->
     <div id="who">
@@ -105,25 +114,33 @@
           <span style="color: #f7413e">Who is Affected?</span>
         </h2>
         <div id="mapVis"></div>
-        <div id = "miniMaps">
-          <div id = "miniMap1"></div>
-          <div id = "miniMap2"></div>
+        <div id="miniMaps">
+          <div id="miniMap1"></div>
+          <div id="miniMap2"></div>
         </div>
-        <p>In the United States alone, there are 
-          <span style="font-weight: bold">34 million individuals</span>, including 
-          <span style="font-weight: bold">9 million children,</span> who are food insecure. 
-        </p><br>
-        <p>From 
-          <span style="font-weight: bold">urban cities</span>to 
-          <span style="font-weight: bold">rural countryside</span>,
-           counties all over America experience food insecurity.</p>
         <p>
-          On the map, we can see that there is a level of insecurity in 
-          <span style="font-weight: bold">every</span> county. 
-          Also, many counties have individuals living 
-          <span style="font-weight: bold">more than 10 miles</span>from a grocery store. 
-          For perspective, 
-          <span style="font-weight: bold">if a grocery store were 10 miles away, this would require walking for 3 hours continuously.</span>
+          In the United States alone, there are
+          <span style="font-weight: bold">34 million individuals</span>,
+          including
+          <span style="font-weight: bold">9 million children,</span> who are
+          food insecure.
+        </p>
+        <br />
+        <p>
+          From <span style="font-weight: bold">urban cities</span>to
+          <span style="font-weight: bold">rural countryside</span>, counties all
+          over America experience food insecurity.
+        </p>
+        <p>
+          On the map, we can see that there is a level of insecurity in
+          <span style="font-weight: bold">every</span> county. Also, many
+          counties have individuals living
+          <span style="font-weight: bold">more than 10 miles</span>from a
+          grocery store. For perspective,
+          <span style="font-weight: bold"
+            >if a grocery store were 10 miles away, this would require walking
+            for 3 hours continuously.</span
+          >
         </p>
         <p>
           Within America, this is a prevalent issue among many communities and
@@ -135,15 +152,18 @@
           <span style="font-weight: bold">rural areas</span>, and
           <span style="font-weight: bold">college students</span>.
         </p>
-        <p>*We considered transportation, such as having a car, as an exploratory predictor
-           variable for food insecurity. From the data, we observed that for every county, 
-           there is less than 1% of indivudals who do not have a car. Comparatively to countries 
-           like China, the United States is less densely populated. If we observe the population 
-           density map, we notice that majority of the US is not densely populated, with the 
-           exceptions of urban areas, which suggests that majority of those who live the US 
-           must have a car to get around. Public transportation is also not very developed 
-           outside urban areas, thus cars is a must to live in the US.
-          </p>
+        <p>
+          *We considered transportation, such as having a car, as an exploratory
+          predictor variable for food insecurity. From the data, we observed
+          that for every county, there is less than 1% of indivudals who do not
+          have a car. Comparatively to countries like China, the United States
+          is less densely populated. If we observe the population density map,
+          we notice that majority of the US is not densely populated, with the
+          exceptions of urban areas, which suggests that majority of those who
+          live the US must have a car to get around. Public transportation is
+          also not very developed outside urban areas, thus cars is a must to
+          live in the US.
+        </p>
       </div>
     </div>
     <!--Section for Long-lasting Effects-->
@@ -166,32 +186,36 @@
           unhealthy fats so people in these areas are at a higher risk for these
           adverse health conditions.
         </p>
-        <p>Triglycerides are a type of fat within our blood. Having high levels
-          of triglycerides can increase the risk of heart disease. Triglycerides 
-          are developed within our bodies and we can also get it from the foods 
-          we consume. When we consume food that have high calories, fats and 
-          sugars, the extra calories and sugar that are not used are stored as 
+        <p>
+          Triglycerides are a type of fat within our blood. Having high levels
+          of triglycerides can increase the risk of heart disease. Triglycerides
+          are developed within our bodies and we can also get it from the foods
+          we consume. When we consume food that have high calories, fats and
+          sugars, the extra calories and sugar that are not used are stored as
           triglycerides in fat cells in our bodies.
         </p>
-        <p>From the 2017-2020 NHANES Survey, we can see that those who are 
-          considered to live in proverty (individuals whos income to poverty 
-          guideline is ≤ 1) have the highest count of individuals with high 
+        <p>
+          From the 2017-2020 NHANES Survey, we can see that those who are
+          considered to live in proverty (individuals whos income to poverty
+          guideline is ≤ 1) have the highest count of individuals with high
           triglycerides levels.
         </p>
-        <p>Those who live in poverty or are considered low income do not have 
-          the same access to nutritious and safe food as everyone else. Affordability 
-          is a huge factor to what kinds of food individuals have access to, with many 
-          of the low income individuals only being able to afford heavily processed 
-          food in high fats and sugar.
+        <p>
+          Those who live in poverty or are considered low income do not have the
+          same access to nutritious and safe food as everyone else.
+          Affordability is a huge factor to what kinds of food individuals have
+          access to, with many of the low income individuals only being able to
+          afford heavily processed food in high fats and sugar.
         </p>
       </div>
       <div id="whyVis"></div>
     </div>
-    <div id = "factors">
-      <h2>
-        How likely is someone to be food insecure?
-      </h2>
-      <h3>Guess the top factors that contribute to a state of food insecurity for an individual.</h3>
+    <div id="factors">
+      <h2>How likely is someone to be food insecure?</h2>
+      <h3>
+        Guess the top factors that contribute to a state of food insecurity for
+        an individual.
+      </h3>
       <ul>
         <li><input type="text" autofocus="autofocus" id="factors1" /></li>
         <li><input type="text" autofocus="autofocus" id="factors2" /></li>
@@ -256,11 +280,13 @@
       <div id="pictoVis3"></div>
     </div>
     <br /><br />
-    <h2 id = "noOneText">No one should have to worry about access to sufficient nutritious food.</h2>
+    <h2 id="noOneText">
+      No one should have to worry about access to sufficient nutritious food.
+    </h2>
     <div id="solutions">
       <h1><span style="color: #ff0000">You can help.</span></h1>
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br />
-    <script type="module" src="/src/main.ts"></script> 
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -46,7 +46,7 @@ mini1.update("./src/mapFoodData.geojson", "rate");
 const miniMap2 = document.querySelector("#miniMap2");
 const mini2 = miniMapChart();
 miniMap2?.appendChild(mini2.element);
-mini2.update("./src/mapFoodData.geojson","lalowi10share")
+mini2.update("./src/mapFoodData.geojson", "lalowi10share");
 
 const cholesterol = document.querySelector("#whyVis")!;
 const cholChart = cholesterolChart();
@@ -123,8 +123,7 @@ button.on("click", async () => {
 
   const narrative = document.getElementById("narrative");
   if (narrative !== null)
-    narrative.innerHTML =
-      `There are many systematic factors that influence why some groups experience food insecurity while others do not.<br><br>
+    narrative.innerHTML = `There are many systematic factors that influence why some groups experience food insecurity while others do not.<br><br>
        <span style = 'font-size: 1.5em; font-weight: 500;'> Let's explore these systematic factors.</span><br><br><br>
        <span style = 'font-size: 1.5em; font-weight: 500;'> Race</span><br>
        In a study published by the NIH, 
@@ -133,11 +132,10 @@ button.on("click", async () => {
        <span style="font-weight: bold">African Americans </span>
       facing the greatest amount of food insecurity. 
     
-      `
+      `;
   const distExplain = document.getElementById("distExplain");
   if (distExplain !== null) {
-    distExplain.innerHTML =
-    `
+    distExplain.innerHTML = `
     From 2019 to 2021, we can see higher proportions of African Americans along with Native Americans, 
     and Hawaiian/Pacific Islander Americans facing food insecurity than Whites and Asian Americans. 
     There are large fluctuations to the food insecurity rates over time across all races except White Americans. <br><br>
@@ -145,7 +143,7 @@ button.on("click", async () => {
     Additionally, food insecurity rates are seen as positively correlated to the proportion of African Americans in a county's population. <br><br>
 
     Let’s further analyze this. 
-    `
+    `;
   }
 
   /* race scatter chart*/
