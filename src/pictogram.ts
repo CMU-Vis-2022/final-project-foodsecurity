@@ -6,7 +6,7 @@ export function pictChart(col: string) {
 
   const svg = d3.create("svg").attr("width", width).attr("height", height);
 
-  d3.csv("./src/howItFeelsActual.csv").then((d) => {
+  d3.csv("/src/howItFeelsActual.csv").then((d) => {
     let rows = 0;
     const cols = 10;
     let data = [0];
@@ -47,7 +47,7 @@ export function pictChart(col: string) {
       .append("svg:image")
       .attr(
         "xlink:href",
-        "./src/person.png"
+        "/src/person.png"
       ) /* image source = https://www.freeiconspng.com/img/1676 */
       .attr("transform", "scale(0.5)")
       .attr("x", (d): any => {
@@ -67,7 +67,7 @@ export function pictChart(col: string) {
     elem
       .append("svg:image")
       .attr("id", "scaleImage")
-      .attr("xlink:href", "./src/person.png")
+      .attr("xlink:href", "/src/person.png")
       .attr("transform", "scale(0.5)")
       .attr("x", 600)
       .attr("y", () => {
@@ -83,7 +83,7 @@ export function pictChart(col: string) {
     elem
       .append("svg:image")
       .attr("id", "scaleImage")
-      .attr("xlink:href", "./src/person.png")
+      .attr("xlink:href", "/src/person.png")
       .attr("transform", "scale(0.5)")
       .attr("class", "affectedPerson")
       .attr("x", 600)

@@ -115,7 +115,7 @@ export function scatterChart() {
     else if (region == "South") regionCode = 4;
 
     d3.selectAll("#raceCircles").remove();
-    d3.csv("./src/insecurityAndProportions.csv").then((d) => {
+    d3.csv("/src/insecurityAndProportions.csv").then((d) => {
       dots
         .selectAll("circle")
         .data(d)

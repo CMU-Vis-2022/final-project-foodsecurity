@@ -20,7 +20,7 @@ const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update("./src/mapFoodData.geojson", "density");
+chart.update("/src/mapFoodData.geojson", "density");
 selection.append("option").text("Population Density");
 selection.append("option").text("Insecurity Rate");
 selection
@@ -30,23 +30,23 @@ selection.attr("id", "mapSelection");
 selection.on("change", () => {
   const choice = selection.property("value");
   if (choice === "Insecurity Rate") {
-    chart.update("./src/mapFoodData.geojson", "rate");
+    chart.update("/src/mapFoodData.geojson", "rate");
   } else if (choice === "Population Density") {
-    chart.update("./src/mapFoodData.geojson", "density");
+    chart.update("/src/mapFoodData.geojson", "density");
   } else {
-    chart.update("./src/mapFoodData.geojson", "lalowi10share");
+    chart.update("/src/mapFoodData.geojson", "lalowi10share");
   }
 });
 
 const miniMap1 = document.querySelector("#miniMap1");
 const mini1 = miniMapChart();
 miniMap1?.appendChild(mini1.element);
-mini1.update("./src/mapFoodData.geojson", "rate");
+mini1.update("/src/mapFoodData.geojson", "rate");
 
 const miniMap2 = document.querySelector("#miniMap2");
 const mini2 = miniMapChart();
 miniMap2?.appendChild(mini2.element);
-mini2.update("./src/mapFoodData.geojson", "lalowi10share");
+mini2.update("/src/mapFoodData.geojson", "lalowi10share");
 
 const cholesterol = document.querySelector("#whyVis")!;
 const cholChart = cholesterolChart();
@@ -113,12 +113,12 @@ button.on("click", async () => {
   d3.select(distr).append("br");
   slide1.on("change", (event) => {
     distributionChart.update(
-      "./src/raceNumPropJoined.csv",
+      "/src/raceNumPropJoined.csv",
       years[event.target.value / 50].toString(),
       "race"
     );
   });
-  distributionChart.update("./src/raceNumPropJoined.csv", "2019", "race");
+  distributionChart.update("/src/raceNumPropJoined.csv", "2019", "race");
   distr?.appendChild(distributionChart.element);
 
   const narrative = document.getElementById("narrative");
@@ -220,12 +220,12 @@ button.on("click", async () => {
   const incomeVis = distChart();
   slide4.on("change", (event) => {
     incomeVis.update(
-      "./src/incomeAndFoodInsecurity.csv",
+      "/src/incomeAndFoodInsecurity.csv",
       years[event.target.value / 50].toString(),
       "income"
     );
   });
-  incomeVis.update("./src/incomeAndFoodInsecurity.csv", "2019", "income");
+  incomeVis.update("/src/incomeAndFoodInsecurity.csv", "2019", "income");
   income?.appendChild(incomeVis.element);
 
   const incomeExplain = document.getElementById("incomeExplain");
@@ -281,12 +281,12 @@ button.on("click", async () => {
   const maritalVis = distChart();
   slide3.on("change", (event) => {
     maritalVis.update(
-      "./src/maritalAndSecurity.csv",
+      "/src/maritalAndSecurity.csv",
       years[event.target.value / 50].toString(),
       "marital"
     );
   });
-  maritalVis.update("./src/maritalAndSecurity.csv", "2019", "marital");
+  maritalVis.update("/src/maritalAndSecurity.csv", "2019", "marital");
   marital?.appendChild(maritalVis.element);
 
   const maritalExplain = document.getElementById("maritalExplain");
@@ -319,12 +319,12 @@ button.on("click", async () => {
   const eduVis = distChart();
   slide2.on("change", (event) => {
     eduVis.update(
-      "./src/educationAndInsecurity.csv",
+      "/src/educationAndInsecurity.csv",
       years[event.target.value / 50].toString(),
       "education"
     );
   });
-  eduVis.update("./src/educationAndInsecurity.csv", "2019", "education");
+  eduVis.update("/src/educationAndInsecurity.csv", "2019", "education");
   edu?.appendChild(eduVis.element);
 
   const eduExplain = document.getElementById("eduExplain");
@@ -355,12 +355,12 @@ button.on("click", async () => {
   const sectorVis = distChart();
   slide5.on("change", (event) => {
     sectorVis.update(
-      "./src/sectorAndInsecurity.csv",
+      "/src/sectorAndInsecurity.csv",
       years[event.target.value / 50].toString(),
       "sector"
     );
   });
-  sectorVis.update("./src/sectorAndInsecurity.csv", "2019", "sector");
+  sectorVis.update("/src/sectorAndInsecurity.csv", "2019", "sector");
   sector?.appendChild(sectorVis.element);
 
   const sectorExp = document.getElementById("sectorExplain");

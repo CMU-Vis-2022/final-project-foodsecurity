@@ -94,7 +94,7 @@ export function incomeScatterChart() {
         );
     }
     d3.selectAll("#incomeCircles").remove();
-    d3.csv("./src/insecurityAndProportions.csv").then((d) => {
+    d3.csv("/src/insecurityAndProportions.csv").then((d) => {
       dots
         .selectAll("circle")
         .data(d)

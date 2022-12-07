@@ -22,7 +22,7 @@ export function cholesterolChart() {
 
   const bars = svg.append("g").attr("fill", "#EB736B");
 
-  d3.csv("./src/cholestBinned.csv").then((d) => {
+  d3.csv("/src/cholestBinned.csv").then((d) => {
     const bins: string[] = [];
     const amts: number[] = [];
     const almost: number[] = [];
