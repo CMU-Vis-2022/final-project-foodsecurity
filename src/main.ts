@@ -20,7 +20,7 @@ const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update("/src/mapFoodData.geojson", "density");
+chart.update("/final-project-foodsecurity/src/mapFoodData.geojson", "density");
 selection.append("option").text("Population Density");
 selection.append("option").text("Insecurity Rate");
 selection
