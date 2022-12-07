@@ -91,7 +91,6 @@ export function mapChart() {
           .attr("y", d.offsetY - 20)
           .attr("width", length * 6)
           .attr("height", 135);
-        console.log(d);
         svg
           .append("text")
           .attr("font-size", 14)
@@ -235,7 +234,6 @@ export function mapChart() {
         d3.select("#textBG").remove();
       }
       if (name == "rate") {
-        console.log();
         svg
           .selectAll("path")
           .data(d.features)

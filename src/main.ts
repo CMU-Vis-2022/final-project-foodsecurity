@@ -12,15 +12,15 @@ import { miniMapChart } from "./miniMap";
 //import { Int32, Table, Utf8 } from "apache-arrow";
 //import { db } from "./duckdb";
 //import parquet from "./weather.parquet?url";
-
 window.scrollTo(0, 0);
+
 
 const map = document.querySelector("#mapVis")!;
 const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update("/final-project-foodsecurity/src/mapFoodData.geojson", "density");
+chart.update("/src/mapFoodData.geojson", "density");
 selection.append("option").text("Population Density");
 selection.append("option").text("Insecurity Rate");
 selection
