@@ -3,5 +3,5 @@ export default {
     target: ["chrome100", "safari15", "firefox100"],
   },
   // Change this to your repo name
-  base: "/final-project-foodsecurity/",
+  base: "/final-project-foodsecurity",
 };
