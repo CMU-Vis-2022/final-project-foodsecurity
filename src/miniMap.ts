@@ -16,7 +16,7 @@ export function miniMapChart() {
 
   function update(filePath: string, name: string) {
     d3.select("#mapTitle" + name).remove();
-    if (name == "rate") {
+    if (name == "density") {
       svg
         .append("text")
         .attr("font-size", 14)
@@ -26,7 +26,7 @@ export function miniMapChart() {
         .attr("id", "mapTitle" + name)
         .attr("x", 100)
         .attr("y", 40)
-        .text("Food Insecurity Rate by County, 2019");
+        .text("Population Density by County");
     } else {
       svg
         .append("text")
@@ -50,33 +50,30 @@ export function miniMapChart() {
         .reflectY(true)
         .fitSize([width, height], d);
       const path = d3.geoPath().projection(projection);
-      if (name == "rate") {
+      if (name == "density") {
         d3.selectAll("#lalowi10share" + name).remove();
         d3.selectAll("#labelText" + name).remove();
         d3.select("#textBG" + name).remove();
       } else {
-        d3.selectAll("#rate" + name).remove();
+        d3.selectAll("#density" + name).remove();
         d3.selectAll("#labelText" + name).remove();
         d3.select("#textBG" + name).remove();
       }
-      if (name == "rate") {
-        console.log();
+      if (name == "density") {
         svg
           .selectAll("path")
           .data(d.features)
           .enter()
           .append("path")
           .attr("d", (d: any) => path(d))
-          .attr("id", name + name)
+          .attr("id", name)
           .attr("fill", function (d: any) {
             if (d.properties.rate == undefined) {
               return "#00FF00"; /* for seeing undefined data purposes */
             } else {
-              const length = d.properties.rate.length;
-              const value = d.properties.rate
-                .substring(0, length - 1)
-                .toString();
-              return colorScale(value);
+              return colorScale(
+                parseInt(d.properties.Pop2010) / d.properties.census_area / 10
+              ); /* div 10 so it fits in the colorScale */
             }
           })
           .attr("fill-opacity", 0.8)

@@ -20,9 +20,10 @@ const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update("/src/mapFoodData.geojson", "density");
-selection.append("option").text("Population Density");
+chart.update("/src/mapFoodData.geojson", "rate");
+
 selection.append("option").text("Insecurity Rate");
+selection.append("option").text("Population Density");
 selection
   .append("option")
   .text("Percentage of individuals that reside ≥10 miles from a grocery store");
@@ -41,7 +42,7 @@ selection.on("change", () => {
 const miniMap1 = document.querySelector("#miniMap1");
 const mini1 = miniMapChart();
 miniMap1?.appendChild(mini1.element);
-mini1.update("/src/mapFoodData.geojson", "rate");
+mini1.update("/src/mapFoodData.geojson", "density");
 
 const miniMap2 = document.querySelector("#miniMap2");
 const mini2 = miniMapChart();
@@ -57,7 +58,6 @@ const edu = document.querySelector("#eduVis");
 const marital = document.querySelector("#maritalVis");
 const income = document.querySelector("#incomeVis");
 const sector = document.querySelector("#sectorVis");
-const picto = document.querySelector("#pictoVis");
 const picto2 = document.querySelector("#pictoVis2");
 const picto3 = document.querySelector("#pictoVis3");
 const picto4 = document.querySelector("#pictoVis4");
@@ -84,7 +84,8 @@ button.on("click", async () => {
   const entered4 = (<HTMLInputElement>document.getElementById("factors4"))
     ?.value;
   const values = [entered1, entered2, entered3, entered4];
-  let displayText = "<span style = 'color: #f7413e'> You said: </span>";
+
+  let displayText = "You said: ";
   for (let i = 0; i < 4; i++) {
     if (values[i] !== "") {
       displayText += values[i] + ", ";
@@ -93,7 +94,7 @@ button.on("click", async () => {
 
   const guessed = document.getElementById("chosen");
   if (guessed !== null) {
-    guessed.innerHTML = displayText.substring(0, displayText.length - 2);
+    guessed.innerHTML = displayText.substring(0,9) + `<span style = 'color: #F7413e;'>` + displayText.substring(9, displayText.length - 2) + '</span>';
   }
   const years = [2019, 2020, 2021];
 
@@ -373,9 +374,6 @@ button.on("click", async () => {
       being food insecure to a high proportion and vice versa.     `;
   }
 });
-
-const pictoChart = pictChart("Hess1");
-picto?.appendChild(pictoChart.element);
 
 const picto2Chart = pictChart("HESC3");
 picto2?.appendChild(picto2Chart.element);
