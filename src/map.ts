@@ -7,7 +7,7 @@ export function mapChart() {
   const colorScale = d3
     .scaleSequential()
     .interpolator(d3.interpolateReds)
-    .domain([0, 40]);
+    .domain([0, 35]);
   const svg = d3
     .create("svg")
     .attr("width", width)

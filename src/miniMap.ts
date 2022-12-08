@@ -7,7 +7,7 @@ export function miniMapChart() {
   const colorScale = d3
     .scaleSequential()
     .interpolator(d3.interpolateReds)
-    .domain([0, 40]);
+    .domain([0, 35]);
   const svg = d3
     .create("svg")
     .attr("width", width)
@@ -66,7 +66,7 @@ export function miniMapChart() {
           .enter()
           .append("path")
           .attr("d", (d: any) => path(d))
-          .attr("id", name)
+          .attr("id", name+ name)
           .attr("fill", function (d: any) {
             if (d.properties.rate == undefined) {
               return "#00FF00"; /* for seeing undefined data purposes */
