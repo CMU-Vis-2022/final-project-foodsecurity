@@ -55,6 +55,7 @@ export function incomeScatterChart() {
     .text("Food Insecurity Rate");
 
   function update(region: string) {
+    d3.selectAll("#IncomeDisplayInfoText").remove();
     let regionCode = 0;
     if (region == "West") regionCode = 1;
     else if (region == "Midwest") regionCode = 2;
@@ -139,6 +140,7 @@ export function incomeScatterChart() {
         [width, height],
       ])
       .scaleExtent([1, 8])
+      .translateExtent([[80,80],[width,height]])
       .on("zoom", zoomed);
 
     function zoomed({ transform }: any) {

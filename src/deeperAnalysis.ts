@@ -187,10 +187,12 @@ export function scatterChart() {
         [width, height],
       ])
       .scaleExtent([1, 8])
+      .translateExtent([[80,80],[width,height]])
       .on("zoom", zoomed);
 
     function zoomed({ transform }: any) {
       const xAxisScaled = transform.rescaleX(xScale);
+      console.log(xAxisScaled)
       const yAxisScaled = transform.rescaleY(yScale);
       xAxis.scale(xAxisScaled);
       yAxis.scale(yAxisScaled);

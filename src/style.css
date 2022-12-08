@@ -159,7 +159,7 @@ div {
 
 #howItFeels {
   margin-top: 10em;
-  width: 50%;
+  width: 60%;
 }
 
 #topStatement {
@@ -167,8 +167,8 @@ div {
 }
 
 .affectedPerson {
-  filter: invert(12%) sepia(58%) saturate(6636%) hue-rotate(356deg)
-    brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(45%) sepia(97%) saturate(4444%) hue-rotate(341deg) brightness(114%) contrast(94%);
+   /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
 }
 
 .notAffected{
@@ -198,6 +198,7 @@ div {
   width: 70%;
 }
 
-#chosen {
-  color: #f7413e;
+
+#howItFeels > h2{
+  color: #F7413e;
 }

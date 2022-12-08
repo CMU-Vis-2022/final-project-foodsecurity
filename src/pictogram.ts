@@ -135,7 +135,7 @@ export function pictChart(col: string) {
       .attr("fill", "red")
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
-      .attr("x", 190)
+      .attr("x", 195)
       .attr("y", () => {
           return 30;
       })
@@ -145,7 +145,7 @@ export function pictChart(col: string) {
       .attr("fill", "white")
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
-      .attr("x", 405)
+      .attr("x", 415)
       .attr("y", () => {
           return 30;
       })
