@@ -164,6 +164,24 @@ div {
     brightness(121%) contrast(121%); /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
 }
 
+.notAffected{
+  filter: invert(100%) sepia(66%) saturate(577%) hue-rotate(290deg) brightness(123%) contrast(109%);
+  /* values calculated from https://codepen.io/sosuke/pen/Pjoqqp */
+}
+
+#picto1{
+  margin-top: -1em;
+  margin-bottom: 6em;
+}
+#picto2,
+#picto3,
+#picto4,
+#picto5,
+#picto6{
+  margin-bottom: 6em;
+}
+
+
 #pictoVis3 {
   margin-bottom: 5em;
 }

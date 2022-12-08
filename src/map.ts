@@ -40,11 +40,11 @@ export function mapChart() {
       d3.select("#labelText").remove();
       d3.select("#textBG").remove();
 
-      if (name == "rate") {
-        const length = Math.max(
-          (d.target.__data__.properties.name + " County").length,
-          ("percentage" + d.target.__data__.properties.rate).length
-        );
+      if (name == "density") {
+        const length = ("population Density" + format(
+          parseInt(d.target.__data__.properties.Pop2010) /
+            d.target.__data__.properties.census_area
+        ) + " people per sq miles").length
         svg
           .append("rect")
           .attr("id", "textBG")
@@ -53,7 +53,7 @@ export function mapChart() {
           .attr("stroke-width", "1")
           .attr("x", d.layerX - 55)
           .attr("y", d.offsetY - 20)
-          .attr("width", length * 10)
+          .attr("width", length * 7)
           .attr("height", 50);
 
         svg
@@ -71,11 +71,14 @@ export function mapChart() {
           .attr("font-size", 11)
           .attr("x", d.layerX - 45)
           .attr("y", d.offsetY + 20)
-          .text("Insecurity Rate: ")
+          .text("Population Density: ")
           .append("tspan")
           .attr("fill", "#7d312c")
-          .text(d.target.__data__.properties.rate);
-      } else if (name == "density") {
+          .text(format(
+            parseInt(d.target.__data__.properties.Pop2010) /
+              d.target.__data__.properties.census_area
+          ) + " people per sq miles");
+      } else if (name == "rate") {
         const length = "Percentage of low income individuals without vehicles"
           .length;
         svg
@@ -105,7 +108,7 @@ export function mapChart() {
           .append("tspan")
           .attr("font-size", 11)
           .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
-          .attr("y", d.offsetY + 20)
+          .attr("y", d.offsetY + 40)
           .attr("fill", "white")
           .text("Population Density: ")
           .append("tspan")
@@ -120,7 +123,7 @@ export function mapChart() {
           .attr("font-size", 11)
           .attr("fill", "white")
           .attr("x", d.offsetX > 800 ? d.offsetX - 7 * length : d.offsetX + 35)
-          .attr("y", d.offsetY + 40)
+          .attr("y", d.offsetY + 20)
           .text("Insecurity Rate: ")
           .append("tspan")
           .attr("fill", "#7d312c")

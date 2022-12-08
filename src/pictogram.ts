@@ -2,12 +2,12 @@ import * as d3 from "d3";
 
 export function pictChart(col: string) {
   const width = 800;
-  const height = col == "HESSH3" ? 250 : col == "HESS5" ? 300 : 400;
+  const height = 500;
 
   const svg = d3.create("svg").attr("width", width).attr("height", height);
 
   d3.csv("/src/howItFeelsActual.csv").then((d) => {
-    let rows = 0;
+    let rows = 10;
     const cols = 10;
     let data = [0];
     let numShade = 0;
@@ -15,11 +15,6 @@ export function pictChart(col: string) {
     let numTotal = 0;
     d.forEach((d) => {
       if (d.col == col) {
-        if (d.numDisplay !== undefined && parseInt(d.numDisplay) % 10 > 0) {
-          rows = Math.floor(parseInt(d.numDisplay) / 10) + 1;
-        } else {
-          rows = d.numDisplay ? parseInt(d.numDisplay) / 10 : 0;
-        }
         data = d.numDisplay ? d3.range(parseInt(d.numDisplay)) : [];
         numShade = d.NumShade ? parseInt(d.NumShade) : 0;
         numAffected = d.numAffected ? parseInt(d.numAffected) : 0;
@@ -27,19 +22,16 @@ export function pictChart(col: string) {
       }
     });
     const yDomain = d3.range(rows).map((d) => d.toString());
-    let heightA = 700;
-    if (rows == 4) {
-      heightA = 400;
-    } else if (rows == 3) {
-      heightA = 300;
-    }
-    const yScale = d3.scaleBand().range([0, heightA]).domain(yDomain);
+    let heightA = 900;
+
+    const yScale = d3.scaleBand().range([100, heightA]).domain(yDomain);
     const xScale = d3
       .scaleBand()
-      .range([0, 450])
+      .range([0, 800])
       .domain(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
     const elem = svg.append("g").attr("transform", "translate(10,10)");
 
+    //creating the main graph
     elem
       .selectAll("image")
       .data(data)
@@ -48,8 +40,8 @@ export function pictChart(col: string) {
       .attr(
         "xlink:href",
         "/src/person.png"
-      ) /* image source = https://www.freeiconspng.com/img/1676 */
-      .attr("transform", "scale(0.5)")
+      ) /* image source = shorturl.at/vxFST*/
+      .attr("transform", "scale(0.4)")
       .attr("x", (d): any => {
         return xScale((d % cols).toString());
       })
@@ -63,39 +55,43 @@ export function pictChart(col: string) {
           return "notAffected";
         }
       });
-
+    
+    //legend Not
     elem
       .append("svg:image")
       .attr("id", "scaleImage")
       .attr("xlink:href", "/src/person.png")
-      .attr("transform", "scale(0.5)")
-      .attr("x", 600)
+      .attr("transform", "scale(0.3)")
+      .attr("x", 10)
       .attr("y", () => {
-        if (rows == 4) {
-          return 200;
-        } else if (rows == 3) {
-          return 160;
-        } else {
-          return 250;
-        }
-      });
-
+          return 1420;
+      })
+      .attr('class',"notAffected");
+    //legend affected
     elem
       .append("svg:image")
       .attr("id", "scaleImage")
       .attr("xlink:href", "/src/person.png")
-      .attr("transform", "scale(0.5)")
+      .attr("transform", "scale(0.3)")
       .attr("class", "affectedPerson")
-      .attr("x", 600)
+      .attr("x", 10)
       .attr("y", () => {
-        if (rows == 4) {
-          return 100;
-        } else if (rows == 3) {
-          return 60;
-        } else {
-          return 150;
-        }
+          return 1300;
       });
+    
+    //label text
+    svg
+      .append("text")
+      .attr("font-size", 14)
+      .attr("fill", "white")
+      .attr("font-weight", 550)
+      .attr("text-anchor", "front")
+      .attr("id", "scaleImageLabel")
+      .attr("x", 50)
+      .attr("y", () => {
+          return 460;
+      })
+      .text("= 1% of surveyed individuals statement is not applicable to");
 
     svg
       .append("text")
@@ -104,36 +100,11 @@ export function pictChart(col: string) {
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
       .attr("id", "scaleImageLabel")
-      .attr("x", 330)
+      .attr("x", 50)
       .attr("y", () => {
-        if (rows == 4) {
-          return 135;
-        } else if (rows == 3) {
-          return 115;
-        } else {
-          return 160;
-        }
+          return 420;
       })
-      .text("= 100 individuals statement is not applicable to");
-
-    svg
-      .append("text")
-      .attr("font-size", 14)
-      .attr("fill", "white")
-      .attr("font-weight", 550)
-      .attr("text-anchor", "front")
-      .attr("id", "scaleImageLabel")
-      .attr("x", 330)
-      .attr("y", () => {
-        if (rows == 4) {
-          return 85;
-        } else if (rows == 3) {
-          return 65;
-        } else {
-          return 110;
-        }
-      })
-      .text("= 100 individuals statement applies to");
+      .text("= 1% of surveyed individuals statement applies to");
 
     svg
       .append("text")
@@ -142,20 +113,10 @@ export function pictChart(col: string) {
       .attr("font-weight", 700)
       .attr("text-anchor", "front")
       .attr("x", () => {
-        if (rows == 3) {
-          return 120;
-        } else {
-          return 100;
-        }
+          return 10;
       })
       .attr("y", () => {
-        if (rows == 4) {
-          return 275;
-        } else if (rows == 3) {
-          return 215;
-        } else {
-          return 390;
-        }
+          return 30;
       })
       .text(numAffected) /* "applied to them out of " + numTotal + " asked"*/
       .append("tspan")
@@ -163,15 +124,10 @@ export function pictChart(col: string) {
       .attr("fill", "white")
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
-      .attr("x", 165)
+      .attr("x", 75)
       .attr("y", () => {
-        if (rows == 4) {
-          return 275;
-        } else if (rows == 3) {
-          return 215;
-        } else {
-          return 390;
-        }
+          return 30;
+        
       })
       .text(" individuals said ")
       .append("tspan")
@@ -179,15 +135,9 @@ export function pictChart(col: string) {
       .attr("fill", "red")
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
-      .attr("x", 280)
+      .attr("x", 190)
       .attr("y", () => {
-        if (rows == 4) {
-          return 275;
-        } else if (rows == 3) {
-          return 215;
-        } else {
-          return 390;
-        }
+          return 30;
       })
       .text("this statement applied to them")
       .append("tspan")
@@ -195,15 +145,9 @@ export function pictChart(col: string) {
       .attr("fill", "white")
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
-      .attr("x", 493)
+      .attr("x", 405)
       .attr("y", () => {
-        if (rows == 4) {
-          return 275;
-        } else if (rows == 3) {
-          return 215;
-        } else {
-          return 390;
-        }
+          return 30;
       })
       .text("out of " + numTotal + " asked");
   });
