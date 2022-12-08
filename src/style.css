@@ -7,15 +7,17 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Tahoma", sans-serif;
   background: black;
   color: white;
   margin-left: 10em;
+  margin-right: 10em;
   overflow-x: hidden;
 }
 
 html {
   margin-left: 8em;
+  margin-right: 8em;
 }
 
 div {
@@ -46,9 +48,8 @@ div {
 }
 
 #what {
-  width: 50em;
   line-height: 1.5em;
-  margin-bottom: 20em;
+  margin-bottom: 10em;
 }
 
 #whatTitle {
@@ -70,9 +71,8 @@ div {
 }
 
 #who {
-  width: 50em;
   line-height: 1.5em;
-  margin-bottom: 20em;
+  margin-bottom: 10em;
 }
 
 #whoTitle {
@@ -83,7 +83,7 @@ div {
 #why {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20em;
+  margin-bottom: 10em;
 }
 
 #whyTitle {
@@ -91,6 +91,7 @@ div {
   font-size: 3em;
   line-height: 50px;
 }
+
 
 #whyText {
   width: 40%;
@@ -100,6 +101,12 @@ div {
 #whyVis {
   margin-top: 20px;
   margin-left: 70px;
+}
+
+#howTitle {
+  padding-top: 5em;
+  font-size: 3em;
+  line-height: 50px;
 }
 
 #mapSelection {
@@ -125,7 +132,7 @@ div {
 }
 
 #factors {
-  margin-bottom: 20em;
+  margin-bottom: 10em;
 }
 
 #factors1,
@@ -171,4 +178,8 @@ div {
 #noOneText {
   font-size: 2.5em;
   width: 70%;
+}
+
+#chosen {
+  color: #f7413e;
 }

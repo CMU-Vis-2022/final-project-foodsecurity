@@ -103,7 +103,7 @@
         Furthermore, food insecurity is not a one-dimensional issue. It is not
         simply an issue of food access. In telling the convoluted narrative of
         food insecurity we must examine race, health, poverty, education, and
-        more, <span style="font-weight: bold">Let's delve deeper</span>
+        more, <span style="font-weight: bold">Let's delve deeper...</span>
       </p>
       <br />
     </div>
@@ -114,10 +114,6 @@
           <span style="color: #f7413e">Who is Affected?</span>
         </h2>
         <div id="mapVis"></div>
-        <div id="miniMaps">
-          <div id="miniMap1"></div>
-          <div id="miniMap2"></div>
-        </div>
         <p>
           In the United States alone, there are
           <span style="font-weight: bold">34 million individuals</span>,
@@ -125,22 +121,22 @@
           <span style="font-weight: bold">9 million children,</span> who are
           food insecure.
         </p>
-        <br />
         <p>
-          From <span style="font-weight: bold">urban cities</span>to
+          From <span style="font-weight: bold">urban cities</span> to
           <span style="font-weight: bold">rural countryside</span>, counties all
           over America experience food insecurity.
         </p>
         <p>
           On the map, we can see that there is a level of insecurity in
-          <span style="font-weight: bold">every</span> county. Also, many
+          <span style="font-weight: bold">every</span> county. Also, many 
           counties have individuals living
-          <span style="font-weight: bold">more than 10 miles</span>from a
+          <span style="font-weight: bold">more than 10 miles</span> from a
           grocery store. For perspective,
           <span style="font-weight: bold"
             >if a grocery store were 10 miles away, this would require walking
             for 3 hours continuously.</span
           >
+          We define this as low access to a grocery store.
         </p>
         <p>
           Within America, this is a prevalent issue among many communities and
@@ -152,8 +148,20 @@
           <span style="font-weight: bold">rural areas</span>, and
           <span style="font-weight: bold">college students</span>.
         </p>
+        <br/>
+        <br/>
+        <div id="miniMaps">
+          <div id="miniMap1"></div>
+          <div id="miniMap2"></div>
+        </div>
         <p>
-          *We considered transportation, such as having a car, as an exploratory
+          When comparing population density with the distribution of low access 
+          to a grocery store, we can see that areas with lower population density
+          have greater low access to a grocery store and higher population density
+          have lower low access to a grocery store. 
+        </p>
+        <p>
+          We considered transportation, such as having a car, as an exploratory
           predictor variable for food insecurity. From the data, we observed
           that for every county, there is less than 1% of indivudals who do not
           have a car. Comparatively to countries like China, the United States
@@ -163,6 +171,15 @@
           live the US must have a car to get around. Public transportation is
           also not very developed outside urban areas, thus cars is a must to
           live in the US.
+        </p>
+        <p>
+          When you are an individual who lives greater than 10 miles away from a grocery 
+          store, it equates up to 15 to 30 minute drive to the store. Individual takes around 
+          45 mins to 1 hour to shop, resulting in a total of almost 
+          <span style="font-weight: bold"> 2 hours to get groceries.</span> Increased travel
+          time can reduce the inclination to make the trip. Depending on work hours, some individuals
+          are more likely to shop at fast food or convenience stores given how their hours fit
+          around regular grocery stores hours. 
         </p>
       </div>
     </div>
@@ -211,7 +228,9 @@
       <div id="whyVis"></div>
     </div>
     <div id="factors">
-      <h2>How likely is someone to be food insecure?</h2>
+      <h2 id="howTitle">
+        <span style="color: #f7413e">How likely is someone to be food insecure?</span>
+      </h2>
       <h3>
         Guess the top factors that contribute to a state of food insecurity for
         an individual.

@@ -84,7 +84,7 @@ button.on("click", async () => {
   const entered4 = (<HTMLInputElement>document.getElementById("factors4"))
     ?.value;
   const values = [entered1, entered2, entered3, entered4];
-  let displayText = "You said: ";
+  let displayText = "<span style = 'color: #f7413e'> You said: </span>";
   for (let i = 0; i < 4; i++) {
     if (values[i] !== "") {
       displayText += values[i] + ", ";
@@ -123,9 +123,9 @@ button.on("click", async () => {
 
   const narrative = document.getElementById("narrative");
   if (narrative !== null)
-    narrative.innerHTML = `There are many systematic factors that influence why some groups experience food insecurity while others do not.<br><br>
-       <span style = 'font-size: 1.5em; font-weight: 500;'> Let's explore these systematic factors.</span><br><br><br>
-       <span style = 'font-size: 1.5em; font-weight: 500;'> Race</span><br>
+    narrative.innerHTML = `</br> There are many systematic factors that influence why some groups experience food insecurity while others do not.<br><br></br>
+       <span style = 'font-size: 1.5 em; font-weight: bold;'> Let's explore these systematic factors.</span><br><br><br>
+       <span style = 'font-size: 3 em; font-weight: bold;'> Race</span><br>
        In a study published by the NIH, 
        <span style="font-weight: bold"> people of color </span> tend to face higher levels of food insecurity than white peers, 
        with <span style="font-weight: bold"> Hispanics </span>and 

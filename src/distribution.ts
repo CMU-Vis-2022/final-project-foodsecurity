@@ -14,7 +14,7 @@ export function distChart() {
   const xAxis = d3.axisBottom(xScale);
   let yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
 
-  const colors = ["#648FFF", "#785EF0", "#DC267F", "#FE6100", "#FFB000"];
+  const colors = ["#EB736B"];
 
   const svg = d3.create("svg").attr("width", width).attr("height", height);
 
@@ -86,7 +86,7 @@ export function distChart() {
         .attr("width", (x: any) => {
           return xScale(parseFloat(x.proportion)) - xScale(0);
         })
-        .style("fill", colors[2]);
+        .style("fill", colors[0]);
 
       texts
         .selectAll("texts")
