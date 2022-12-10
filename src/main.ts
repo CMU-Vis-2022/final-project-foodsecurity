@@ -124,7 +124,7 @@ button.on("click", async () => {
 
   const narrative = document.getElementById("narrative");
   if (narrative !== null)
-    narrative.innerHTML = `</br> There are many systematic factors that influence why some groups experience food insecurity while others do not.<br><br></br>
+    narrative.innerHTML = `</br> There are many systematic factors that correlates with why some groups experience food insecurity while others do not.<br><br></br>
        <span style = 'font-size: 1.5 em; font-weight: bold;'> Let's explore these systematic factors.</span><br><br><br>
        <span style = 'font-size: 3 em; font-weight: bold;'> Race</span><br>
        In a study published by the NIH, 
@@ -195,7 +195,7 @@ button.on("click", async () => {
     
     For the Northeast, food insecurity rates tend to remain constant for all races. <br><br><br> 
     
-    Besides from race, another factor that influences food insecurity is an individual's income`;
+    Besides from race, another factor that correlates with food insecurity is an individual's income`;
   }
 
   locationSelection.on("change", () => {
@@ -258,53 +258,13 @@ button.on("click", async () => {
     tends to have lower proportion of low income individuals than the other regions and thus have counties with a lower food insecurity rate. 
     This could be due to the Northeast be composed of less counties than the other regions. <br><br>
 
-    Aside from race and income there's other factors that are less commonly thought of as factors that could influence food insecurity. 
+    Aside from race and income there's other factors that are less commonly thought of as factors that also correlate with food insecurity. 
     We'll explore some of these now. <br><br>
-
-    Interestingly, an individual's marital status also affects their food security status.
     `;
   }
 
   d3.select(incomeScatter).append("br");
   incomeScatter?.appendChild(incomeScatterVis.element);
-
-  const slide3 = d3
-    .select(marital)
-    .append("input")
-    .attr("type", "range")
-    .attr("id", "maritalVisSlide")
-    .attr("style", "width:200px")
-    .attr("min", 0)
-    .attr("max", 100)
-    .attr("step", 50)
-    .attr("value", 0);
-  d3.select(marital).append("br");
-  const maritalVis = distChart();
-  slide3.on("change", (event) => {
-    maritalVis.update(
-      "/src/maritalAndSecurity.csv",
-      years[event.target.value / 50].toString(),
-      "marital"
-    );
-  });
-  maritalVis.update("/src/maritalAndSecurity.csv", "2019", "marital");
-  marital?.appendChild(maritalVis.element);
-
-  const maritalExplain = document.getElementById("maritalExplain");
-  if (maritalExplain !== null) {
-    maritalExplain.innerHTML = `
-    We see that individuals that are married with their spouses present are the most food secure, and individuals that do not have a partner
-    present currently are more food insecure. Interestingly, individuals that are widowed, are less food insecure than other individuals
-    that do not currently have a partner present. Also, individuals that are separated face the highest level of food insecurity. 
-    <br><br>
-    (Idk if we should include this line or if we should rephrase it:)
-    These proportions
-    could possibly be attributed to aspects of the relationships that they're in. (It just seems like an interesting pattern that we might want to 
-    elaborate on?)
-    <br><br>
-    Another factor that influences food security rates is an individual's education. 
-    `;
-  }
 
   const slide2 = d3
     .select(edu)
