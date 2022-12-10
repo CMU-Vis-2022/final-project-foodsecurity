@@ -35,7 +35,7 @@ export function scatterChart() {
 
     svg
       .append("text")
-      .attr("font-size", 12)
+      .attr("font-size", 14)
       .attr("fill", "white")
       .attr("font-weight", 500)
       .attr("fill-opacity", 1)
@@ -49,7 +49,6 @@ export function scatterChart() {
       .append("text")
       .attr("font-size", 14)
       .attr("fill", "white")
-      .attr("font-weight", 550)
       .attr("fill-opacity", 1)
       .attr("text-anchor", "front")
       .attr("id", "displayYlabel")
@@ -57,6 +56,18 @@ export function scatterChart() {
       .attr("y", height / 2)
       .attr("transform", `translate(${-margin.left},${height / 2}) rotate(-90)`)
       .text("Food Insecurity Rate");
+
+    svg
+      .append("text")
+      .attr("font-size", 14)
+      .attr("fill", "white")
+      .attr("font-weight", 550)
+      .attr("fill-opacity", 1)
+      .attr("text-anchor", "front")
+      .attr("id", "raceScatterTitle")
+      .attr("x", 200)
+      .attr("y", 10)
+      .text("Food Insecurity Rates vs Percentage of County Population of a given race");
 
     function displayInfo(d: any) {
       let displayNum = 0;
@@ -187,7 +198,7 @@ export function scatterChart() {
         [width, height],
       ])
       .scaleExtent([1, 8])
-      .translateExtent([[80,80],[width,height]])
+      .translateExtent([[50,50],[width,height]])
       .on("zoom", zoomed);
 
     function zoomed({ transform }: any) {

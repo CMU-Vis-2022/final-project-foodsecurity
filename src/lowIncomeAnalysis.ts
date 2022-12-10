@@ -31,9 +31,8 @@ export function incomeScatterChart() {
 
   svg
     .append("text")
-    .attr("font-size", 12)
+    .attr("font-size", 14)
     .attr("fill", "white")
-    .attr("font-weight", 500)
     .attr("fill-opacity", 1)
     .attr("text-anchor", "front")
     .attr("id", "lowIncomedisplayXlabel")
@@ -45,7 +44,6 @@ export function incomeScatterChart() {
     .append("text")
     .attr("font-size", 14)
     .attr("fill", "white")
-    .attr("font-weight", 550)
     .attr("fill-opacity", 1)
     .attr("text-anchor", "front")
     .attr("id", "displayYlabel")
@@ -53,6 +51,22 @@ export function incomeScatterChart() {
     .attr("y", height / 2)
     .attr("transform", `translate(${-margin.left},${height / 2}) rotate(-90)`)
     .text("Food Insecurity Rate");
+
+  svg
+    .append("text")
+    .attr("font-size", 14)
+    .attr("fill", "white")
+    .attr("font-weight", 550)
+    .attr("fill-opacity", 1)
+    .attr("text-anchor", "front")
+    .attr("id", "incomeScatterTitle")
+    .attr("x", 200)
+    .attr("y", 10)
+    .text("Food Insecurity Rates vs Percentage of County Population")
+    .append('tspan')
+    .attr('x',200)
+    .attr('y',25)
+    .text("that is Low Income By Region");
 
   function update(region: string) {
     d3.selectAll("#IncomeDisplayInfoText").remove();

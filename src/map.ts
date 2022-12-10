@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 
+
 export function mapChart() {
   const width = 1300;
   const height = 600;
@@ -8,11 +9,43 @@ export function mapChart() {
     .scaleSequential()
     .interpolator(d3.interpolateReds)
     .domain([0, 35]);
-  const svg = d3
+/*
+  0 = FFF5F0
+  5 = 	FED9C9
+  10 = 	FCAF94
+  15 = 	FB8161
+  20 = 	F34F39
+  25 = 	D52422
+  30 = 	A81016
+  35 = 	67000D*/
+    const svg = d3
     .create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox", [0, 0, width, height]);
+
+    const colorSize = 45;
+    // Add legend
+    const colorRange = ["#FFF5F0", "#FED9C9", "#FCAF94", "#FB8161", "#F34F39", "#D52422", "#A81016", "#67000D"];
+    for(let i = 0; i < colorRange.length; i++){
+        svg
+        .append("rect")
+        .attr("class", "legend")
+        .attr("transform", `translate(${width - width/2.5 + colorSize*i}, 12)`)
+        .attr("fill", colorRange[i])
+        .attr("opacity", 0.7)
+        .attr("width", colorSize)
+        .attr("height", height/25);
+    }
+    svg.append("text").text("0%-5%").attr("transform", `translate(${width - width/2.5}, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("5%-10%").attr("transform", `translate(${width - width/2.5 + colorSize*1 }, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("10%-15%").attr("transform", `translate(${width - width/2.5 + colorSize*2 }, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("15%-20%").attr("transform", `translate(${width - width/2.5 + colorSize*3}, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("20%-25%").attr("transform", `translate(${width - width/2.5 + colorSize*4}, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("25%-30%").attr("transform", `translate(${width - width/2.5 + colorSize*5 }, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("30%-35%").attr("transform", `translate(${width - width/2.5 + colorSize*6 }, 45)`).attr("font-size", 8).attr('fill','white');
+    svg.append("text").text("35%+").attr("transform", `translate(${width - width/2.5 + colorSize*7 }, 45)`).attr("font-size", 8).attr('fill','white');
+
 
   function update(filePath: string, name: string) {
     d3.select("#mapTitle").remove();
@@ -23,7 +56,7 @@ export function mapChart() {
       .attr("font-weight", 550)
       .attr("text-anchor", "front")
       .attr("id", "mapTitle")
-      .attr("x", name === "rate" ? 200 : 150)
+      .attr("x", name === "rate" ? 150 : name == "density"? 150 : 50)
       .attr("y", 30)
       .text(
         name === "rate"
