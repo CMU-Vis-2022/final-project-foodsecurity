@@ -55,7 +55,6 @@ cholesterol.appendChild(cholChart.element);
 
 const distr = document.querySelector("#distVis");
 const edu = document.querySelector("#eduVis");
-const marital = document.querySelector("#maritalVis");
 const income = document.querySelector("#incomeVis");
 const sector = document.querySelector("#sectorVis");
 const picto2 = document.querySelector("#pictoVis2");
