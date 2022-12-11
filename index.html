@@ -113,8 +113,19 @@
         <h2 id="whoTitle">
           <span style="color: #f7413e">Who is Affected?</span>
         </h2>
-        <div id="mapVis"></div>
-        <p>
+        <div id="mapVis" 
+        alt="Using data from Feeding America and USDA, These choropleth 
+        map visualizations showcase three maps of the United States by county. 
+        Counties are smaller than states and typically comprise of several 
+        cities. The first map, as seen in Figure 1, indicates the rate of 
+        food insecurity within the county. The insecurity rate is determined 
+        by the number of individuals experiencing food insecurity divided by 
+        the total number of individuals within the county. The darker red 
+        the county is, the higher the rate of food insecurity. The purpose 
+        of this visualization is to indicate how widespread food insecurity
+        is across America. Across all counties, food insecurity is prevalent 
+        which further validates food insecurity as an issue."></div>
+        <p>ß
           In the United States alone, there are
           <span style="font-weight: bold">34 million individuals</span>,
           including
@@ -150,15 +161,22 @@
         </p>
         <br/>
         <br/>
-        <div id="miniMaps">
+        <div id="miniMaps"
+          alt="For the second map, we provided the population densities of each county.
+           For the third map, we provided the proportion of those 
+           living more than 10 miles from a grocery store, which can be classified as 
+           those living in a food desert. The takeaway from these supplemental maps 
+           is to demonstrate the widespread trend that counties with lower population 
+           densities have higher rates of food insecurity and are more likely to live in food deserts.
+          ">
           <div id="miniMap1"></div>
           <div id="miniMap2"></div>
         </div>
         <p>
           When comparing population density with the distribution of low access 
           to a grocery store, we can see that areas with lower population density
-          have greater low access to a grocery store and higher population density
-          have lower low access to a grocery store. 
+          have higher proportions of those with low access, while areas with higher
+          population density have lower proportions of those with low access.
         </p>
         <p>
           We considered transportation, such as having a car, as an exploratory
@@ -169,7 +187,7 @@
           we notice that majority of the US is not densely populated, with the
           exceptions of urban areas, which suggests that majority of those who
           live the US must have a car to get around. Public transportation is
-          also not very developed outside urban areas, thus cars is a must to
+          also not very developed outside urban areas, thus cars are a must to
           live in the US.
         </p>
         <p>
@@ -205,11 +223,9 @@
         </p>
         <p>
           Triglycerides are a type of fat within our blood. Having high levels
-          of triglycerides can increase the risk of heart disease. Triglycerides
-          are developed within our bodies and we can also get it from the foods
-          we consume. When we consume food that have high calories, fats and
-          sugars, the extra calories and sugar that are not used are stored as
-          triglycerides in fat cells in our bodies.
+          of triglycerides can increase the risk of heart disease. When we consume 
+          food that have high calories, fats, and sugars, the extra calories and sugar 
+          that are not used are stored as triglycerides in fat cells in our bodies.
         </p>
         <p>
           From the 2017-2020 NHANES Survey, we can see that those who are
@@ -225,14 +241,21 @@
           afford heavily processed food in high fats and sugar.
         </p>
       </div>
-      <div id="whyVis"></div>
+      <div id="whyVis" 
+      alt="Using data from the CDC, we created a bar graph that measured individuals 
+      with high tiglyceride levels by their income to poverty guideline ratio. Essentially the 
+      further from poverty, the more likely the lower the high triglyceride levels.
+       More importantly, the long-lasting effects of high levels could lead to obesity, diabetes, 
+       and cardiovascular disease. While food insecurity may be perceived as a temporary issue, 
+       its long-lasting effects can lead to poor long-term health and shorter life spans.">
+      </div>
     </div>
     <div id="factors">
       <h2 id="howTitle">
         <span style="color: #f7413e">How likely is someone to be food insecure?</span>
       </h2>
       <h3>
-        Guess the top factors that contribute to a state of food insecurity for
+        Guess the factors that contribute to a state of food insecurity for
         an individual.
       </h3>
       <ul>
@@ -245,23 +268,41 @@
       <h2 id="chosen"></h2>
       <!--Is empty now but value gets changed upon buttonclick-->
       <p id="narrative"></p>
-      <div id="distVis"></div>
+      <div id="distVis" alt="Bar chart distribution of percentage of individuals in current population survey that are food insecure by race. A slider is provided to see change over time."></div>
       <p id="distExplain"></p>
-      <div id="racialScatter"></div>
+      <div id="racialScatter" 
+      alt="Correlation with Race using a scatterplot: To examine the correlation of race and f
+      ood insecurity we compared the proportion of a given race within a population 
+      with the population’s food insecurity rate. By comparing different groups, the 
+      scatterplots indicate trends that showcase that populations with higher proportions 
+      of Whites and Asians have decreasing food insecurity rates and for all other races
+       such as Black, Hispanic, and Native American, as the proportion of the population
+        increased, the food insecurity rates decreased.  This explores how race correlates to food insecurity."></div>
       <p id="raceExplain"></p>
-      <div id="incomeVis"></div>
+      <div id="incomeVis" alt="Bar chart distribution of percentage of individuals in current population survey that are food insecure by race. A slider is provided to see change over time."></div>
       <p id="incomeExplain"></p>
       <br />
-      <div id="incomeScatter"></div>
+      <div id="incomeScatter"
+      alt="Correlation with Income using a scatterplot: To examine the correlation of income and food insecurity
+       we compared the proportion of low-income individuals within a region with the population's 
+       food insecurity rate. The reader can explore different region's food insecurity rates and see
+        the trends that as the proportion of low-income individuals decreases, the rate of food insecurity 
+        decreases. The scatterplot indicates the positive correlation between income and food insecurity."></div>
       <p id="incomeScatterExplain"></p>
       <br />
-      <div id="maritalVis"></div>
-      <p id="maritalExplain"></p>
-      <br />
-      <div id="eduVis"></div>
+      <div id="eduVis"
+      alt="Correlation with Education using a bar chart: To examine the correlation of education 
+      and food insecurity we compared the rate of food insecurity with the level 
+      of education. Starting from no high school diploma up until more than a bachelor's degree, 
+      there appears to be an inverse relationship between the two that as education increases, food 
+      insecurity decreases. A slider is provided to see change over time."></div>
       <p id="eduExplain"></p>
       <br />
-      <div id="sectorVis"></div>
+      <div id="sectorVis"
+      alt="Correlation with Occupation using a bar chart: To examine the correlation of occupation and 
+      food insecurity with the level of education, we had multiple occupation categories with their 
+      respective food insecurity rates. As the level of job tends to require higher education, receive salary
+       income rather than shift-based income, the food insecurity level decreases. A slider is provided to see change over time."></div>
       <p id="sectorExplain"></p>
     </div>
     <br />
@@ -274,65 +315,95 @@
           Your children go hungry or skip eating because you simply cannot afford
           enough food
         </h2>
-        <div id="pictoVis7"></div>
+        <div id="pictoVis7" alt="A pictogram is provided, demostrating the percentage of 
+        individuals that resonate with the given statement surrounding food insecurity. 
+        The pictogram comprises of hands holding an empty plate, and those that are red 
+        signify those that the statement applies to. This statement applies to 10% of surveryed individuals."></div>
       </div>
 
       <div id = "picto2">
         <h2>
           You stay hungry because you don't have the luxury to get more food
         </h2>
-        <div id="pictoVis4"></div>
+        <div id="pictoVis4" alt="A pictogram is provided, demostrating the percentage of 
+        individuals that resonate with the given statement surrounding food insecurity. 
+        The pictogram comprises of hands holding an empty plate, and those that are red 
+        signify those that the statement applies to. This statement applies to 30% of surveryed individuals."></div>
       </div>
 
       <div id = "picto3">
         <h2>You rely on community programs or food pantries to get food</h2>
-        <div id="pictoVis2"></div>
+        <div id="pictoVis2" alt="A pictogram is provided, demostrating the percentage of 
+        individuals that resonate with the given statement surrounding food insecurity. 
+        The pictogram comprises of hands holding an empty plate, and those that are red 
+        signify those that the statement applies to. This statement applies to 32% of surveryed individuals."></div>
       </div>
       <div id = "picto5">
         <h2>
           You cut the size of meals or skip eating entirely because there wasn't
           enough money
         </h2>
-        <div id="pictoVis5"></div>
+        <div id="pictoVis5" alt="A pictogram is provided, demostrating the percentage of 
+        individuals that resonate with the given statement surrounding food insecurity. 
+        The pictogram comprises of hands holding an empty plate, and those that are red 
+        signify those that the statement applies to. This statement applies to 52% of surveryed individuals."></div>
       </div>
       <div id = "picto4">
         <h2>
           You rely on low cost food because you don't have money to buy nutritious
           food that's more expensive
         </h2>
-        <div id="pictoVis6"></div>
+        <div id="pictoVis6" alt="A pictogram is provided, demostrating the percentage of 
+        individuals that resonate with the given statement surrounding food insecurity. 
+        The pictogram comprises of hands holding an empty plate, and those that are red 
+        signify those that the statement applies to. This statement applies to 67% of surveryed individuals."></div>
       </div>
       <div id = "picto6">
         <h2>
           You constantly worry about if food will run out before you're able to
           get enough money to buy more
         </h2>
-        <div id="pictoVis3"></div>
+        <div id="pictoVis3" alt="A pictogram is provided, demostrating the percentage of 
+        individuals that resonate with the given statement surrounding food insecurity. 
+        The pictogram comprises of hands holding an empty plate, and those that are red 
+        signify those that the statement applies to. This statement applies to 93% of surveryed individuals."></div>
       </div>
+      
     </div>
+    <h4>The statements above demonstrate how real food insecurity is. The anxiety and fear 
+      surrounding a universal need like eating food paints the situation at hand. 
+      Quantifying the number of individuals who feel this way everyday makes a call 
+      to action increasingly necessary. As we’ve explored what food insecurity is, its
+       long-lasting effects, and contribute factors, there is still much more to be done.
+        The first step of awareness has been made, but change is required.</h4>
     <br /><br />
     <h2 id="noOneText">
       No one should have to worry about access to sufficient nutritious food.
     </h2>
     <div id="solutions">
-      <h1><span style="color: #ff0000">You can help.</span></h1>
-      <p>
-        Vote on policies. <br>
+      <h1>You can help.</span></h1>
+      <h3> <span style="color: #f7413e">Vote on policies.</span></h3>
+        <p>
         When legislation surrounding support for those experiencing food insecurity arises, vote to support it. 
         Ensure that schools provide proper balanced meals to students
       </p><br>
+      <h3> <span style="color: #f7413e">Donate food.</span></h3>
       <p>
-        Donate food.<br>
         Donate food to your local food bank or food drive. Help out little by little.
       </p><br>
+      <h3> <span style="color: #f7413e">Volunteer at your local food bank.</span></h3>
       <p>
-        Volunteer at your local food bank.<br>
         Help out at your local food bank by sorting food, delivering food, and advocating for the food bank.
       </p><br>
+      <h3> <span style="color: #f7413e">Organize a food drive.</span></h3>
       <p>
-        Organize a food drive.<br>
         Gather supplies and non-perishable foods from your community. Connect with grocery stores and restaurants to donate their extra food. 
       </p>
+      <a href="https://foodfinder.us/" alt="link to FoodFinder website."><h3> <span style="color: #f7413e">FoodFinder</span> </h3></a>
+      <p>Whether you are someone in need or want to help, use FoodFinder to locate food pantrys in your area. FoodFinder shows you when and where to get free food assistance in your area, as well as places to donate to.</p>
+
+    
+      
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br />
     <script type="module" src="/src/main.ts"></script>

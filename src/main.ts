@@ -176,7 +176,7 @@ button.on("click", async () => {
   const raceExplain = document.getElementById("raceExplain");
   if (raceExplain !== null) {
     raceExplain.innerHTML = `We see that when considering all regions at once, as white individuals make up a larger proportion of a county's population, 
-    the food insecurity rate tends to decrease for the most part. However, when we consider other races, we see that as African Americans make up a larger
+    the food insecurity rate tends to decrease typically. However, when we consider other races, we see that as African Americans make up a larger
     proportion of a county's population, food insecurity rates of that county tend to go up. The same trend applies for Hispanics. Interestingly, the same
     trend does not seem to appear to hold when considering the proportion of Asians Individuals in a county. <br><br> 
     
@@ -189,12 +189,12 @@ button.on("click", async () => {
     However, as Black, Asian and Hispanics make up a greater proporiton of a county's population, food insecurity rates tend to maintain about the same.<br><br> 
     
     In the South, as the proportion of White and Asian indivudals in a county increase, food insecurity rates remain stable. As the proportion of Black 
-    individuals increase we can see a clear upward increase in food insecurity rates. For the proportion of Hispanics, for the most part it remains 
+    individuals increase we can see a clear upward increase in food insecurity rates. For the proportion of Hispanics, typically, it remains 
     constant however we see slightly higher insecurity rates for counties with a higher proportion of Hispanics. <br><br> 
     
     For the Northeast, food insecurity rates tend to remain constant for all races. <br><br><br> 
     
-    Besides from race, another factor that correlates with food insecurity is an individual's income`;
+    Besides from race, another factor that correlates with food insecurity is an individual's income.`;
   }
 
   locationSelection.on("change", () => {
