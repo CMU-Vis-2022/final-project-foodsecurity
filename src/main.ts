@@ -290,12 +290,19 @@ button.on("click", async () => {
   const eduExplain = document.getElementById("eduExplain");
   if (eduExplain !== null) {
     eduExplain.innerHTML = `
+<<<<<<< Updated upstream
       We see that there's differences in the percentage of people that are food insecure by their education level. As the level of education increases, 
       the graph demonstrates that as the percentage of individuals experiencing food insecurity decreases. Earning a bachelor's degree, 
       the next level of schooling higher than high school, sees a significant
+=======
+      We see that there's differences in the percentage of people that are food insecure by their education level.
+      As the level of education increases, the graph demostrates that as the percentage of individuals experiencing food insecurity
+      decreases. For example the difference in the proportion of food insecure individuals that earned a highschool degree and individuals that have some college
+      but no degree is not that great. However, earning a bachelor's degree, the next level of schooling higher than high school, sees a significant
+>>>>>>> Stashed changes
       drop in food insecurity rate. Going higher than bachelor's does not lead to a significant drop. 
       <br><br>
-      There's also discrepencies between sectors in the proportion of individuals that are food insecure. 
+      There's also discrepencies between occupation sectors in the proportion of individuals that are food insecure. 
     `;
   }
 
