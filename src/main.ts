@@ -194,7 +194,7 @@ button.on("click", async () => {
     
     For the Northeast, food insecurity rates tend to remain constant for all races. <br><br><br> 
     
-    Besides from race, another factor that correlates with food insecurity is an individual's income.`;
+    Beyond race, another factor that correlates with food insecurity is an individual's income.`;
   }
 
   locationSelection.on("change", () => {
@@ -290,12 +290,10 @@ button.on("click", async () => {
   const eduExplain = document.getElementById("eduExplain");
   if (eduExplain !== null) {
     eduExplain.innerHTML = `
-      We see that there's differences in the percentage of people that are food insecure by their education level. Interestingly, significant drops 
-      in percentages occur only at the next degree earned for each education level (this probably could be better phrased idk),
-      for example the difference in the proportion of food insecure individuals that earned a highschool degree and individuals that have some college
-      but no degree is not that great. However, earning a bachelor's degree, the next level of schooling higher than high school, sees a significant
+      We see that there's differences in the percentage of people that are food insecure by their education level. As the level of education increases, 
+      the graph demonstrates that as the percentage of individuals experiencing food insecurity decreases. Earning a bachelor's degree, 
+      the next level of schooling higher than high school, sees a significant
       drop in food insecurity rate. Going higher than bachelor's does not lead to a significant drop. 
-
       <br><br>
       There's also discrepencies between sectors in the proportion of individuals that are food insecure. 
     `;
