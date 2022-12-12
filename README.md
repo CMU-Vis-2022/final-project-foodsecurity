@@ -6,8 +6,15 @@
 The universal and basic need for food is not always a reality for some individuals and communities. Food insecurity stems from a lack of food availability, limited food access, and irresponsible food utilization. Food access refers to having available nutritious and affordable food. When there is a lack of food access, the state of food insecurity rises. Nutrition and affordability are the two major components of food accessibility. Even if food is affordable, it may not be nutritious enough to ensure a balanced diet. For example, food deserts occur when those in low-income and urban areas are further than 1 mile from a grocery store. While fast-food and convenience stores may be available and affordable, they lack fresh produce, are highly processed, and often contain too much sodium or sugar to be a sustainable food source. On the other hand, even if within proximity to a grocery store or market, the prices could be too high for an individual to purchase enough food. Within America, this is a prevalent issue among many households as it affects millions. The motivation for our engaging interactive article is to build a narrative that raises awareness and educates others on the harsh realities of food insecurity, its long-lasting effects, and its contributing factors. This is a widespread issue, with many Americans identifying with statements that surround food insecurity. 
 
 ## Summary Images
-![Pitch](summaryImg/pitch.png)
-![Title](summaryImg/title.png)
+![Pitch](summaryImgs/pitch.png)
+![Title](summaryImgs/title.png)
+![What](summaryImgs/what.png)
+![Where](summaryImgs/where.png)
+![Why](summaryImgs/why.png)
+![How](summaryImgs/how.png)
+![Race](summaryImgs/race.png)
+![Pictograms](summaryImgs/pictograms.png)
+![Help](summaryImgs/help.png)
 
 ## Link to Paper
 
