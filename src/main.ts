@@ -124,8 +124,8 @@ button.on("click", async () => {
   const narrative = document.getElementById("narrative");
   if (narrative !== null)
     narrative.innerHTML = `</br> There are many systematic factors that correlates with why some groups experience food insecurity while others do not.<br><br></br>
-       <span style = 'font-size: 1.5 em; font-weight: bold;'> Let's explore these systematic factors.</span><br><br><br>
-       <span style = 'font-size: 3 em; font-weight: bold;'> Race</span><br>
+       <span style = 'font-size: 1.5em; font-weight: bold;'> Let's explore these systematic factors.</span><br><br><br><br><br><br>
+       <span style = 'font-size: 1.5em; font-weight: bold; color: #F7413e;'> Race</span><br><br>
        In a study published by the NIH, 
        <span style="font-weight: bold"> people of color </span> tend to face higher levels of food insecurity than white peers, 
        with <span style="font-weight: bold"> Hispanics </span>and 
@@ -194,7 +194,8 @@ button.on("click", async () => {
     
     For the Northeast, food insecurity rates tend to remain constant for all races. <br><br><br> 
     
-    Beyond race, another factor that correlates with food insecurity is an individual's income.`;
+    Beyond race, another factor that correlates with food insecurity is an individual's income. <br><br><br><br><br><br>
+    <span style = 'font-size: 1.5em; font-weight: bold; color: #F7413e;'> Income</span><br>`;
   }
 
   locationSelection.on("change", () => {
@@ -258,7 +259,7 @@ button.on("click", async () => {
     This could be due to the Northeast be composed of less counties than the other regions. <br><br>
 
     Aside from race and income there's other factors that are less commonly thought of as factors that also correlate with food insecurity. 
-    We'll explore some of these now. <br><br>
+    We'll explore some of these now. <br><br><br><br><br><br> <span style = 'font-size: 1.5em; font-weight: bold; color: #F7413e;'>Education</span>
     `;
   }
 
@@ -290,19 +291,13 @@ button.on("click", async () => {
   const eduExplain = document.getElementById("eduExplain");
   if (eduExplain !== null) {
     eduExplain.innerHTML = `
-<<<<<<< Updated upstream
       We see that there's differences in the percentage of people that are food insecure by their education level. As the level of education increases, 
       the graph demonstrates that as the percentage of individuals experiencing food insecurity decreases. Earning a bachelor's degree, 
       the next level of schooling higher than high school, sees a significant
-=======
-      We see that there's differences in the percentage of people that are food insecure by their education level.
-      As the level of education increases, the graph demostrates that as the percentage of individuals experiencing food insecurity
-      decreases. For example the difference in the proportion of food insecure individuals that earned a highschool degree and individuals that have some college
-      but no degree is not that great. However, earning a bachelor's degree, the next level of schooling higher than high school, sees a significant
->>>>>>> Stashed changes
       drop in food insecurity rate. Going higher than bachelor's does not lead to a significant drop. 
       <br><br>
       There's also discrepencies between occupation sectors in the proportion of individuals that are food insecure. 
+      <br><br><br><br><br><br> <span style = 'font-size: 1.5em; font-weight: bold; color: #F7413e;'>Occupation Sectors</span>
     `;
   }
 
