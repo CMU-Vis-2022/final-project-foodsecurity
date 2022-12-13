@@ -20,10 +20,6 @@ html {
   margin-right: 8em;
 }
 
-div {
-  /*border:1px solid red;*/
-}
-
 #title {
   width: 20em;
   font-size: 2.5em;
@@ -193,6 +189,7 @@ div {
 }
 
 #noOneText {
+  padding-top: 5em;
   font-size: 3em;
   color: #F7413e;
 }
