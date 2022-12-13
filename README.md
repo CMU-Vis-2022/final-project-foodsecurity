@@ -11,7 +11,7 @@ https://drive.google.com/drive/u/1/folders/1vKwfG-3HQsipxjAGj39GQgILx-7uM400
 The Writeup Paper is also in the Github repository called, "Implementation and Design of an Interactive Article For Food Insecurity through Data Visualizations.pdf".
 
 ## How to Run
-We do not have a running link for our project as there is deployment issues for Github Pages. We discussed and worked with the TA Fernie on December 6th to try to get get it to run on Github Pages but was not able to do so. TA Fernie also confirmed that it was okay for us to not host our application.
+We do not have a running link for our project as there were deployment issues for Github Pages. We discussed and worked with the TA, Fernie, on December 6th to try to get get it to run on Github Pages but was not able to do so. TA Fernie also confirmed that it was okay for us to not host our application.
 
 To run the application, download the repository and run yarn in the terminal. After you have yarn installed, run yarn dev. It will provide a local host link for the application, and you can run it in your browser.
 
