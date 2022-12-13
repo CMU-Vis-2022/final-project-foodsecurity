@@ -11,12 +11,12 @@ https://drive.google.com/drive/u/1/folders/1vKwfG-3HQsipxjAGj39GQgILx-7uM400
 The Writeup Paper is also in the Github repository called, "Implementation and Design of an Interactive Article For Food Insecurity through Data Visualizations.pdf".
 
 ## How to Run
-We do not have a running link for our project as there were deployment issues for Github Pages. We discussed and worked with the TA, Fernie, on December 6th to try to get get it to run on Github Pages but was not able to do so. TA Fernie also confirmed that it was okay for us to not host our application.
+We ran into deployment issues with Github Pages. We discussed and worked with the TA, Fernie, on December 6th during Office Hours to try to get our project up on Github Pages but was not able to get our visualizations to appear. TA Fernie also confirmed that it was okay for us to not host our application.
 
 To run the application, download the repository and run yarn in the terminal. After you have yarn installed, run yarn dev. It will provide a local host link for the application, and you can run it in your browser.
 
 ## Project Breakdown
-We had a very collaborative development process that made use of individual strengths. Working together, we sourced the data and came up with a narrative that surrounded food insecurity. Jamie and Jessie designed the application prototype and Guanjie and Jessie worked together to implement it. Taking the data we sourced, Guanjie cleaned and sorted the data. Guanjie then started developing the visualizations with inputs and feedback from the rest of the team. Jamie worked on further developing the narrative, and Guanjie and Jessie added the text in the application. Jamie took charge of the final write up, and we all worked together to polish the final application and video demo. 
+We had a very collaborative development process that made use of individual strengths. Working together, we sourced the data and came up with a narrative that surrounded food insecurity. Jamie and Jessie designed the application prototype and Guanjie and Jessie worked together to implement it. Taking the data we sourced, Guanjie cleaned and sorted the data. Guanjie then developed the visualizations with inputs and feedback from the rest of the team on the design features of the visualization. Jamie worked on further developing the narrative, and Guanjie and Jessie added the text in the application. Jamie took charge of the final write up, and we all worked together to polish the final application and video demo. 
 
 ## Summary Images
 ![Pitch](summaryImgs/pitch.png)
