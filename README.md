@@ -8,6 +8,8 @@ The universal and basic need for food is not always a reality for some individua
 ## Link to Paper and Video
 https://drive.google.com/drive/u/1/folders/1vKwfG-3HQsipxjAGj39GQgILx-7uM400
 
+The Writeup Paper is also in the Github repository called, "Implementation and Design of an Interactive Article For Food Insecurity through Data Visualizations.pdf".
+
 ## How to Run
 We do not have a running link for our project as there is deployment issues for Github Pages. We discussed and worked with the TA Fernie on December 6th to try to get get it to run on Github Pages but was not able to do so. TA Fernie also confirmed that it was okay for us to not host our application.
 
