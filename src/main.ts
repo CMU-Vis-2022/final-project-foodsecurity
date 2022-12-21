@@ -20,7 +20,7 @@ const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update("https://cmu-vis-2022.github.io/final-project-foodsecurity", "rate");
+chart.update("final-project-foodsecurity/src/mapFoodData.geojson", "rate");
 
 selection.append("option").text("Insecurity Rate");
 selection.append("option").text("Population Density");
