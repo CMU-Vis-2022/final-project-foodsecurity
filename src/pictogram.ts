@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import howItFeelsActual from "./howItFeelsActual.csv?url";
+import person from "./person.png?url"; /* image source = shorturl.at/vxFST*/
 
 export function pictChart(col: string) {
   const width = 800;
@@ -40,8 +41,8 @@ export function pictChart(col: string) {
       .append("svg:image")
       .attr(
         "xlink:href",
-        "/src/person.png"
-      ) /* image source = shorturl.at/vxFST*/
+        person
+      ) 
       .attr("transform", "scale(0.4)")
       .attr("x", (d): any => {
         return xScale((d % cols).toString());
@@ -61,7 +62,7 @@ export function pictChart(col: string) {
     elem
       .append("svg:image")
       .attr("id", "scaleImage")
-      .attr("xlink:href", "/src/person.png")
+      .attr("xlink:href", person)
       .attr("transform", "scale(0.3)")
       .attr("x", 10)
       .attr("y", () => {
@@ -72,7 +73,7 @@ export function pictChart(col: string) {
     elem
       .append("svg:image")
       .attr("id", "scaleImage")
-      .attr("xlink:href", "/src/person.png")
+      .attr("xlink:href", person)
       .attr("transform", "scale(0.3)")
       .attr("class", "affectedPerson")
       .attr("x", 10)

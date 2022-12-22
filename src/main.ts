@@ -13,7 +13,7 @@ import raceNumPropJoined from "./raceNumPropJoined.csv?url";
 import incomeAndFoodInsecurity from "./incomeAndFoodInsecurity.csv?url";
 import educationAndInsecurity from "./educationAndInsecurity.csv?url";
 import sectorAndInsecurity from "./sectorAndInsecurity.csv?url";
-
+import mapFoodData from "./mapFoodData.geojson?url";
 window.scrollTo(0, 0);
 
 
@@ -22,7 +22,7 @@ const chart = mapChart();
 const selection = d3.select(map).append("select");
 map.appendChild(chart.element);
 
-chart.update("/src/mapFoodData.geojson", "rate");
+chart.update(mapFoodData, "rate");
 
 selection.append("option").text("Insecurity Rate");
 selection.append("option").text("Population Density");
