@@ -6,7 +6,7 @@ export function pictChart(col: string) {
 
   const svg = d3.create("svg").attr("width", width).attr("height", height);
 
-  d3.csv("src/howItFeelsActual.csv").then((d) => {
+  d3.csv("howItFeelsActual.csv").then((d) => {
     let rows = 10;
     const cols = 10;
     let data = [0];
