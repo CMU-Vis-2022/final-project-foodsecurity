@@ -33,23 +33,23 @@ selection.attr("id", "mapSelection");
 selection.on("change", () => {
   const choice = selection.property("value");
   if (choice === "Insecurity Rate") {
-    chart.update("/src/mapFoodData.geojson", "rate");
+    chart.update(mapFoodData, "rate");
   } else if (choice === "Population Density") {
-    chart.update("/src/mapFoodData.geojson", "density");
+    chart.update(mapFoodData, "density");
   } else {
-    chart.update("/src/mapFoodData.geojson", "lalowi10share");
+    chart.update(mapFoodData, "lalowi10share");
   }
 });
 
 const miniMap1 = document.querySelector("#miniMap1");
 const mini1 = miniMapChart();
 miniMap1?.appendChild(mini1.element);
-mini1.update("/src/mapFoodData.geojson", "density");
+mini1.update(mapFoodData, "density");
 
 const miniMap2 = document.querySelector("#miniMap2");
 const mini2 = miniMapChart();
 miniMap2?.appendChild(mini2.element);
-mini2.update("/src/mapFoodData.geojson", "lalowi10share");
+mini2.update(mapFoodData, "lalowi10share");
 
 const cholesterol = document.querySelector("#whyVis")!;
 const cholChart = cholesterolChart();
