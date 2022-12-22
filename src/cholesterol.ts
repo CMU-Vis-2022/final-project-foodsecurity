@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import cholestBinned from "./cholestBinned.csv?url";
 
 export function cholesterolChart() {
   const width = 400;
@@ -22,7 +23,7 @@ export function cholesterolChart() {
 
   const bars = svg.append("g").attr("fill", "#EB736B");
 
-  d3.csv("/src/cholestBinned.csv").then((d) => {
+  d3.csv(cholestBinned).then((d) => {
     const bins: string[] = [];
     const amts: number[] = [];
     const almost: number[] = [];

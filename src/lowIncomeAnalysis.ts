@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import insecurityAndProportions from "./insecurityAndProportions.csv?url";
 
 export function incomeScatterChart() {
   const margin = { top: 0, right: 100, bottom: 50, left: 150 };
@@ -109,7 +110,7 @@ export function incomeScatterChart() {
         );
     }
     d3.selectAll("#incomeCircles").remove();
-    d3.csv("/src/insecurityAndProportions.csv").then((d) => {
+    d3.csv(insecurityAndProportions).then((d) => {
       dots
         .selectAll("circle")
         .data(d)

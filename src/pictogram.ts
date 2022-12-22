@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import howItFeelsActual from "./howItFeelsActual.csv?url";
 
 export function pictChart(col: string) {
   const width = 800;
@@ -6,8 +7,8 @@ export function pictChart(col: string) {
 
   const svg = d3.create("svg").attr("width", width).attr("height", height);
 
-  d3.csv("howItFeelsActual.csv").then((d) => {
-    let rows = 10;
+  d3.csv(howItFeelsActual).then((d) => {
+    const rows = 10;
     const cols = 10;
     let data = [0];
     let numShade = 0;
@@ -22,7 +23,7 @@ export function pictChart(col: string) {
       }
     });
     const yDomain = d3.range(rows).map((d) => d.toString());
-    let heightA = 900;
+    const heightA = 900;
 
     const yScale = d3.scaleBand().range([100, heightA]).domain(yDomain);
     const xScale = d3

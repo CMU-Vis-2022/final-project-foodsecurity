@@ -9,9 +9,11 @@ import { scatterChart } from "./deeperAnalysis";
 import { incomeScatterChart } from "./lowIncomeAnalysis";
 import { miniMapChart } from "./miniMap";
 
-//import { Int32, Table, Utf8 } from "apache-arrow";
-//import { db } from "./duckdb";
-//import parquet from "./weather.parquet?url";
+import raceNumPropJoined from "./raceNumPropJoined.csv?url";
+import incomeAndFoodInsecurity from "./incomeAndFoodInsecurity.csv?url";
+import educationAndInsecurity from "./educationAndInsecurity.csv?url";
+import sectorAndInsecurity from "./sectorAndInsecurity.csv?url";
+
 window.scrollTo(0, 0);
 
 
@@ -113,12 +115,12 @@ button.on("click", async () => {
   d3.select(distr).append("br");
   slide1.on("change", (event) => {
     distributionChart.update(
-      "/src/raceNumPropJoined.csv",
+      raceNumPropJoined,
       years[event.target.value / 50].toString(),
       "race"
     );
   });
-  distributionChart.update("/src/raceNumPropJoined.csv", "2019", "race");
+  distributionChart.update(raceNumPropJoined, "2019", "race");
   distr?.appendChild(distributionChart.element);
 
   const narrative = document.getElementById("narrative");
@@ -221,12 +223,12 @@ button.on("click", async () => {
   const incomeVis = distChart();
   slide4.on("change", (event) => {
     incomeVis.update(
-      "/src/incomeAndFoodInsecurity.csv",
+      incomeAndFoodInsecurity,
       years[event.target.value / 50].toString(),
       "income"
     );
   });
-  incomeVis.update("/src/incomeAndFoodInsecurity.csv", "2019", "income");
+  incomeVis.update(incomeAndFoodInsecurity, "2019", "income");
   income?.appendChild(incomeVis.element);
 
   const incomeExplain = document.getElementById("incomeExplain");
@@ -280,12 +282,12 @@ button.on("click", async () => {
   const eduVis = distChart();
   slide2.on("change", (event) => {
     eduVis.update(
-      "/src/educationAndInsecurity.csv",
+      educationAndInsecurity,
       years[event.target.value / 50].toString(),
       "education"
     );
   });
-  eduVis.update("/src/educationAndInsecurity.csv", "2019", "education");
+  eduVis.update(educationAndInsecurity, "2019", "education");
   edu?.appendChild(eduVis.element);
 
   const eduExplain = document.getElementById("eduExplain");
@@ -315,12 +317,12 @@ button.on("click", async () => {
   const sectorVis = distChart();
   slide5.on("change", (event) => {
     sectorVis.update(
-      "/src/sectorAndInsecurity.csv",
+      sectorAndInsecurity,
       years[event.target.value / 50].toString(),
       "sector"
     );
   });
-  sectorVis.update("/src/sectorAndInsecurity.csv", "2019", "sector");
+  sectorVis.update(sectorAndInsecurity, "2019", "sector");
   sector?.appendChild(sectorVis.element);
 
   const sectorExp = document.getElementById("sectorExplain");
