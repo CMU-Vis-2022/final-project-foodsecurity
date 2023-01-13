@@ -15,8 +15,7 @@ import educationAndInsecurity from "./educationAndInsecurity.csv?url";
 import sectorAndInsecurity from "./sectorAndInsecurity.csv?url";
 import mapFoodData from "./mapFoodData.geojson?url";
 
-window.scrollTo(0, 0);
-
+window.scrollTo(0,0);
 
 const map = document.querySelector("#mapVis")!;
 const chart = mapChart();
