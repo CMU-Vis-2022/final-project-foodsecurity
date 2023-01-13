@@ -14,6 +14,7 @@ import incomeAndFoodInsecurity from "./incomeAndFoodInsecurity.csv?url";
 import educationAndInsecurity from "./educationAndInsecurity.csv?url";
 import sectorAndInsecurity from "./sectorAndInsecurity.csv?url";
 import mapFoodData from "./mapFoodData.geojson?url";
+
 window.scrollTo(0, 0);
 
 
